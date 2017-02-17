@@ -1,6 +1,6 @@
-# wmui
+# Blocks
 
-> A Vue.js project
+> A dragable and configurable platform for repeatability webpages based on Vue2.0
 
 ## Build Setup
 
@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run dev main
 
 # build for production with minification
 npm run build
