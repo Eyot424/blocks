@@ -15,8 +15,8 @@
        scoped>
     .wrap {
         border: 1px solid silver;
-        min-height: 50px;
-        padding-top: 100px;
+        min-height: 200px;
+        /*padding-top: 100px;*/
     }
 </style>
 <script>

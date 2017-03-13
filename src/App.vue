@@ -11,6 +11,7 @@
     import radios from './components/radios/setting'
     import wmForm from './components/wmForm/setting'
     import wmTable from './components/wmTable/setting'
+    import inlineBox from './components/inlineBox/setting'
     import settingBridge from './components/settingBridge'
     import vue from 'vue'
     import draggable from 'vuedraggable'
@@ -30,6 +31,7 @@
             radios,
             settingBridge,
             wmForm,
+            inlineBox,
             wmTable,
             draggable
         },
@@ -37,9 +39,9 @@
             return (
                     <div id="app">
                         <div class="box-card el-card componentWrap el-col-8">
-                            <div class="el-card__header">
+                            <div class="el-card__header m-header">
                                 <div class="clearfix">
-                                    <h2>组件列表</h2>
+                                    <h4>组件列表</h4>
                                 </div>
                             </div>
                             <draggable list={this.componentShowList}
@@ -61,11 +63,11 @@
                             </draggable>
                         </div>
                         <div class="box-card el-card canvasWrap el-col-8">
-                            <div class="el-card__header">
+                            <div class="el-card__header m-header">
                                 <div class="clearfix">
-                                    <el-row>
+                                    <el-row class="flex-center">
                                         <el-col span={12}>
-                                            <h2>页面画布</h2>
+                                            <h4>页面画布</h4>
                                         </el-col>
                                         <el-col span={12}>
                                             <el-button type="primary"
@@ -75,35 +77,16 @@
                                     </el-row>
                                 </div>
                             </div>
-                            <draggable list={this.canvasComponentList}
-                                       options={this.canvasSortableOption}
-                                       class="canvasSortable">
-                                {
-                                    this.canvasComponentList.map((item,index) => {
-                                        return (
-                                                <div key={item.ref}
-                                                     class="canvasItemWrap">
-                                                    <div class="filter filterWrap">
-                                                        <i class="el-icon-edit filter"
-                                                           onClick={this.clickCanvasItem.bind(this,item)}></i>
-                                                        <i class="el-icon-delete filter"
-                                                           onClick={this.deleteCanvasItem.bind(this,this.canvasComponentList,index,item)}></i>
-                                                    </div>
-                                                    {
-                                                        h(item.name, {
-                                                            ref: item.ref
-                                                        }, [this.getNestedInfo(item, h)])
-                                                    }
-                                                </div>
-                                        )
-                                    })
-                                }
-                            </draggable>
+                            {this.getDraggableList(h, this.canvasComponentList)}
                         </div>
-                        <div class="box-card el-card settingForm el-col-8">
-                            <div class="el-card__header">
+                        <div class={{ show: (this.settingFormShow),'box-card':true,'el-card':true, settingForm:true, 'el-col-8':true}}>
+                            <div class="el-card__header m-header">
                                 <div class="clearfix">
-                                    <h2>组件设置</h2>
+                                    <h4>组件设置</h4>
+                                </div>
+                                <div onClick={this.settingFormHide}
+                                     class="close-wrap">
+                                    <i class="el-icon-close"></i>
                                 </div>
                             </div>
                             <setting-bridge ref="settingBridge"
@@ -112,57 +95,77 @@
                                             setting-item={this.settingItem}
                                             instance={this.settingInstance}></setting-bridge>
                         </div>
+                        <div onClick={this.settingFormHide}
+                             class={{'setting-form-background':true,'show':this.settingFormShow}}></div>
                     </div>
             )
         },
         methods: {
-            getNestedInfo: function (item, h) {
-                var setting = this.$options.componentSetting[item.name];
-                if (setting && setting.nest) {
-                    if (!item.canvasComponentList) {
-                        vue.set(item, 'canvasComponentList', []);
-                    }
-                    if (!item.nestedData) {
-                        vue.set(item, 'nestedData', []);
-                    }
-                    if (!item.canvasSortableOption) {
-                        item.canvasSortableOption = {
-                            group: {
-                                name: 'canvasSortableGroup2',
-                                pull: false,
-                                put: ['canvasSortableGroup']
-                            },
-                            draggable: ".canvasItemWrap",
-                            animation: 150,
-                            filter: '.filter',
-                        };
-                    }
-                    return (
-                            <draggable list={item.canvasComponentList}
-                                       options={item.canvasSortableOption}
-                                       class="canvasSortable1">
-                                {
-                                    item.canvasComponentList.map((nestedItem, index) => {
-                                        return (
-                                                <div key={nestedItem.ref}
-                                                     class="canvasItemWrap">
-                                                    <div class="filter filterWrap">
-                                                        <i class="el-icon-edit filter" onClick={this.clickCanvasItem.bind(this,nestedItem)}></i>
-                                                        <i class="el-icon-delete filter"
-                                                           onClick={this.deleteCanvasItem.bind(this,item.canvasComponentList,index,nestedItem)}></i>
-                                                    </div>
-                                                    {setting.nest.render(h, h(nestedItem.name, {
-                                                                ref: nestedItem.ref
-                                                            }), item.nestedData[index]
-                                                    )}
+            getDraggableList(h, list, nestingItem){
+                return (
+                        <draggable list={list}
+                                   options={this.canvasSortableOption}
+                                   class="canvasSortable">
+                            {
+                                list.map((item, index) => {
+                                    let setting = this.$options.componentSetting[item.name];
+                                    let itemNest = setting ? setting.nest : false
+                                    if (itemNest) {
+                                        if (!item.canvasComponentList) {
+                                            vue.set(item, 'canvasComponentList', []);
+                                        }
+                                        if (!item.nestedData) {
+                                            vue.set(item, 'nestedData', []);
+                                        }
+                                    }
+                                    return (
+                                            <div key={item.ref}
+                                                 class="canvasItemWrap">
+                                                <div class="filter filterWrap">
+                                                    <i class="el-icon-edit filter"
+                                                       onClick={this.clickCanvasItem.bind(this,item)}></i>
+                                                    <i class="el-icon-delete filter"
+                                                       onClick={this.deleteCanvasItem.bind(this,list,index,item)}></i>
                                                 </div>
-                                        )
-                                    })
-                                }
-                            </draggable>
-                    );
-                }
-                return '';
+                                                {
+                                                    (() => {
+                                                        if (nestingItem) {
+                                                            let nestingSetting = this.$options.componentSetting[nestingItem.name]
+                                                            if (!itemNest) {
+                                                                return nestingSetting.nest.render(h, h(item.name, {
+                                                                            ref: item.ref
+                                                                        }), nestingItem.nestedData[index]
+                                                                )
+                                                            } else {
+                                                                return nestingSetting.nest.render(h, h(item.name, {
+                                                                            ref: item.ref
+                                                                        }, [
+                                                                            this.getDraggableList(h, item.canvasComponentList,
+                                                                                    item)
+                                                                        ]), nestingItem.nestedData[index]
+                                                                )
+                                                            }
+                                                        } else {
+                                                            if (!itemNest) {
+                                                                return h(item.name, {
+                                                                    ref: item.ref
+                                                                })
+                                                            } else {
+                                                                return h(item.name, {
+                                                                    ref: item.ref
+                                                                }, [
+                                                                    this.getDraggableList(h, item.canvasComponentList,
+                                                                            item)
+                                                                ])
+                                                            }
+                                                        }
+                                                    })()}
+                                            </div>
+                                    )
+                                })
+                            }
+                        </draggable>
+                )
             },
             getRenderConfig: function () {
                 let getRenderResult = (canvasComponentList) => {
@@ -203,9 +206,13 @@
                 this.settingData = setting
                 this.settingItem = item
                 this.settingInstance = instance
+                this.settingFormShow = true
             },
-            deleteCanvasItem: function (canvasComponentList,index,item) {
-                canvasComponentList.splice(index,1)
+            settingFormHide(){
+                this.settingFormShow = false
+            },
+            deleteCanvasItem: function (canvasComponentList, index, item) {
+                canvasComponentList.splice(index, 1)
                 delete this.$refs[item.ref]
             }
         },
@@ -223,10 +230,12 @@
                     'radios',
                     'wmForm',
                     'wmTable',
+                    'inlineBox'
                 ],
                 settingData: {},
                 settingId: 1,
                 settingItem: {},
+                settingFormShow: false,
                 settingInstance: {},
                 canvasComponentList: [],
                 componentListSortableOption: {
@@ -390,7 +399,7 @@
     #app {
         display: flex;
         .componentWrap {
-            width: 280px;
+            width: 230px;
             height: 100vh;
             font-family: 'microsoft yahei';
 
@@ -405,26 +414,77 @@
             flex-grow: 1;
             .canvasSortable {
                 .fullHeight;
+                .fullWight;
+                min-height: 300px;
                 .canvasItemWrap {
                     position: relative;
+                    min-width: 200px;
+                    /*border-top: .5px solid silver;*/
+                    border-bottom: .5px solid silver;
                     .filterWrap {
                         position: absolute;
                         z-index: 100;
                         padding: 0 10px;
-                        right: 10px;
-                        border: 1px solid silver;
+                        right: 50%;
+                        /*top: 35%;*/
+                        box-shadow: 5px 4px 11px #888888;
+                        /*border: 1px solid silver;*/
+                        .el-icon-delete {
+                            margin-left: 20px;
+                        }
                     }
                 }
             }
         }
+        .setting-form-background {
+            position: fixed;
+            .fullWight;
+            .fullHeight;
+            z-index: 300;
+            display: none;
+            opacity: 0;
+            &.show{
+                display: block;
+            }
+            background-color: silver;
+        }
         .settingForm {
-            width: 900px;
+            width: 600px;
+            position: fixed;
+            right: -604px;
+            z-index: 500;
+            transition: all .5s;
+            &.show {
+                right: 0px;
+            }
+            .m-header {
+                .close-wrap {
+                    height: 36px;
+                    width: 36px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .flex-center;
+                justify-content: space-between;
+            }
+            box-shadow: -4px 0px 13px #888888;
             background-color: silver;
             #settingBridge {
                 background-color: #eff2f7;
                 height: 100vh;
             }
         }
+    }
+
+    .m-header {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .flex-center {
+        display: flex;
+        align-items: center;
     }
 
     .canvasSortable1 {

@@ -68,9 +68,9 @@ module.exports = {
                 require('autoprefixer')({
                     browsers: ['last 2 versions']
                 }),
-                require('postcss-pxtorem')({
-                    propWhiteList: []
-                })
+                // require('postcss-pxtorem')({
+                //     propWhiteList: []
+                // })
             ]
         }
     }
