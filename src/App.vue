@@ -38,47 +38,29 @@
         render: function (h) {
             return (
                     <div id="app">
-                        <div class="box-card el-card componentWrap el-col-8">
-                            <div class="el-card__header m-header">
-                                <div class="clearfix">
-                                    <h4>组件列表</h4>
-                                </div>
-                            </div>
-                            <draggable list={this.componentShowList}
-                                       options={this.componentListSortableOption}
-                                       clone={this.clone}
-                                       class="dragArea">
-                                {
-                                    this.componentShowList.map(function (item) {
-                                        return (
-                                                <li>
-                                                    <div id="mount"
-                                                         class="el-menu-item">
-                                                        {item}
-                                                    </div>
-                                                </li>
-                                        )
-                                    })
-                                }
-                            </draggable>
-                        </div>
-                        <div class="box-card el-card canvasWrap el-col-8">
-                            <div class="el-card__header m-header">
-                                <div class="clearfix">
-                                    <el-row class="flex-center">
-                                        <el-col span={12}>
-                                            <h4>页面画布</h4>
-                                        </el-col>
-                                        <el-col span={12}>
-                                            <el-button type="primary"
-                                                       onClick={this.getRenderConfig}>提交
-                                            </el-button>
-                                        </el-col>
-                                    </el-row>
-                                </div>
-                            </div>
-                            {this.getDraggableList(h, this.canvasComponentList)}
-                        </div>
+                        <el-tabs type="border-card" class="el-col-6">
+                            <el-tab-pane label="组件列表">
+                                <draggable list={this.componentShowList}
+                                           options={this.componentListSortableOption}
+                                           clone={this.clone}
+                                           class="dragArea">
+                                    {
+                                        this.componentShowList.map(function (item) {
+                                            return (
+                                                <el-button id="mount" class="button-new-tag">{item}</el-button>
+                                            )
+                                        })
+                                    }
+                                </draggable>
+                            </el-tab-pane>
+                        </el-tabs>
+                        <el-tabs type="border-card" class="el-col-18 canvasWrap">
+                            <el-tab-pane label="页面画布">
+                                <el-button class="submit-alldata" type="primary" onClick={this.getRenderConfig}>提交
+                                </el-button>
+                                {this.getDraggableList(h, this.canvasComponentList)}
+                            </el-tab-pane>
+                        </el-tabs>
                         <div class={{ show: (this.settingFormShow),'box-card':true,'el-card':true, settingForm:true, 'el-col-8':true}}>
                             <div class="el-card__header m-header">
                                 <div class="clearfix">
@@ -261,18 +243,18 @@
         },
         computed: {
             componentShowList: function () {
-                var me = this;
+                const me = this;
                 return this.componentList.map((item) => {
-                    var componentConstruct = me.$options.components[item];
+                    let componentConstruct = me.$options.components[item];
                     if (!componentConstruct) {
                         componentConstruct = vue.options.components[item];
                     }
-                    var instance = new vue(componentConstruct);
+                    let instance = new vue(componentConstruct);
                     me.$options.componentSetting[item] = componentConstruct.props.settingDefinition;
                     if (instance.$options.name) {
                         return instance.$options.name
                     }
-                    return componentConstruct.options.name
+                    return componentConstruct.options.name;
                 })
             }
         },
@@ -398,18 +380,12 @@
     @componentWidth: 750px;
     #app {
         display: flex;
-        .componentWrap {
-            width: 230px;
-            height: 100vh;
-            font-family: 'microsoft yahei';
 
-            .el-menu-item {
-                font-size: 1.6rem;
-                height: 2.66667rem;
-                line-height: 2;
-                font-family: 'helvetica';
-            }
+        .button-new-tag{
+            margin: 10px 0 0 10px;
+
         }
+
         .canvasWrap {
             flex-grow: 1;
             .canvasSortable {

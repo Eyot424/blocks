@@ -22,6 +22,7 @@
                     </div>)
         },
         name: 'wmTable',
+        cnName: '表格',
         data(){
             return {
                 columnData:[]

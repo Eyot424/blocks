@@ -2,6 +2,21 @@
     import Vue from 'vue';
     import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
     import _ from 'lodash'
+    import ElementUI from 'element-ui'
+    import 'element-ui/lib/theme-default/index.css'
+    import checkBox from './components/checkBox/setting'
+    import datePicker from './components/datePicker/setting'
+    import dateTimePicker from './components/dateTimePicker/setting'
+    import dateRangePicker from './components/dateRangePicker/setting'
+    import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
+    import inputWithLabel from './components/inputWithLabel/setting'
+    import pureButton from './components/pureButton/setting'
+    import pureInput from './components/pureInput/setting'
+    import radios from './components/radios/setting'
+    import wmForm from './components/wmForm/setting'
+    import wmTable from './components/wmTable/setting'
+    import inlineBox from './components/inlineBox/setting'
+    Vue.use(ElementUI)
     export default{
         name: 'engine',
         props: {
@@ -20,8 +35,23 @@
                 }
             }
         },
-        data(){
-            return {}
+        data: function() {
+            return {
+                componetList: [
+                    checkBox,
+                    datePicker,
+                    dateTimePicker,
+                    dateRangePicker,
+                    dateTimeRangePicker,
+                    inputWithLabel,
+                    pureButton,
+                    pureInput,
+                    radios,
+                    wmForm,
+                    wmTable,
+                    inlineBox
+                ]
+            }
         },
         computed: {
             freezeConfig: function () {
@@ -100,6 +130,9 @@
             }
         },
         render: function (_h) {
+            this.$data.componetList.map((item, index) => {
+                Vue.component(item.name, item);
+            })
             var wrapVnode = this.createVnode(
                     _h, {
                         tag: 'div',
