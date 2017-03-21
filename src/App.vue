@@ -401,7 +401,9 @@
                         position: absolute;
                         z-index: 100;
                         padding: 0 10px;
-                        right: 50%;
+                        left: 5%;
+                        bottom: 5%;
+                        /*right: 50%;*/
                         /*top: 35%;*/
                         box-shadow: 5px 4px 11px #888888;
                         /*border: 1px solid silver;*/
