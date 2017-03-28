@@ -1,5 +1,5 @@
 <template>
-    <div class="pureButton">
+    <div class="buttons">
         <el-button :icon="buttonIcon" :type="buttonType">{{ buttonText }}</el-button>
         <slot></slot>
     </div>
@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: 'pureButton',
+        name: 'buttons',
         props: {
             buttonText: {
                 type: String,
