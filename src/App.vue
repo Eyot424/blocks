@@ -1,4 +1,5 @@
 <script>
+    import breadCrumb from './components/breadCrumb/setting'
     import checkBox from './components/checkBox/setting'
     import datePicker from './components/datePicker/setting'
     import dateTimePicker from './components/dateTimePicker/setting'
@@ -12,6 +13,7 @@
     import wmForm from './components/wmForm/setting'
     import wmTable from './components/wmTable/setting'
     import inlineBox from './components/inlineBox/setting'
+    import selects from './components/selects/setting'
     import settingBridge from './components/settingBridge'
     import vue from 'vue'
     import draggable from 'vuedraggable'
@@ -19,6 +21,7 @@
     export default {
         name: 'App',
         components: {
+            breadCrumb,
             checkBox,
             datePicker,
             dateTimePicker,
@@ -29,6 +32,7 @@
             pureButton,
             pureInput,
             radios,
+            selects,
             settingBridge,
             wmForm,
             inlineBox,
@@ -201,6 +205,7 @@
         data: function () {
             return {
                 componentList: [
+                    'breadCrumb',
                     'checkBox',
                     'datePicker',
                     'dateTimePicker',
@@ -210,6 +215,7 @@
                     'pureButton',
                     'pureInput',
                     'radios',
+                    'selects',
                     'wmForm',
                     'wmTable',
                     'inlineBox'

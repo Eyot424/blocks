@@ -1,19 +1,32 @@
 import store from './store'
 export default {
     table: {
-        vuex:{
+        vuex: { //vuex.store
+            state: {
+                count: 0
+            },
             getters: {
-                data: 'tableData'
+                ...
+            }
+            mutations: {
+                increment(state) {
+                    state.count++
+                }
+            },
+            actions: {
+                increment(context) {
+                    context.commit('increment')
+                }
             }
         },
-        extend:{
+        extend: {
 
         },
     },
-    button:{
-        data:{
-            on:{
-                click:function () {
+    button: {
+        data: {
+            on: {
+                click: function() {
                     store.commit('clear')
                 }
             }
