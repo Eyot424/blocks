@@ -1,6 +1,12 @@
 <template>
     <div class="selects">
-        <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
+        <el-select v-model="value" placeholder="请选择">
+            <el-option
+                v-for="item in allData"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+        </el-select>
     </div>
 </template>
 
@@ -8,16 +14,17 @@
     export default {
         name: 'selects',
         props: {
-            inputIcon: {
-                type: String,
-                default: 'search'
+            allData: {
+                type: Array,
+                default: [{
+                    label: '默认',
+                    value: '1'
+                }]
+            },
+            selectList: {
+                type: Array,
+                default: []
             }
         }
     }
 </script>
-
-<style scoped>
-    .el-input{
-        width: auto;
-    }
-</style>

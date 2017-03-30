@@ -2,19 +2,13 @@
     <div class="wrap">
         <template v-for="(item,index) in selfValue">
             <el-row>
-                <el-col :span="10">
+                <el-col :span="20">
                     <el-input placeholder="请输入内容"
                               v-model="item.label">
                         <template slot="prepend">文案</template>
                     </el-input>
                 </el-col>
-                <el-col :span="10">
-                    <el-input placeholder="请输入内容"
-                              v-model="item.value">
-                        <template slot="prepend">值</template>
-                    </el-input>
-                </el-col>
-                <el-col :span="2">
+                <el-col :span="4">
                     <template v-if="index === 0">
                         <el-button type="primary"
                                    @click="addColumn">增加一列
@@ -30,6 +24,13 @@
         </template>
     </div>
 </template>
+
+<style lang="less"
+       rel="stylesheet/less"
+       scoped>
+    .wrap {
+    }
+</style>
 
 <script>
     export default{
@@ -47,8 +48,7 @@
         methods: {
             addColumn: function () {
                 this.selfValue.push({
-                    label: '',
-                    value: ''
+                    label: ''
                 })
             }
         },

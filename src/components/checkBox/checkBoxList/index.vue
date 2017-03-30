@@ -59,7 +59,9 @@
         methods: {
             addColumn: function () {
                 this.selfValue.push({
-                    label: ''
+                    label: '',
+                    value: '',
+                    checked: ''
                 })
             }
         },

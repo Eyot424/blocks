@@ -1,27 +1,35 @@
 import index from './index'
+import selectList from './selectList/index.vue'
 index.props['settingDefinition'] = {
     setting: {
-        inputIcon: {
-            type: 'el-input',
-            label: 'icon信息',
+        allData: {
+            type: 'selectList',
+            label: '',
             require: true,
             componentData: {
-                value:'',
-                template: '%i',
-                inputValue: []
+                value: [{
+                    label: '默认'
+                }]
             },
         }
     },
+    components: {
+        selectList
+    },
     computed: {
-        submitData: function () {
+        submitData: function() {
+            let getData = this.allData.value;
+            let getList = [];
             return {
-                inputIcon: this.inputIcon.value
+                allData: getData,
+                checkList: getList
             }
         }
     },
-    methods:{
-        backFill:function (submitData) {
-            this.inputIcon.value = submitData.inputIcon
+    methods: {
+        backFill: function(submitData) {
+            this.allData.value = submitData.allData,
+                this.checkList.value = submitData.checkList
         }
     }
 }

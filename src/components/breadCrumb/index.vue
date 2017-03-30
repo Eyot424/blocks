@@ -1,6 +1,8 @@
 <template>
     <div class="breadCrumb">
-        <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item v-for="item in allData">{{item.label}}</el-breadcrumb-item>
+        </el-breadcrumb>
     </div>
 </template>
 
@@ -8,16 +10,16 @@
     export default {
         name: 'breadCrumb',
         props: {
-            inputIcon: {
-                type: String,
-                default: 'search'
+            allData: {
+                type: Array,
+                default: [{
+                    label: '默认'
+                }]
+            },
+            breadCrumbList: {
+                type: Array,
+                default: []
             }
         }
     }
 </script>
-
-<style scoped>
-    .el-input{
-        width: auto;
-    }
-</style>

@@ -1,27 +1,31 @@
 import index from './index'
+import breadCrumbList from './breadCrumbList/index.vue'
 index.props['settingDefinition'] = {
     setting: {
-        inputIcon: {
-            type: 'el-input',
-            label: 'icon信息',
+        allData: {
+            type: 'breadCrumbList',
+            label: '',
             require: true,
             componentData: {
-                value:'',
-                template: '%i',
-                inputValue: []
+                value: [{
+                    label: '默认'
+                }]
             },
         }
     },
+    components: {
+        breadCrumbList
+    },
     computed: {
-        submitData: function () {
+        submitData: function() {
             return {
-                inputIcon: this.inputIcon.value
+                allData: this.allData.value,
             }
         }
     },
-    methods:{
-        backFill:function (submitData) {
-            this.inputIcon.value = submitData.inputIcon
+    methods: {
+        backFill: function(submitData) {
+            this.allData.value = submitData.allData
         }
     }
 }

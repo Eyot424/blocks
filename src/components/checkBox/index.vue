@@ -14,7 +14,8 @@
                 type: Array,
                 default: [{
                     value: 'test',
-                    label: '默认'
+                    label: '默认',
+                    checked: false
                 }]
             },
             checkList: {

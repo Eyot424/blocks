@@ -7,7 +7,7 @@ index.props['settingDefinition'] = {
             label: '',
             require: true,
             componentData: {
-                value:[{
+                value: [{
                     label: '默认',
                     checked: false,
                     value: ''
@@ -15,14 +15,14 @@ index.props['settingDefinition'] = {
             },
         }
     },
-    components:{
+    components: {
         checkBoxList
     },
     computed: {
-        submitData: function () {
+        submitData: function() {
             let getCheckData = this.allCheckData.value;
             let getCheckList = [];
-            for (let i = 0; i < getCheckData.length; i ++) {
+            for (let i = 0; i < getCheckData.length; i++) {
                 if (getCheckData[i].checked == true) {
                     getCheckList.push(getCheckData[i].value);
                 };
@@ -33,10 +33,9 @@ index.props['settingDefinition'] = {
             }
         }
     },
-    methods:{
-        backFill:function (submitData) {
-            this.allCheckData.value = submitData.allCheckData,
-            this.checkList.value = submitData.checkList
+    methods: {
+        backFill: function(submitData) {
+            this.allCheckData.value = submitData.allCheckData;
         }
     }
 }
