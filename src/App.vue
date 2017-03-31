@@ -58,6 +58,8 @@
                             <el-tab-pane label="页面画布">
                                 <el-button class="submit-alldata" type="primary" onClick={this.getRenderConfig}>提交
                                 </el-button>
+                                <el-button class="submit-alldata" type="primary" onClick={this.downloadConfig}>下载
+                                </el-button>
                                 {this.getDraggableList(h, this.canvasComponentList)}
                             </el-tab-pane>
                         </el-tabs>
@@ -83,6 +85,9 @@
             )
         },
         methods: {
+            downloadConfig(){
+                window.open(`/getJsonFile?config=${JSON.stringify(this.generateRenderConfig())}`)
+            },
             getDraggableList(h, list, nestingItem){
                 return (
                         <draggable list={list}
@@ -150,6 +155,9 @@
                 )
             },
             getRenderConfig: function () {
+                alert(JSON.stringify(this.generateRenderConfig()))
+            },
+            generateRenderConfig(){
                 let getRenderResult = (canvasComponentList) => {
                     return canvasComponentList.map((item) => {
                         let instance = this.$refs[item.ref]
@@ -166,7 +174,7 @@
                     })
                 }
                 let result = getRenderResult(this.canvasComponentList)
-                alert(JSON.stringify(result))
+                return result
             },
             changeItemNestedData: function (nestedData) {
                 this.settingItem.nestedData = nestedData
