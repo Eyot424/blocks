@@ -11,6 +11,7 @@
     import radios from './components/radio/setting'
     import forms from './components/form/setting'
     import tables from './components/table/setting'
+    import upload from './components/upload/setting'
     import selects from './components/select/setting'
     import settingBridge from './components/settingBridge'
     import vue from 'vue'
@@ -33,6 +34,7 @@
             settingBridge,
             forms,
             tables,
+            upload,
             draggable
         },
         render: function (h) {
@@ -209,6 +211,7 @@
                     'radios',
                     'forms',
                     'tables',
+                    'upload',
                     'datePicker',
                     'dateTimePicker',
                     'dateRangePicker',
