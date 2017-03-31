@@ -22,7 +22,7 @@
 <script>
     export default {
         props: {},
-        name: 'wmForm',
+        name: 'forms',
         data(){
             return {}
         },

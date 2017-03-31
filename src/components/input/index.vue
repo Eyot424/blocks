@@ -1,12 +1,12 @@
 <template>
-    <div class="pureInput">
+    <div class="inputs">
         <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'pureInput',
+        name: 'inputs',
         props: {
             inputIcon: {
                 type: String,

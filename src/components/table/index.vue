@@ -21,7 +21,7 @@
                         </el-table>
                     </div>)
         },
-        name: 'wmTable',
+        name: 'tables',
         cnName: '表格',
         data(){
             return {
