@@ -17,7 +17,7 @@
     "lodash": "^4.16.4",
     "postcss-pxtorem": "^3.3.1",
     "sortablejs": "^1.4.2",
-    "vue": "^2.2.6",
+    "vue": "^2.0.0",
     "vue-loader": "^12.0.0",
     "vuedraggable": "^2.2.0",
     "vuex": "^2.0.0",

@@ -1,7 +1,7 @@
 <template>
     <div class="checkBox">
         <el-checkbox-group v-model="checkList">
-            <el-checkbox v-for="item in allCheckData" :label="item.value">{{item.label}}</el-checkbox>
+            <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
         </el-checkbox-group>
     </div>
 </template>

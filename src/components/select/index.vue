@@ -3,6 +3,7 @@
         <el-select v-model="value" placeholder="请选择">
             <el-option
                 v-for="item in allData"
+                :key="item.label"
                 :label="item.label"
                 :value="item.value">
             </el-option>

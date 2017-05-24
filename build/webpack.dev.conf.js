@@ -30,6 +30,12 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: true
+    }),
     new FriendlyErrorsPlugin()
   ]
 })
