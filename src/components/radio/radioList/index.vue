@@ -1,9 +1,5 @@
 <template>
     <div class="wrap">
-        <el-input placeholder="请输入v-model绑定的字段"
-                  v-model="radioValue.value">
-            <template slot="prepend">绑定数据</template>
-        </el-input>
         <template v-for="(item,index) in selfValue">
             <el-row>
                 <el-col :span="10">
@@ -35,32 +31,24 @@
     </div>
 </template>
 
-<style lang="less"
-       rel="stylesheet/less"
-       scoped>
-    .wrap {
-    }
-</style>
-
 <script>
     export default{
         props: {
-            value: {},
-            radioValue: ''
+            value: {}
         },
         data(){
             return {}
         },
         computed: {
             selfValue: function () {
-                console.log(this.value)
                 return this.value;
             }
         },
         methods: {
             addColumn: function () {
                 this.selfValue.push({
-                    label: ''
+                    label: '',
+                    value: ''
                 })
             }
         },

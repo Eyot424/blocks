@@ -12,9 +12,10 @@
         props: {
             allRadioData: {
                 type: Array,
-                default() {
-                    return []
-                }
+                default: [{
+                    value: 'test',
+                    label: '默认'
+                }]
             },
             radioValue: {
                 type: String,

@@ -8,28 +8,26 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 radioValue: '',
-                value:[{
+                value: [{
                     label: '默认',
                     value: ''
                 }]
             },
         }
     },
-    components:{
+    components: {
         radioList
     },
     computed: {
-        submitData: function () {
+        submitData: function() {
             return {
-                allRadioData: this.allRadioData.value,
-                radioValue: this.allRadioData.radioValue
+                allRadioData: this.allRadioData.value
             }
         }
     },
-    methods:{
-        backFill:function (submitData) {
-            this.allRadioData.value = submitData.allRadioData,
-            this.allRadioData.radioValue = submitData.radioValue
+    methods: {
+        backFill: function(submitData) {
+            this.allRadioData.value = submitData.allRadioData
         }
     }
 }

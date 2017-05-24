@@ -14,11 +14,6 @@
                         <template slot="prepend">值</template>
                     </el-input>
                 </el-col>
-                <el-col :span="5">
-                    <el-checkbox placeholder="选中填true，不选中不填或填false"
-                              v-model="item.checked">是否选中
-                    </el-checkbox>
-                </el-col>
                 <el-col :span="3">
                     <template v-if="index === 0">
                         <el-button type="primary"
@@ -60,8 +55,7 @@
             addColumn: function () {
                 this.selfValue.push({
                     label: '',
-                    value: '',
-                    checked: ''
+                    value: ''
                 })
             }
         },

@@ -1,17 +1,18 @@
 <script>
+    import breadCrumb from './components/breadCrumb/setting'
     import checkBox from './components/checkBox/setting'
     import datePicker from './components/datePicker/setting'
     import dateTimePicker from './components/dateTimePicker/setting'
     import dateRangePicker from './components/dateRangePicker/setting'
     import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
-    import Hello from './components/Hello/setting'
     import inputWithLabel from './components/inputWithLabel/setting'
-    import pureButton from './components/pureButton/setting'
-    import pureInput from './components/pureInput/setting'
-    import radios from './components/radios/setting'
-    import wmForm from './components/wmForm/setting'
-    import wmTable from './components/wmTable/setting'
-    import inlineBox from './components/inlineBox/setting'
+    import buttons from './components/button/setting'
+    import inputs from './components/input/setting'
+    import radios from './components/radio/setting'
+    import forms from './components/form/setting'
+    import tables from './components/table/setting'
+    import upload from './components/upload/setting'
+    import selects from './components/select/setting'
     import settingBridge from './components/settingBridge'
     import vue from 'vue'
     import draggable from 'vuedraggable'
@@ -19,20 +20,21 @@
     export default {
         name: 'App',
         components: {
+            breadCrumb,
             checkBox,
             datePicker,
             dateTimePicker,
             dateRangePicker,
             dateTimeRangePicker,
-            Hello,
             inputWithLabel,
-            pureButton,
-            pureInput,
+            buttons,
+            inputs,
             radios,
+            selects,
             settingBridge,
-            wmForm,
-            inlineBox,
-            wmTable,
+            forms,
+            tables,
+            upload,
             draggable
         },
         render: function (h) {
@@ -216,18 +218,20 @@
         data: function () {
             return {
                 componentList: [
+                    'breadCrumb',
+                    'inputs',
+                    'buttons',
+                    'selects',
                     'checkBox',
+                    'radios',
+                    'forms',
+                    'tables',
+                    'upload',
                     'datePicker',
                     'dateTimePicker',
                     'dateRangePicker',
                     'dateTimeRangePicker',
                     'inputWithLabel',
-                    'pureButton',
-                    'pureInput',
-                    'radios',
-                    'wmForm',
-                    'wmTable',
-                    'inlineBox'
                 ],
                 settingData: {},
                 settingId: 1,
@@ -276,14 +280,14 @@
         mounted: function () {
             let campareData = [
                 {
-                    "name": "pureButton",
+                    "name": "buttons",
                     "ref": 1485087547134
                 }, {
-                    "name": "wmForm",
+                    "name": "form",
                     "ref": 1485087542773,
                     "canvasComponentList": [
                         {
-                            "name": "pureInput",
+                            "name": "inputs",
                             "ref": 1485087544205
                         }
                     ],
@@ -310,7 +314,7 @@
                     "tag": "Hello",
                     "data": {"props": {"msg": "好的算法的生活"}}
                 }, {
-                    "tag": "wmForm",
+                    "tag": "form",
                     "data": {
                         "props": {
                             "nestedData": [
@@ -329,7 +333,7 @@
                             "tag": "Hello",
                             "data": {}
                         }, {
-                            "tag": "pureButton",
+                            "tag": "buttons",
                             "data": {}
                         }
                     ]
