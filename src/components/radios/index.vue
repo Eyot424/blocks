@@ -12,11 +12,13 @@
         props: {
             allRadioData: {
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
             },
             radioValue: {
                 type: String,
-                default: []
+                default: ''
             }
         }
     }

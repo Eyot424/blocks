@@ -12,11 +12,15 @@
         props: {
             allCheckData: {
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
             },
             checkList: {
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
             }
         }
     }

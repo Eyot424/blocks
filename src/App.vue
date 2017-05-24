@@ -120,12 +120,14 @@
                                                             let nestingSetting = this.$options.componentSetting[nestingItem.name]
                                                             if (!itemNest) {
                                                                 return nestingSetting.nest.render(h, h(item.name, {
-                                                                            ref: item.ref
+                                                                            ref: item.ref,
+                                                                            props: item.submitData
                                                                         }), nestingItem.nestedData[index]
                                                                 )
                                                             } else {
                                                                 return nestingSetting.nest.render(h, h(item.name, {
-                                                                            ref: item.ref
+                                                                            ref: item.ref,
+                                                                            props: item.submitData
                                                                         }, [
                                                                             this.getDraggableList(h, item.canvasComponentList,
                                                                                     item)
@@ -135,11 +137,13 @@
                                                         } else {
                                                             if (!itemNest) {
                                                                 return h(item.name, {
-                                                                    ref: item.ref
+                                                                    ref: item.ref,
+                                                                    props: item.submitData
                                                                 })
                                                             } else {
                                                                 return h(item.name, {
-                                                                    ref: item.ref
+                                                                    ref: item.ref,
+                                                                    props: item.submitData
                                                                 }, [
                                                                     this.getDraggableList(h, item.canvasComponentList,
                                                                             item)
@@ -176,17 +180,20 @@
                 let result = getRenderResult(this.canvasComponentList)
                 return result
             },
-            changeItemNestedData: function (nestedData) {
-                this.settingItem.nestedData = nestedData
+            changeItemNestedData: function (data) {
+                this.settingItem.submitData = data;
+                if(data.nestedData) {
+                    this.settingItem.nestedData = data.nestedData;
+                }
             },
             clone: function (origin) {
                 return {
                     name: origin,
-                    ref: new Date().getTime()
+                    ref: new Date().getTime(),
+                    submitData: {}
                 }
             },
             clickCanvasItem: function (item) {
-
                 var instance = this.$refs[item.ref]
                 if (Array.isArray(instance)) {
                     instance = instance[0]
