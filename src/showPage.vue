@@ -8,7 +8,7 @@
 <script>
     import config from './config'
     import mapConfig from './mapConfig'
-    import engine from './engine.vue'
+    import engine from './engine.js'
 
     export default {
         name: 'App',
