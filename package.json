@@ -2,7 +2,7 @@
   "name": "blocks",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "xuxincheng, xiaorenhui",
+  "author": "xiaorenhui, xuxincheng",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
