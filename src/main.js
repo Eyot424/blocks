@@ -7,6 +7,6 @@ import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 import App from './App'
 new Vue({
-  el: '#main',
+  el: '#app',
   render: h => h(App)
 })
