@@ -4,18 +4,21 @@
     import _ from 'lodash'
     import ElementUI from 'element-ui'
     import 'element-ui/lib/theme-default/index.css'
+    import breadCrumb from './components/breadCrumb/setting'
+    import button from './components/button/setting'
     import checkBox from './components/checkBox/setting'
     import datePicker from './components/datePicker/setting'
-    import dateTimePicker from './components/dateTimePicker/setting'
     import dateRangePicker from './components/dateRangePicker/setting'
+    import dateTimePicker from './components/dateTimePicker/setting'
     import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
-    import inputWithLabel from './components/inputWithLabel/setting'
-    import pureButton from './components/pureButton/setting'
-    import pureInput from './components/pureInput/setting'
-    import radios from './components/radios/setting'
-    import wmForm from './components/wmForm/setting'
-    import wmTable from './components/wmTable/setting'
+    import form from './components/form/setting'
     import inlineBox from './components/inlineBox/setting'
+    import input from './components/input/setting'
+    import inputWithLabel from './components/inputWithLabel/setting'
+    import radio from './components/radio/setting'
+    import select from './components/select/setting'
+    import upload from './components/upload/setting'
+    import table from './components/table/setting'
     Vue.use(ElementUI)
     export default{
         name: 'engine',
@@ -38,18 +41,21 @@
         data: function() {
             return {
                 componetList: [
+                    breadCrumb,
+                    button,
                     checkBox,
                     datePicker,
-                    dateTimePicker,
                     dateRangePicker,
+                    dateTimePicker,
                     dateTimeRangePicker,
+                    form,
+                    inlineBox,
+                    input,
                     inputWithLabel,
-                    pureButton,
-                    pureInput,
-                    radios,
-                    wmForm,
-                    wmTable,
-                    inlineBox
+                    radio,
+                    select,
+                    table,
+                    upload
                 ]
             }
         },
