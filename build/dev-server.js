@@ -21,6 +21,18 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+app.get('/getJsonFile',function (req,res,next) {
+    var response = req.query.config
+    res.set({
+        'Content-Type': 'application/octet-stream',
+        'Content-Disposition': 'attachment; filename=config.json',
+        'Content-Length': response.length
+    });
+    res.send(response)
+})
+
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
