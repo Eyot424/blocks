@@ -6,8 +6,7 @@ export default {
                 count: 0
             },
             getters: {
-                ...
-            }
+            },
             mutations: {
                 increment(state) {
                     state.count++
