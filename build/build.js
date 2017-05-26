@@ -20,10 +20,10 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     if (err) throw err
     process.stdout.write(stats.toString({
       colors: true,
-      modules: false,
-      children: false,
-      chunks: false,
-      chunkModules: false
+      modules: true,
+      children: true,
+      chunks: true,
+      chunkModules: true
     }) + '\n\n')
 
     console.log(chalk.cyan('  Build complete.\n'))
