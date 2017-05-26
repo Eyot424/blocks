@@ -10,11 +10,11 @@
     import dateRangePicker from './components/dateRangePicker/setting'
     import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
     import inputWithLabel from './components/inputWithLabel/setting'
-    import pureButton from './components/pureButton/setting'
-    import pureInput from './components/pureInput/setting'
-    import radios from './components/radios/setting'
-    import wmForm from './components/wmForm/setting'
-    import wmTable from './components/wmTable/setting'
+    import pureButton from './components/button/setting'
+    import pureInput from './components/input/setting'
+    import radios from './components/radio/setting'
+    import wmForm from './components/form/setting'
+    import wmTable from './components/table/setting'
     import inlineBox from './components/inlineBox/setting'
     Vue.use(ElementUI)
     export default{
