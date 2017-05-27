@@ -34,7 +34,7 @@ export default{
     },
     data: function() {
         return {
-            componetList: [
+            componentList: [
                 checkBox,
                 datePicker,
                 dateTimePicker,
@@ -127,7 +127,7 @@ export default{
         }
     },
     render: function (_h) {
-        this.$data.componetList.map((item, index) => {
+        this.$data.componentList.map((item, index) => {
             Vue.component(item.name, item);
         })
         var wrapVnode = this.createVnode(
