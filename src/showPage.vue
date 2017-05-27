@@ -10,6 +10,7 @@
     import mapConfig from './mapConfig'
     import engine from './engine.js'
 
+
     export default {
         name: 'App',
         components: {

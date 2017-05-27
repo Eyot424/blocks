@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "buildEngine": "node build/engineBuild.js"
   },
   "dependencies": {
     "html-webpack-plugin": "^2.24.0",
@@ -15,13 +16,14 @@
     "less-loader": "^2.2.3",
     "ljson": "^2.0.0",
     "lodash": "^4.16.4",
+    "lodash.clonedeep": "^4.5.0",
     "postcss-pxtorem": "^3.3.1",
     "sortablejs": "^1.4.2",
     "vue": "^2.0.0",
     "vue-loader": "^12.0.0",
+    "vue-router": "^2.3.1",
     "vuedraggable": "^2.2.0",
-    "vuex": "^2.0.0",
-    "vue-router": "^2.3.1"
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

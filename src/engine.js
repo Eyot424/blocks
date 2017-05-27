@@ -1,21 +1,19 @@
 import Vue from 'vue';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
-import _ from 'lodash'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import checkBox from './components/checkBox/setting'
-import datePicker from './components/datePicker/setting'
-import dateTimePicker from './components/dateTimePicker/setting'
-import dateRangePicker from './components/dateRangePicker/setting'
-import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
-import inputWithLabel from './components/inputWithLabel/setting'
-import button from './components/button/setting'
-import input from './components/input/setting'
-import radio from './components/radio/setting'
-import form from './components/form/setting'
-import table from './components/table/setting'
-import inlineBox from './components/inlineBox/setting'
-Vue.use(ElementUI)
+let cloneDeep = require('lodash').cloneDeep
+
+import checkBox from './components/checkBox/'
+import datePicker from './components/datePicker/'
+import dateTimePicker from './components/dateTimePicker/'
+import dateRangePicker from './components/dateRangePicker/'
+import dateTimeRangePicker from './components/dateTimeRangePicker/'
+import inputWithLabel from './components/inputWithLabel/'
+import button from './components/button/'
+import input from './components/input/'
+import radio from './components/radio/'
+import form from './components/form/'
+import table from './components/table/'
+import inlineBox from './components/inlineBox/'
 export default{
     name: 'engine',
     props: {
@@ -54,10 +52,10 @@ export default{
     },
     computed: {
         freezeConfig: function () {
-            return _.cloneDeep(this.config);
+            return cloneDeep(this.config);
         },
         freezeMapConfig: function () {
-            return _.cloneDeep(this.mapConfig);
+            return cloneDeep(this.mapConfig);
         }
     },
     methods: {
@@ -73,7 +71,7 @@ export default{
             return false;
         },
         mergeOptionsByMapConfig: function (component, data, itemMapConfig) {
-            var vuexSetting = _.cloneDeep(itemMapConfig.vuex);
+            var vuexSetting = cloneDeep(itemMapConfig.vuex);
             var extend = itemMapConfig.extend || {};
             var config = itemMapConfig.data || {};
             var options = {};
@@ -97,7 +95,7 @@ export default{
             return result;
         },
         createVnode: function (h, item) {
-            var data = _.cloneDeep(item.data || {});
+            var data = cloneDeep(item.data || {});
             var mapConfig = this.freezeMapConfig;
             var definition = item.tag;
             var children = [];
@@ -111,7 +109,7 @@ export default{
                 }
             }
             if (item.children) {
-                var cloneChildren = _.cloneDeep(item.children)
+                var cloneChildren = cloneDeep(item.children)
                 cloneChildren.forEach((childItem) => {
                             if (typeof childItem === 'string') {
                                 children.push(childItem);
@@ -136,7 +134,7 @@ export default{
                 _h, {
                     tag: 'div',
                     data: {},
-                    children: _.cloneDeep(this.freezeConfig.renderData)
+                    children: cloneDeep(this.freezeConfig.renderData)
                 }
         );
         return wrapVnode
