@@ -20,7 +20,9 @@
             },
             checkList: {
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
             }
         }
     }

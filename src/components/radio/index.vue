@@ -19,7 +19,7 @@
             },
             radioValue: {
                 type: String,
-                default: []
+                default: ''
             }
         }
     }
