@@ -1,21 +1,27 @@
 <script>
-    import breadCrumb from './components/breadCrumb/setting'
-    import checkBox from './components/checkBox/setting'
-    import datePicker from './components/datePicker/setting'
-    import dateTimePicker from './components/dateTimePicker/setting'
-    import dateRangePicker from './components/dateRangePicker/setting'
-    import dateTimeRangePicker from './components/dateTimeRangePicker/setting'
-    import inputWithLabel from './components/inputWithLabel/setting'
-    import buttons from './components/button/setting'
-    import inputs from './components/input/setting'
-    import radios from './components/radio/setting'
-    import forms from './components/form/setting'
-    import tables from './components/table/setting'
-    import upload from './components/upload/setting'
-    import selects from './components/select/setting'
-    import settingBridge from './components/settingBridge'
     import vue from 'vue'
     import draggable from 'vuedraggable'
+
+    import {generateCanvasComponentListData} from './handler/'
+    import {testData} from './mock/'
+
+    import breadCrumb from '@/components/breadCrumb/setting'
+    import checkBox from '@/components/checkBox/setting'
+    import datePicker from '@/components/datePicker/setting'
+    import dateTimePicker from '@/components/dateTimePicker/setting'
+    import dateRangePicker from '@/components/dateRangePicker/setting'
+    import dateTimeRangePicker from '@/components/dateTimeRangePicker/setting'
+    import inputWithLabel from '@/components/inputWithLabel/setting'
+    import buttons from '@/components/button/setting'
+    import inputs from '@/components/input/setting'
+    import radios from '@/components/radio/setting'
+    import forms from '@/components/form/setting'
+    import tables from '@/components/table/setting'
+    import upload from '@/components/upload/setting'
+    import selects from '@/components/select/setting'
+    import settingBridge from '@/components/settingBridge'
+
+    const ComponentSetting = {}
 
     export default {
         name: 'App',
@@ -97,7 +103,7 @@
                                    class="canvasSortable">
                             {
                                 list.map((item, index) => {
-                                    let setting = this.$options.componentSetting[item.name];
+                                    let setting = ComponentSetting[item.name];
                                     let itemNest = setting ? setting.nest : false
                                     if (itemNest) {
                                         if (!item.canvasComponentList) {
@@ -119,7 +125,7 @@
                                                 {
                                                     (() => {
                                                         if (nestingItem) {
-                                                            let nestingSetting = this.$options.componentSetting[nestingItem.name]
+                                                            let nestingSetting = ComponentSetting[nestingItem.name]
                                                             if (!itemNest) {
                                                                 return nestingSetting.nest.render(h, h(item.name, {
                                                                             ref: item.ref,
@@ -269,7 +275,7 @@
                         componentConstruct = vue.options.components[item];
                     }
                     let instance = new vue(componentConstruct);
-                    me.$options.componentSetting[item] = componentConstruct.props.settingDefinition;
+                    ComponentSetting[item] = componentConstruct.props.settingDefinition;
                     if (instance.$options.name) {
                         return instance.$options.name
                     }
@@ -278,110 +284,17 @@
             }
         },
         mounted: function () {
-            let campareData = [
-                {
-                    "name": "buttons",
-                    "ref": 1485087547134
-                }, {
-                    "name": "form",
-                    "ref": 1485087542773,
-                    "canvasComponentList": [
-                        {
-                            "name": "inputs",
-                            "ref": 1485087544205
-                        }
-                    ],
-                    "nestedData": [
-                        {
-                            "prop": "",
-                            "label": "aa"
-                        }
-                    ],
-                    "canvasSortableOption": {
-                        "group": {
-                            "name": "canvasSortableGroup2",
-                            "pull": false,
-                            "put": ["canvasSortableGroup"]
-                        },
-                        "draggable": ".canvasItemWrap",
-                        "animation": 150,
-                        "filter": ".filter"
-                    }
-                }
-            ]
-            let testData = [
-                {
-                    "tag": "Hello",
-                    "data": {"props": {"msg": "好的算法的生活"}}
-                }, {
-                    "tag": "form",
-                    "data": {
-                        "props": {
-                            "nestedData": [
-                                {
-                                    "prop": "",
-                                    "label": "默认稍等好啥地方"
-                                }, {
-                                    "label": "范德萨发啥",
-                                    "prop": ""
-                                }
-                            ]
-                        }
-                    },
-                    "children": [
-                        {
-                            "tag": "Hello",
-                            "data": {}
-                        }, {
-                            "tag": "buttons",
-                            "data": {}
-                        }
-                    ]
-                }
-            ]
-
-            let generateCanvasComponentListData = (item) => {
-                let canvasComponentList = []
-                let ref = new Date().getTime()
-                let result = {
-                    name: item.tag,
-                    ref
-                }
-                if (item.children) {
-                    canvasComponentList = item.children.map((item) => {
-                        return generateCanvasComponentListData(item)
-                    })
-                    result.canvasComponentList = canvasComponentList
-                    result.nestedData = item.data.props.nestedData
-                    result.canvasSortableOption = {
-                        "group": {
-                            "name": "canvasSortableGroup2",
-                            "pull": false,
-                            "put": ["canvasSortableGroup"]
-                        },
-                        "draggable": ".canvasItemWrap",
-                        "animation": 150,
-                        "filter": ".filter"
-                    }
-                }
-                return result
-
-            }
             if (location.href.indexOf('edit') !== -1) {
                 this.canvasComponentList = testData.map((item, index) => {
                     return generateCanvasComponentListData(item)
                 })
             }
-        },
-        beforeCreate: function () {
-            this.$options.componentSetting = {};
         }
-
     }
 </script>
 <style lang="less"
        rel="stylesheet/less">
-    @import './styles/index.less';
+    @import '~@/styles/index.less';
 
     .fullHeight {
         height: 100%;
