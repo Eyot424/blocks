@@ -2,18 +2,22 @@ import Vue from 'vue';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 let cloneDeep = require('lodash').cloneDeep
 
-import checkBox from './components/checkBox/'
-import datePicker from './components/datePicker/'
-import dateTimePicker from './components/dateTimePicker/'
-import dateRangePicker from './components/dateRangePicker/'
-import dateTimeRangePicker from './components/dateTimeRangePicker/'
-import inputWithLabel from './components/inputWithLabel/'
-import button from './components/button/'
-import input from './components/input/'
-import radio from './components/radio/'
-import form from './components/form/'
-import table from './components/table/'
-import inlineBox from './components/inlineBox/'
+import breadCrumb from './components/breadCrumb'
+import button from './components/button'
+import checkBox from './components/checkBox'
+import datePicker from './components/datePicker'
+import dateRangePicker from './components/dateRangePicker'
+import dateTimePicker from './components/dateTimePicker'
+import dateTimeRangePicker from './components/dateTimeRangePicker'
+import form from './components/form'
+import inlineBox from './components/inlineBox'
+import input from './components/input'
+import inputWithLabel from './components/inputWithLabel'
+import radio from './components/radio'
+import select from './components/select'
+import upload from './components/upload'
+import table from './components/table'
+
 export default{
     name: 'engine',
     props: {
@@ -35,18 +39,21 @@ export default{
     data: function() {
         return {
             componentList: [
+                breadCrumb,
+                button,
                 checkBox,
                 datePicker,
                 dateTimePicker,
                 dateRangePicker,
                 dateTimeRangePicker,
-                inputWithLabel,
-                button,
-                input,
-                radio,
                 form,
-                table,
-                inlineBox
+                inlineBox,
+                input,
+                inputWithLabel,
+                radio,
+                select,
+                upload,
+                table
             ]
         }
     },
