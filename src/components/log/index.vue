@@ -6,13 +6,13 @@
 
 <script>
     export default {
-        name: 'inlineBox',
+        name: 'log',
         props: {
-            labelText: {
+            url: {
                 type: String,
-                default: '请输入内容'
+                default: ''
             },
-            inputIcon: {
+            pageSize: {
                 type: String,
                 default: 'search'
             }

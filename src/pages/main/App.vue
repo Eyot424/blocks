@@ -1,8 +1,9 @@
 <script>
     import vue from 'vue'
     import draggable from 'vuedraggable'
+    import Url from 'url'
 
-    import {generateCanvasComponentListData} from './handler/'
+    import handler from './handler/index'
     import {testData} from './mock/'
 
     import breadCrumb from '@/components/breadCrumb/setting'
@@ -21,7 +22,9 @@
     import selects from '@/components/select/setting'
     import settingBridge from '@/components/settingBridge'
 
+    const generateCanvasComponentListData = handler.generateCanvasComponentListData
     const ComponentSetting = {}
+    const UrlObjQuery = Url.parse(location.href,true).query
 
     export default {
         name: 'App',
@@ -93,9 +96,34 @@
             )
         },
         methods: {
+            // download
             downloadConfig(){
                 window.open(`/getJsonFile?config=${JSON.stringify(this.generateRenderConfig())}`)
             },
+            getRenderConfig: function () {
+                alert(JSON.stringify(this.generateRenderConfig()))
+            },
+            generateRenderConfig(){
+                let getRenderResult = (canvasComponentList) => {
+                    return canvasComponentList.map((item) => {
+                        let instance = this.$refs[item.ref]
+                        let renderVnode = {
+                            tag: item.name,
+                            data: {
+                                props: instance.submitData
+                            }
+                        }
+                        if (item.canvasComponentList) {
+                            renderVnode.children = getRenderResult(item.canvasComponentList)
+                        }
+                        return renderVnode
+                    })
+                }
+                let result = getRenderResult(this.canvasComponentList)
+                return result
+            },
+
+            //render helper
             getDraggableList(h, list, nestingItem){
                 return (
                         <draggable list={list}
@@ -166,34 +194,21 @@
                         </draggable>
                 )
             },
-            getRenderConfig: function () {
-                alert(JSON.stringify(this.generateRenderConfig()))
-            },
-            generateRenderConfig(){
-                let getRenderResult = (canvasComponentList) => {
-                    return canvasComponentList.map((item) => {
-                        let instance = this.$refs[item.ref]
-                        let renderVnode = {
-                            tag: item.name,
-                            data: {
-                                props: instance.submitData
-                            }
-                        }
-                        if (item.canvasComponentList) {
-                            renderVnode.children = getRenderResult(item.canvasComponentList)
-                        }
-                        return renderVnode
-                    })
-                }
-                let result = getRenderResult(this.canvasComponentList)
-                return result
-            },
+
+            // item react function
             changeItemNestedData: function (data) {
                 this.settingItem.submitData = data;
                 if(data.nestedData) {
                     this.settingItem.nestedData = data.nestedData;
                 }
             },
+
+            // setting react function
+            settingFormHide(){
+                this.settingFormShow = false
+            },
+
+            // canvas react function
             clone: function (origin) {
                 return {
                     name: origin,
@@ -212,9 +227,6 @@
                 this.settingItem = item
                 this.settingInstance = instance
                 this.settingFormShow = true
-            },
-            settingFormHide(){
-                this.settingFormShow = false
             },
             deleteCanvasItem: function (canvasComponentList, index, item) {
                 canvasComponentList.splice(index, 1)
@@ -284,10 +296,16 @@
             }
         },
         mounted: function () {
-            if (location.href.indexOf('edit') !== -1) {
-                this.canvasComponentList = testData.map((item, index) => {
-                    return generateCanvasComponentListData(item)
-                })
+            if (UrlObjQuery.edit) {
+                if(UrlObjQuery.component){
+                    this.canvasComponentList = [{tag:UrlObjQuery.component}].map((item, index) => {
+                        return generateCanvasComponentListData(item)
+                    })
+                }else{
+                    this.canvasComponentList = testData.map((item, index) => {
+                        return generateCanvasComponentListData(item)
+                    })
+                }
             }
         }
     }
