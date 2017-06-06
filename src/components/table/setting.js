@@ -4,7 +4,7 @@ index.props['settingDefinition'] = {
     setting: {
         columnData: {
             type: 'gatherColumnData',
-            label: '显示信息',
+            label: '表格显示',
             require: true,
             componentData: {
                 value:[{

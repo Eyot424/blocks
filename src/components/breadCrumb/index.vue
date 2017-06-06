@@ -15,10 +15,6 @@
                 default: [{
                     label: '默认'
                 }]
-            },
-            breadCrumbList: {
-                type: Array,
-                default: []
             }
         }
     }

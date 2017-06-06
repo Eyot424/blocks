@@ -1,32 +1,28 @@
+<template>
+    <div class="table">
+        <el-table :data="columnData">
+            <el-table-column v-for="item in columnData" :key="item.label" :prop="item.prop" :label="item.label">
+            </el-table-column>
+        </el-table>
+    </div>
+</template>
+
 <script>
     export default {
-        props: {
-        },
-        render: function (h) {
-            var column = [];
-            if (this.columnData.length) {
-                column = this.columnData.map(function (item) {
-                    return (
-                            <el-table-column prop={item.prop}
-                                             label={item.label}>
-                            </el-table-column>
-                    )
-                })
-            }
-
-            return (
-                    <div>
-                        <el-table>
-                            {column}
-                        </el-table>
-                    </div>)
-        },
         name: 'tables',
-        data(){
-            return {
-                columnData:[]
+        props: {
+            columnData: {
+                type: Array,
+                default: [{
+                    label: '默认',
+                    prop: ''
+                }]
             }
-        },
-        components: {}
+        }
     }
 </script>
+
+<style lang="less"
+       rel="stylesheet/less"
+       scoped>
+</style>

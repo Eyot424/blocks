@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'radios',
+        name: 'radio',
         props: {
             allRadioData: {
                 type: Array,

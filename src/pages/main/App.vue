@@ -6,21 +6,23 @@
     import {testData} from './mock/'
 
     import breadCrumb from '@/components/breadCrumb/setting'
-    import checkBox from '@/components/checkBox/setting'
-    import datePicker from '@/components/datePicker/setting'
-    import dateTimePicker from '@/components/dateTimePicker/setting'
-    import dateRangePicker from '@/components/dateRangePicker/setting'
-    import dateTimeRangePicker from '@/components/dateTimeRangePicker/setting'
-    import inputWithLabel from '@/components/inputWithLabel/setting'
     import buttons from '@/components/button/setting'
-    import inputs from '@/components/input/setting'
-    import radios from '@/components/radio/setting'
+    import checkBox from '@/components/checkBox/setting'
+    import citySelect from '@/components/citySelect/setting'
+    import datePicker from '@/components/datePicker/setting'
+    import dateRangePicker from '@/components/dateRangePicker/setting'
+    import dateTimePicker from '@/components/dateTimePicker/setting'
+    import dateTimeRangePicker from '@/components/dateTimeRangePicker/setting'
+    import filterModule from '@/components/filterModule/setting'
     import forms from '@/components/form/setting'
     import inlineForm from '@/components/inlineForm/setting'
-    import tables from '@/components/table/setting'
-    import upload from '@/components/upload/setting'
+    import inputs from '@/components/input/setting'
+    import inputWithLabel from '@/components/inputWithLabel/setting'
+    import radio from '@/components/radio/setting'
     import selects from '@/components/select/setting'
     import settingBridge from '@/components/settingBridge'
+    import tables from '@/components/table/setting'
+    import upload from '@/components/upload/setting'
 
     const ComponentSetting = {}
 
@@ -28,19 +30,21 @@
         name: 'App',
         components: {
             breadCrumb,
-            checkBox,
-            datePicker,
-            dateTimePicker,
-            dateRangePicker,
-            dateTimeRangePicker,
-            inputWithLabel,
             buttons,
-            inputs,
-            radios,
-            selects,
-            settingBridge,
+            checkBox,
+            citySelect,
+            datePicker,
+            dateRangePicker,
+            dateTimePicker,
+            dateTimeRangePicker,
+            filterModule,
             forms,
             inlineForm,
+            inputs,
+            inputWithLabel,
+            radio,
+            selects,
+            settingBridge,
             tables,
             upload,
             draggable
@@ -229,20 +233,22 @@
             return {
                 componentList: [
                     'breadCrumb',
-                    'inputs',
                     'buttons',
-                    'selects',
                     'checkBox',
-                    'radios',
+                    'citySelect',
+                    'datePicker',
+                    'dateRangePicker',
+                    'dateTimePicker',
+                    'dateTimeRangePicker',
+                    'filterModule',
                     'forms',
                     'inlineForm',
+                    'inputs',
+                    'inputWithLabel',
+                    'radio',
+                    'selects',
                     'tables',
                     'upload',
-                    'datePicker',
-                    'dateTimePicker',
-                    'dateRangePicker',
-                    'dateTimeRangePicker',
-                    'inputWithLabel',
                 ],
                 settingData: {},
                 settingId: 1,
