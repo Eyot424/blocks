@@ -22,7 +22,6 @@
                     </div>)
         },
         name: 'tables',
-        cnName: '表格',
         data(){
             return {
                 columnData:[]
