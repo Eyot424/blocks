@@ -11,6 +11,7 @@
     "buildEngine": "node build/engineBuild.js"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "html-webpack-plugin": "^2.24.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",

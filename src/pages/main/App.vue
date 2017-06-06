@@ -1,5 +1,5 @@
 <script>
-    import vue from 'vue'
+    import Vue from 'vue'
     import draggable from 'vuedraggable'
     import Url from 'url'
 
@@ -20,10 +20,12 @@
     import tables from '@/components/table/setting'
     import upload from '@/components/upload/setting'
     import selects from '@/components/select/setting'
+    import log from '@/components/log/setting'
     import settingBridge from '@/components/settingBridge'
 
     const generateCanvasComponentListData = handler.generateCanvasComponentListData
     const ComponentSetting = {}
+    const ComponentOptions = {}
     const UrlObjQuery = Url.parse(location.href,true).query
 
     export default {
@@ -44,6 +46,7 @@
             forms,
             tables,
             upload,
+            log,
             draggable
         },
         render: function (h) {
@@ -131,14 +134,14 @@
                                    class="canvasSortable">
                             {
                                 list.map((item, index) => {
-                                    let setting = ComponentSetting[item.name];
-                                    let itemNest = setting ? setting.nest : false
+                                    let componentsOption = ComponentOptions[item.name]
+                                    let itemNest = componentsOption ? componentsOption.nest : false
                                     if (itemNest) {
                                         if (!item.canvasComponentList) {
-                                            vue.set(item, 'canvasComponentList', []);
+                                            Vue.set(item, 'canvasComponentList', []);
                                         }
                                         if (!item.nestedData) {
-                                            vue.set(item, 'nestedData', []);
+                                            Vue.set(item, 'nestedData', []);
                                         }
                                     }
                                     return (
@@ -153,15 +156,15 @@
                                                 {
                                                     (() => {
                                                         if (nestingItem) {
-                                                            let nestingSetting = ComponentSetting[nestingItem.name]
+                                                            let nestingOption = ComponentOptions[nestingItem.name]
                                                             if (!itemNest) {
-                                                                return nestingSetting.nest.render(h, h(item.name, {
+                                                                return nestingOption.nestRender(h, h(item.name, {
                                                                             ref: item.ref,
                                                                             props: item.submitData
                                                                         }), nestingItem.nestedData[index]
                                                                 )
                                                             } else {
-                                                                return nestingSetting.nest.render(h, h(item.name, {
+                                                                return nestingOption.nestRender(h, h(item.name, {
                                                                             ref: item.ref,
                                                                             props: item.submitData
                                                                         }, [
@@ -172,6 +175,7 @@
                                                             }
                                                         } else {
                                                             if (!itemNest) {
+                                                                debugger;
                                                                 return h(item.name, {
                                                                     ref: item.ref,
                                                                     props: item.submitData
@@ -197,9 +201,11 @@
 
             // item react function
             changeItemNestedData: function (data) {
-                this.settingItem.submitData = data;
+                Vue.set(this.settingItem,'submitData',data)
+//                this.settingItem.submitData = data;
                 if(data.nestedData) {
-                    this.settingItem.nestedData = data.nestedData;
+//                    this.settingItem.nestedData = data.nestedData;
+                    Vue.set(this.settingItem,'nestedData',data.nestedData)
                 }
             },
 
@@ -284,10 +290,12 @@
                 return this.componentList.map((item) => {
                     let componentConstruct = me.$options.components[item];
                     if (!componentConstruct) {
-                        componentConstruct = vue.options.components[item];
+                        componentConstruct = Vue.options.components[item];
                     }
-                    let instance = new vue(componentConstruct);
+                    let instance = new Vue(componentConstruct);
                     ComponentSetting[item] = componentConstruct.props.settingDefinition;
+                    ComponentOptions[item] = componentConstruct;
+
                     if (instance.$options.name) {
                         return instance.$options.name
                     }

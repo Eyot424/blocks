@@ -20,12 +20,15 @@
     }
 </style>
 <script>
+    import nestRender from './nestRender'
     export default {
         props: {},
         name: 'forms',
         data(){
             return {}
         },
+        nest:true,
+        nestRender,
         components: {}
     }
 </script>

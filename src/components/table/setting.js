@@ -1,5 +1,5 @@
 import index from './index'
-import gatherColumnData from './gatherColumnData/index.vue'
+import gatherColumnData from '@/components/gatherColumnData/index.vue'
 index.props['settingDefinition'] = {
     setting: {
         columnData: {
