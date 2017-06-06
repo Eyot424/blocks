@@ -1,10 +1,10 @@
 <template>
     <div class="wrap">
-        <el-form>
+        <el-form :inline="true">
             <slot></slot>
             <el-row>
                 <el-col :span="12" :offset="10">
-                    <el-button>提交</el-button>
+                    <el-button type="primary" icon="edit">提交</el-button>
                 </el-col>
             </el-row>
         </el-form>
@@ -13,15 +13,22 @@
 <style lang="less"
        rel="stylesheet/less"
        scoped>
-    .wrap {
-        border: 1px solid silver;
-        min-height: 200px;
-        /*padding-top: 100px;*/
+    .el-form {
+        padding: 15px;
+        background: #fff;
+        border: solid 1px #eaeaea;
+        border-radius: 5px;
+        margin-top: 20px;
     }
 </style>
 <script>
     export default {
-        props: {},
+        props: {
+            formInline: {
+                type: String,
+                default: 'false'
+            }
+        },
         name: 'forms',
         data(){
             return {}

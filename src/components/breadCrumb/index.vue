@@ -23,3 +23,16 @@
         }
     }
 </script>
+
+<style lang="less"
+       rel="stylesheet/less"
+       scoped>
+    .breadCrumb{
+        .el-breadcrumb {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        margin-bottom: 10px;
+    }
+</style>

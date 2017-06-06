@@ -10,6 +10,7 @@ import dateRangePicker from './components/dateRangePicker'
 import dateTimePicker from './components/dateTimePicker'
 import dateTimeRangePicker from './components/dateTimeRangePicker'
 import form from './components/form'
+import inlineForm from './components/inlineForm'
 import inlineBox from './components/inlineBox'
 import input from './components/input'
 import inputWithLabel from './components/inputWithLabel'
@@ -47,6 +48,7 @@ export default{
                 dateRangePicker,
                 dateTimeRangePicker,
                 form,
+                inlineForm,
                 inlineBox,
                 input,
                 inputWithLabel,

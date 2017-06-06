@@ -16,6 +16,7 @@
     import inputs from '@/components/input/setting'
     import radios from '@/components/radio/setting'
     import forms from '@/components/form/setting'
+    import inlineForm from '@/components/inlineForm/setting'
     import tables from '@/components/table/setting'
     import upload from '@/components/upload/setting'
     import selects from '@/components/select/setting'
@@ -39,6 +40,7 @@
             selects,
             settingBridge,
             forms,
+            inlineForm,
             tables,
             upload,
             draggable
@@ -64,10 +66,12 @@
                         </el-tabs>
                         <el-tabs type="border-card" class="el-col-18 canvasWrap">
                             <el-tab-pane label="页面画布">
-                                <el-button class="submit-alldata" type="primary" onClick={this.getRenderConfig}>提交
-                                </el-button>
-                                <el-button class="submit-alldata" type="primary" onClick={this.downloadConfig}>下载
-                                </el-button>
+                                <div class="canvas-button">
+                                    <el-button class="submit-alldata" type="primary" onClick={this.getRenderConfig}>提交
+                                    </el-button>
+                                    <el-button class="submit-alldata" type="primary" onClick={this.downloadConfig}>下载
+                                    </el-button>
+                                </div>
                                 {this.getDraggableList(h, this.canvasComponentList)}
                             </el-tab-pane>
                         </el-tabs>
@@ -231,6 +235,7 @@
                     'checkBox',
                     'radios',
                     'forms',
+                    'inlineForm',
                     'tables',
                     'upload',
                     'datePicker',
@@ -305,7 +310,6 @@
     }
 
     html, body, #app {
-        .fullHeight;
         .fullWight;
     }
 
@@ -320,25 +324,42 @@
 
         .canvasWrap {
             flex-grow: 1;
+            background-color: #f2f4f8;
+
+            .canvas-button{
+                margin-bottom: 20px;
+            }
+
             .canvasSortable {
                 .fullHeight;
                 .fullWight;
-                min-height: 300px;
+                min-height: 100px;
+
+
+                .el-form--inline{
+
+                    .canvasItemWrap, .canvasSortable{
+                        width: auto;
+                        height: auto;
+                        min-height: auto;
+                        display: inline-block;
+                    }
+                }
+
                 .canvasItemWrap {
                     position: relative;
                     min-width: 200px;
-                    /*border-top: .5px solid silver;*/
-                    border-bottom: .5px solid silver;
+                    padding-left: 90px;
+
                     .filterWrap {
                         position: absolute;
                         z-index: 100;
                         padding: 0 10px;
-                        left: 5%;
-                        bottom: 5%;
-                        /*right: 50%;*/
-                        /*top: 35%;*/
+                        left: 0;
+                        top: 0;
                         box-shadow: 5px 4px 11px #888888;
-                        /*border: 1px solid silver;*/
+                        background-color: #fff;
+
                         .el-icon-delete {
                             margin-left: 20px;
                         }
