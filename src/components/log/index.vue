@@ -49,6 +49,11 @@
             handleCurrentChange(){
                 this.currentPage = val;
             }
+        },
+        mounted(){
+            if(this.customFetch){
+                this.customFetch();
+            }
         }
     }
 </script>
