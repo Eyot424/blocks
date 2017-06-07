@@ -6,9 +6,7 @@ index.props['settingDefinition'] = {
             label: 'icon信息',
             require: true,
             componentData: {
-                value:'',
-                template: '%i',
-                inputValue: []
+                value:''
             },
         }
     },

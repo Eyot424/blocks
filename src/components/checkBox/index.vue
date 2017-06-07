@@ -27,3 +27,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .checkBox{
+        margin: 20px 0;
+    }
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="datePicker">
+    <div class="dateTimeRangePicker">
         <el-date-picker
                 v-model="value"
                 type="datetimerange"
@@ -20,3 +20,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .dateTimeRangePicker{
+        margin: 20px 0;
+    }
+</style>

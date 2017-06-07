@@ -44,13 +44,11 @@
             dateTimeRangePicker,
             filterModule,
             forms,
-            inlineForm,
             inputs,
             inputWithLabel,
             radio,
             selects,
             settingBridge,
-            tables,
             upload,
             log,
             draggable
@@ -259,12 +257,10 @@
                     'dateTimeRangePicker',
                     'filterModule',
                     'forms',
-                    'inlineForm',
                     'inputs',
                     'inputWithLabel',
                     'radio',
                     'selects',
-                    'tables',
                     'upload',
                 ],
                 settingData: {},
@@ -364,7 +360,7 @@
             .canvasSortable {
                 .fullHeight;
                 .fullWight;
-                min-height: 100px;
+                padding-bottom: 100px;
 
 
                 .el-form--inline{

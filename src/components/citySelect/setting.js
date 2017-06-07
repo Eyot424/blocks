@@ -1,26 +1,25 @@
 import index from './index'
 index.props['settingDefinition'] = {
     setting: {
-        cityModel: {
+        inputIcon: {
             type: 'el-input',
-            label: 'v-model绑定变量',
+            label: 'icon信息',
             require: true,
             componentData: {
-                value: '',
-                template: '%i'
+                value:''
             },
         }
     },
     computed: {
         submitData: function() {
             return {
-                cityModel: this.cityModel.value
+                inputIcon: this.inputIcon.value
             }
         }
     },
     methods:{
         backFill: function(submitData) {
-            this.cityModel.value = submitData.cityModel
+            this.inputIcon.value = submitData.inputIcon
         }
     }
 }

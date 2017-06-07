@@ -1,6 +1,6 @@
 <template>
     <div class="citySelect">
-        <el-autocomplete class="inline-input" v-model="cityModel" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
+        <el-autocomplete class="inline-input" :icon="inputIcon" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
     export default {
         name: 'citySelect',
         props: {
-            cityModel: {
+            inputIcon: {
                 type: String,
                 default: ''
             },
@@ -49,3 +49,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .citySelect{
+        margin: 20px 0;
+    }
+</style>

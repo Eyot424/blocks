@@ -15,7 +15,7 @@
             },
             inputIcon: {
                 type: String,
-                default: 'search'
+                default: ''
             }
         }
     }
@@ -24,5 +24,9 @@
 <style scoped>
     .el-input{
         width: auto;
+    }
+
+    .inputWithLabel{
+        margin: 20px 0;
     }
 </style>
