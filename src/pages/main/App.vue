@@ -29,7 +29,7 @@
     const generateCanvasComponentListData = handler.generateCanvasComponentListData
     const ComponentSetting = {}
     const ComponentOptions = {}
-    const UrlObjQuery = Url.parse(location.href,true).query
+    const UrlObjQuery = Url.parse(location.href, true).query
 
     export default {
         name: 'App',
@@ -56,7 +56,8 @@
         render: function (h) {
             return (
                     <div id="app">
-                        <el-tabs type="border-card" class="el-col-6">
+                        <el-tabs type="border-card"
+                                 class="el-col-6 drage-wrap">
                             <el-tab-pane label="组件列表">
                                 <draggable list={this.componentShowList}
                                            options={this.componentListSortableOption}
@@ -65,25 +66,37 @@
                                     {
                                         this.componentShowList.map(function (item) {
                                             return (
-                                                <el-button id="mount" class="button-new-tag">{item}</el-button>
+                                                    <el-button id="mount"
+                                                               class="button-new-tag">{item}</el-button>
                                             )
                                         })
                                     }
                                 </draggable>
                             </el-tab-pane>
                         </el-tabs>
-                        <el-tabs type="border-card" class="el-col-18 canvasWrap">
+                        <el-tabs type="border-card"
+                                 class="el-col-18 canvasWrap">
                             <el-tab-pane label="页面画布">
                                 <div class="canvas-button">
-                                    <el-button class="submit-alldata" type="primary" onClick={this.getRenderConfig}>提交
+                                    <el-button class="submit-alldata"
+                                               type="primary"
+                                               onClick={this.getRenderConfig}>提交
                                     </el-button>
-                                    <el-button class="submit-alldata" type="primary" onClick={this.downloadConfig}>下载
+                                    <el-button class="submit-alldata"
+                                               type="primary"
+                                               onClick={this.downloadConfig}>下载
                                     </el-button>
                                 </div>
                                 {this.getDraggableList(h, this.canvasComponentList)}
                             </el-tab-pane>
                         </el-tabs>
-                        <div class={{ show: (this.settingFormShow),'box-card':true,'el-card':true, settingForm:true, 'el-col-8':true}}>
+                        <div class={{
+                            show: (this.settingFormShow),
+                            'box-card': true,
+                            'el-card': true,
+                            settingForm: true,
+                            'el-col-8': true
+                        }}>
                             <div class="el-card__header m-header">
                                 <div class="clearfix">
                                     <h4>组件设置</h4>
@@ -100,7 +113,10 @@
                                             instance={this.settingInstance}></setting-bridge>
                         </div>
                         <div onClick={this.settingFormHide}
-                             class={{'setting-form-background':true,'show':this.settingFormShow}}></div>
+                             class={{
+                                 'setting-form-background': true,
+                                 'show': this.settingFormShow
+                             }}></div>
                     </div>
             )
         },
@@ -155,9 +171,12 @@
                                                  class="canvasItemWrap">
                                                 <div class="filter filterWrap">
                                                     <i class="el-icon-edit filter"
-                                                       onClick={this.clickCanvasItem.bind(this,item)}></i>
+                                                       onClick={this.clickCanvasItem.bind(this, item)}></i>
                                                     <i class="el-icon-delete filter"
-                                                       onClick={this.deleteCanvasItem.bind(this,list,index,item)}></i>
+                                                       onClick={this.deleteCanvasItem.bind(this,
+                                                               list,
+                                                               index,
+                                                               item)}></i>
                                                 </div>
                                                 {
                                                     (() => {
@@ -206,11 +225,11 @@
 
             // item react function
             changeItemNestedData: function (data) {
-                Vue.set(this.settingItem,'submitData',data)
+                Vue.set(this.settingItem, 'submitData', data)
 //                this.settingItem.submitData = data;
-                if(data.nestedData) {
+                if (data.nestedData) {
 //                    this.settingItem.nestedData = data.nestedData;
-                    Vue.set(this.settingItem,'nestedData',data.nestedData)
+                    Vue.set(this.settingItem, 'nestedData', data.nestedData)
                 }
             },
 
@@ -260,6 +279,7 @@
                     'inputs',
                     'inputWithLabel',
                     'radio',
+                    'log',
                     'selects',
                     'upload',
                 ],
@@ -311,11 +331,11 @@
         },
         mounted: function () {
             if (UrlObjQuery.edit) {
-                if(UrlObjQuery.component){
-                    this.canvasComponentList = [{tag:UrlObjQuery.component}].map((item, index) => {
+                if (UrlObjQuery.component) {
+                    this.canvasComponentList = [{tag: UrlObjQuery.component}].map((item, index) => {
                         return generateCanvasComponentListData(item)
                     })
-                }else{
+                } else {
                     this.canvasComponentList = testData.map((item, index) => {
                         return generateCanvasComponentListData(item)
                     })
@@ -342,33 +362,50 @@
 
     html, body, #app {
         .fullWight;
+        min-height: 700px;
     }
+
 
     @componentWidth: 750px;
     #app {
         display: flex;
 
-        .button-new-tag{
+        .drage-wrap{
+            .el-tabs__content{
+                position: sticky;
+                top: 0;
+            }
+        }
+
+        .button-new-tag {
             margin: 10px 0 0 10px;
 
         }
 
         .canvasWrap {
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             background-color: #f2f4f8;
-
-            .canvas-button{
+            .canvas-button {
                 margin-bottom: 20px;
+            }
+            &>.el-tabs__content{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                &>.el-tab-pane{
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    .canvasSortable{
+                        flex-grow: 1;
+                    }
+                }
             }
 
             .canvasSortable {
-                padding-bottom: 500px;
-
-                .el-form{
-                    .canvasSortable{
-                        padding-bottom: 100px;
-                    }
-                }
+                padding-bottom: 100px;
 
                 .el-form--inline{
 
@@ -406,7 +443,7 @@
             z-index: 300;
             display: none;
             opacity: 0;
-            &.show{
+            &.show {
                 display: block;
             }
             background-color: silver;

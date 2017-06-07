@@ -22,7 +22,8 @@
     }
 </script>
 
-<style lang="less"
-       rel="stylesheet/less"
-       scoped>
+<style lang="less" rel="stylesheet/less" scoped>
+    .table{
+        margin: 20px 0;
+    }
 </style>

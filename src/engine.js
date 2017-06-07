@@ -18,6 +18,8 @@ import radio from './components/radio'
 import select from './components/select'
 import upload from './components/upload'
 import table from './components/table'
+import log from './components/log/'
+
 const CloneDeep = _.cloneDeep
 const Merge = _.mergeWith
 export default{
@@ -55,6 +57,7 @@ export default{
                 inputWithLabel,
                 radio,
                 select,
+                log,
                 upload,
                 table
             ]

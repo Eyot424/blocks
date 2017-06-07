@@ -49,9 +49,18 @@
             handleCurrentChange(){
                 this.currentPage = val;
             }
+        },
+        mounted(){
+            if(this.customFetch){
+                this.customFetch();
+            }
         }
     }
 </script>
 <style lang="less"
        rel="stylesheet/less"
-       scoped></style>
+       scoped>
+    .logWrap{
+       margin: 20px 0;
+    }
+</style>

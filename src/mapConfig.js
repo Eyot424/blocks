@@ -24,6 +24,7 @@ export default {
     },
     button: {
         data: {
+
             on: {
                 click: function() {
                     store.commit('clear')
