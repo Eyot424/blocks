@@ -373,10 +373,25 @@
 
         .canvasWrap {
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             background-color: #f2f4f8;
             .fullHeight;
             .canvas-button {
                 margin-bottom: 20px;
+            }
+            &>.el-tabs__content{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                &>.el-tab-pane{
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    .canvasSortable{
+                        flex-grow: 1;
+                    }
+                }
             }
 
             .canvasSortable {
@@ -386,10 +401,9 @@
 
                 .el-form--inline {
 
-                    .canvasItemWrap, .canvasSortable {
+                    .canvasItemWrap{
                         width: auto;
                         height: auto;
-                        min-height: auto;
                         display: inline-block;
                     }
                 }
