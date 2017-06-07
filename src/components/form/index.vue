@@ -1,6 +1,6 @@
 <template>
     <div class="wrap">
-        <el-form :inline="true">
+        <el-form>
             <slot></slot>
             <el-row>
                 <el-col :span="12" :offset="10">

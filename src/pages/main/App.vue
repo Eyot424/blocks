@@ -332,6 +332,10 @@
         height: 100%;
     }
 
+    .minHeight {
+        min-height: 100%;
+    }
+
     .fullWight {
         width: 100%;
     }
@@ -358,17 +362,18 @@
             }
 
             .canvasSortable {
-                .fullHeight;
-                .fullWight;
-                padding-bottom: 100px;
+                padding-bottom: 500px;
 
+                .el-form{
+                    .canvasSortable{
+                        padding-bottom: 100px;
+                    }
+                }
 
                 .el-form--inline{
 
                     .canvasItemWrap, .canvasSortable{
-                        width: auto;
-                        height: auto;
-                        min-height: auto;
+                        min-width: 200px;
                         display: inline-block;
                     }
                 }
