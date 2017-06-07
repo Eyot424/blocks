@@ -183,7 +183,6 @@
                                                             }
                                                         } else {
                                                             if (!itemNest) {
-                                                                debugger;
                                                                 return h(item.name, {
                                                                     ref: item.ref,
                                                                     props: item.submitData
