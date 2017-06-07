@@ -1,12 +1,13 @@
 <template>
-    <div class="inputs">
-        <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
+    <div class="citySelect">
+        <el-autocomplete class="inline-input" v-model="state1" :fetch-suggestions="querySearch" placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
-        name: 'inputs',
+        name: 'cityselect',
         props: {
             inputIcon: {
                 type: String,
