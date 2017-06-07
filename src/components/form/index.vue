@@ -22,6 +22,7 @@
     }
 </style>
 <script>
+    import nestRender from './nestRender'
     export default {
         props: {
             formInline: {
@@ -33,6 +34,8 @@
         data(){
             return {}
         },
+        nest:true,
+        nestRender,
         components: {}
     }
 </script>

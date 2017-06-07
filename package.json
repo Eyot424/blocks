@@ -11,6 +11,7 @@
     "buildEngine": "node build/engineBuild.js"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "html-webpack-plugin": "^2.24.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
@@ -19,6 +20,7 @@
     "lodash.clonedeep": "^4.5.0",
     "postcss-pxtorem": "^3.3.1",
     "sortablejs": "^1.4.2",
+    "url": "^0.11.0",
     "vue": "^2.0.0",
     "vue-loader": "^12.0.0",
     "vue-router": "^2.3.1",

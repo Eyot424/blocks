@@ -1,8 +1,9 @@
 <script>
-    import vue from 'vue'
+    import Vue from 'vue'
     import draggable from 'vuedraggable'
+    import Url from 'url'
 
-    import {generateCanvasComponentListData} from './handler/'
+    import handler from './handler/index'
     import {testData} from './mock/'
 
     import breadCrumb from '@/components/breadCrumb/setting'
@@ -20,11 +21,15 @@
     import inputWithLabel from '@/components/inputWithLabel/setting'
     import radio from '@/components/radio/setting'
     import selects from '@/components/select/setting'
+    import log from '@/components/log/setting'
     import settingBridge from '@/components/settingBridge'
     import tables from '@/components/table/setting'
     import upload from '@/components/upload/setting'
 
+    const generateCanvasComponentListData = handler.generateCanvasComponentListData
     const ComponentSetting = {}
+    const ComponentOptions = {}
+    const UrlObjQuery = Url.parse(location.href,true).query
 
     export default {
         name: 'App',
@@ -47,6 +52,7 @@
             settingBridge,
             tables,
             upload,
+            log,
             draggable
         },
         render: function (h) {
@@ -101,78 +107,9 @@
             )
         },
         methods: {
+            // download
             downloadConfig(){
                 window.open(`/getJsonFile?config=${JSON.stringify(this.generateRenderConfig())}`)
-            },
-            getDraggableList(h, list, nestingItem){
-                return (
-                        <draggable list={list}
-                                   options={this.canvasSortableOption}
-                                   class="canvasSortable">
-                            {
-                                list.map((item, index) => {
-                                    let setting = ComponentSetting[item.name];
-                                    let itemNest = setting ? setting.nest : false
-                                    if (itemNest) {
-                                        if (!item.canvasComponentList) {
-                                            vue.set(item, 'canvasComponentList', []);
-                                        }
-                                        if (!item.nestedData) {
-                                            vue.set(item, 'nestedData', []);
-                                        }
-                                    }
-                                    return (
-                                            <div key={item.ref}
-                                                 class="canvasItemWrap">
-                                                <div class="filter filterWrap">
-                                                    <i class="el-icon-edit filter"
-                                                       onClick={this.clickCanvasItem.bind(this,item)}></i>
-                                                    <i class="el-icon-delete filter"
-                                                       onClick={this.deleteCanvasItem.bind(this,list,index,item)}></i>
-                                                </div>
-                                                {
-                                                    (() => {
-                                                        if (nestingItem) {
-                                                            let nestingSetting = ComponentSetting[nestingItem.name]
-                                                            if (!itemNest) {
-                                                                return nestingSetting.nest.render(h, h(item.name, {
-                                                                            ref: item.ref,
-                                                                            props: item.submitData
-                                                                        }), nestingItem.nestedData[index]
-                                                                )
-                                                            } else {
-                                                                return nestingSetting.nest.render(h, h(item.name, {
-                                                                            ref: item.ref,
-                                                                            props: item.submitData
-                                                                        }, [
-                                                                            this.getDraggableList(h, item.canvasComponentList,
-                                                                                    item)
-                                                                        ]), nestingItem.nestedData[index]
-                                                                )
-                                                            }
-                                                        } else {
-                                                            if (!itemNest) {
-                                                                return h(item.name, {
-                                                                    ref: item.ref,
-                                                                    props: item.submitData
-                                                                })
-                                                            } else {
-                                                                return h(item.name, {
-                                                                    ref: item.ref,
-                                                                    props: item.submitData
-                                                                }, [
-                                                                    this.getDraggableList(h, item.canvasComponentList,
-                                                                            item)
-                                                                ])
-                                                            }
-                                                        }
-                                                    })()}
-                                            </div>
-                                    )
-                                })
-                            }
-                        </draggable>
-                )
             },
             getRenderConfig: function () {
                 alert(JSON.stringify(this.generateRenderConfig()))
@@ -196,12 +133,96 @@
                 let result = getRenderResult(this.canvasComponentList)
                 return result
             },
+
+            //render helper
+            getDraggableList(h, list, nestingItem){
+                return (
+                        <draggable list={list}
+                                   options={this.canvasSortableOption}
+                                   class="canvasSortable">
+                            {
+                                list.map((item, index) => {
+                                    let componentsOption = ComponentOptions[item.name]
+                                    let itemNest = componentsOption ? componentsOption.nest : false
+                                    if (itemNest) {
+                                        if (!item.canvasComponentList) {
+                                            Vue.set(item, 'canvasComponentList', []);
+                                        }
+                                        if (!item.nestedData) {
+                                            Vue.set(item, 'nestedData', []);
+                                        }
+                                    }
+                                    return (
+                                            <div key={item.ref}
+                                                 class="canvasItemWrap">
+                                                <div class="filter filterWrap">
+                                                    <i class="el-icon-edit filter"
+                                                       onClick={this.clickCanvasItem.bind(this,item)}></i>
+                                                    <i class="el-icon-delete filter"
+                                                       onClick={this.deleteCanvasItem.bind(this,list,index,item)}></i>
+                                                </div>
+                                                {
+                                                    (() => {
+                                                        if (nestingItem) {
+                                                            let nestingOption = ComponentOptions[nestingItem.name]
+                                                            if (!itemNest) {
+                                                                return nestingOption.nestRender(h, h(item.name, {
+                                                                            ref: item.ref,
+                                                                            props: item.submitData
+                                                                        }), nestingItem.nestedData[index]
+                                                                )
+                                                            } else {
+                                                                return nestingOption.nestRender(h, h(item.name, {
+                                                                            ref: item.ref,
+                                                                            props: item.submitData
+                                                                        }, [
+                                                                            this.getDraggableList(h, item.canvasComponentList,
+                                                                                    item)
+                                                                        ]), nestingItem.nestedData[index]
+                                                                )
+                                                            }
+                                                        } else {
+                                                            if (!itemNest) {
+                                                                debugger;
+                                                                return h(item.name, {
+                                                                    ref: item.ref,
+                                                                    props: item.submitData
+                                                                })
+                                                            } else {
+                                                                return h(item.name, {
+                                                                    ref: item.ref,
+                                                                    props: item.submitData
+                                                                }, [
+                                                                    this.getDraggableList(h, item.canvasComponentList,
+                                                                            item)
+                                                                ])
+                                                            }
+                                                        }
+                                                    })()}
+                                            </div>
+                                    )
+                                })
+                            }
+                        </draggable>
+                )
+            },
+
+            // item react function
             changeItemNestedData: function (data) {
-                this.settingItem.submitData = data;
+                Vue.set(this.settingItem,'submitData',data)
+//                this.settingItem.submitData = data;
                 if(data.nestedData) {
-                    this.settingItem.nestedData = data.nestedData;
+//                    this.settingItem.nestedData = data.nestedData;
+                    Vue.set(this.settingItem,'nestedData',data.nestedData)
                 }
             },
+
+            // setting react function
+            settingFormHide(){
+                this.settingFormShow = false
+            },
+
+            // canvas react function
             clone: function (origin) {
                 return {
                     name: origin,
@@ -220,9 +241,6 @@
                 this.settingItem = item
                 this.settingInstance = instance
                 this.settingFormShow = true
-            },
-            settingFormHide(){
-                this.settingFormShow = false
             },
             deleteCanvasItem: function (canvasComponentList, index, item) {
                 canvasComponentList.splice(index, 1)
@@ -283,10 +301,12 @@
                 return this.componentList.map((item) => {
                     let componentConstruct = me.$options.components[item];
                     if (!componentConstruct) {
-                        componentConstruct = vue.options.components[item];
+                        componentConstruct = Vue.options.components[item];
                     }
-                    let instance = new vue(componentConstruct);
+                    let instance = new Vue(componentConstruct);
                     ComponentSetting[item] = componentConstruct.props.settingDefinition;
+                    ComponentOptions[item] = componentConstruct;
+
                     if (instance.$options.name) {
                         return instance.$options.name
                     }
@@ -295,10 +315,16 @@
             }
         },
         mounted: function () {
-            if (location.href.indexOf('edit') !== -1) {
-                this.canvasComponentList = testData.map((item, index) => {
-                    return generateCanvasComponentListData(item)
-                })
+            if (UrlObjQuery.edit) {
+                if(UrlObjQuery.component){
+                    this.canvasComponentList = [{tag:UrlObjQuery.component}].map((item, index) => {
+                        return generateCanvasComponentListData(item)
+                    })
+                }else{
+                    this.canvasComponentList = testData.map((item, index) => {
+                        return generateCanvasComponentListData(item)
+                    })
+                }
             }
         }
     }

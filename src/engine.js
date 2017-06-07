@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
-let cloneDeep = require('lodash').cloneDeep
+import _ from 'lodash'
 
 import breadCrumb from './components/breadCrumb'
 import button from './components/button'
@@ -18,7 +18,8 @@ import radio from './components/radio'
 import select from './components/select'
 import upload from './components/upload'
 import table from './components/table'
-
+const CloneDeep = _.cloneDeep
+const Merge = _.mergeWith
 export default{
     name: 'engine',
     props: {
@@ -37,7 +38,7 @@ export default{
             }
         }
     },
-    data: function() {
+    data: function () {
         return {
             componentList: [
                 breadCrumb,
@@ -61,10 +62,10 @@ export default{
     },
     computed: {
         freezeConfig: function () {
-            return cloneDeep(this.config);
+            return CloneDeep(this.config);
         },
         freezeMapConfig: function () {
-            return cloneDeep(this.mapConfig);
+            return CloneDeep(this.mapConfig);
         }
     },
     methods: {
@@ -80,11 +81,11 @@ export default{
             return false;
         },
         mergeOptionsByMapConfig: function (component, data, itemMapConfig) {
-            var vuexSetting = cloneDeep(itemMapConfig.vuex);
+            var vuexSetting = CloneDeep(itemMapConfig.vuex);
             var extend = itemMapConfig.extend || {};
             var config = itemMapConfig.data || {};
             var options = {};
-            if(vuexSetting){
+            if (vuexSetting) {
                 options = {
                     computed: {
                         ...extend.computed,
@@ -99,40 +100,47 @@ export default{
                 };
             }
             Object.assign(extend, options)
-            Object.assign(data, config)
+            Merge(data, config)
             var result = component.extend(extend);
             return result;
         },
         createVnode: function (h, item) {
-            var data = cloneDeep(item.data || {});
+            var data = CloneDeep(item.data || {});
             var mapConfig = this.freezeMapConfig;
-            var definition = item.tag;
+            var tag = item.tag;
+            var definition = this.getComponent(tag);
             var children = [];
             var result;
-            if (data && data.ref) {
-                var ref = data.ref;
+            if (data && data.props && data.props.ref) {
+                var ref = data.props.ref;
                 var itemMapConfig = mapConfig[ref];
                 if (itemMapConfig) {
-                    definition = this.getComponent(item.tag)
                     result = this.mergeOptionsByMapConfig(definition, data, itemMapConfig)
                 }
             }
             if (item.children) {
-                var cloneChildren = cloneDeep(item.children)
-                cloneChildren.forEach((childItem) => {
-                            if (typeof childItem === 'string') {
-                                children.push(childItem);
-                            }
-                            children.push(this.createVnode(h, childItem));
+                var cloneChildren = CloneDeep(item.children)
+                cloneChildren.forEach((childItem, index) => {
+                        if (typeof childItem === 'string') {
+                            children.push(childItem);
                         }
+                        let childNode = this.createVnode(h, childItem)
+                        if (definition && definition.options) {
+                            let options = definition.options
+                            if (options.nest && options.nestRender) {
+                                let nestedData = data.nestedData;
+                                childNode = options.nestRender(h, childNode, nestedData[index])
+                            }
+                        }
+
+                        children.push(childNode);
+                    }
                 )
             }
             if (result) {
                 return h(result, data, children);
             }
-            return h(definition, data, children);
-
-
+            return h(tag, data, children);
         }
     },
     render: function (_h) {
@@ -140,11 +148,11 @@ export default{
             Vue.component(item.name, item);
         })
         var wrapVnode = this.createVnode(
-                _h, {
-                    tag: 'div',
-                    data: {},
-                    children: cloneDeep(this.freezeConfig.renderData)
-                }
+            _h, {
+                tag: 'div',
+                data: {},
+                children: CloneDeep(this.freezeConfig.renderData)
+            }
         );
         return wrapVnode
 
