@@ -352,17 +352,13 @@
         height: 100%;
     }
 
-    .minHeight {
-        min-height: 100%;
-    }
-
     .fullWight {
         width: 100%;
     }
 
     html, body, #app {
         .fullWight;
-        min-height: 700px;
+        min-height: 100vh;
     }
 
 
