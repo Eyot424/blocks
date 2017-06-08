@@ -21,9 +21,14 @@
 
 <script>
     import axios from 'axios'
+    import nestRender from './nestRender'    
     export default {
         name: 'filterModule',
         props: {
+            formInline: {
+                type: String,
+                default: 'false'
+            },
             columnData: {
                 type: Array,
                 default: [{
@@ -31,7 +36,13 @@
                     prop: ''
                 }]
             }
-        }
+        },
+        data(){
+            return {}
+        },
+        nest:true,
+        nestRender,
+        components: {}
     }
 </script>
 

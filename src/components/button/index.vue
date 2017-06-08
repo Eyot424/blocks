@@ -31,6 +31,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .buttons{
-        margin: 20px 0;
+        margin-bottom: 20px;
     }
 </style>

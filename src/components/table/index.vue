@@ -24,6 +24,6 @@
 
 <style lang="less" rel="stylesheet/less" scoped>
     .table{
-        margin: 20px 0;
+        margin-bottom: 20px;
     }
 </style>

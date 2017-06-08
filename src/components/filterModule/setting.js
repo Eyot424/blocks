@@ -2,18 +2,6 @@ import index from './index'
 import gatherColumnData from './gatherColumnData/index.vue'
 import gatherFormItemData from './gatherFormItemData/index.vue'
 index.props['settingDefinition'] = {
-    nest: {
-        render:function (h,component,item) {
-
-            var label = item ? item.label : '默认'
-
-            return (
-                <el-form-item label={label}>
-                    {component}
-                </el-form-item>
-            )
-        }
-    },
     setting: {
         columnData: {
             type: 'gatherColumnData',
