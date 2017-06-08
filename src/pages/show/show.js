@@ -10,7 +10,7 @@ Vue.use(ElementUI)
 window.Vue = Vue;
 Vue.config.silent = true
 new Vue({
-    el: '#show',
+    el: '#app',
     store,
     render: (h) => {
         return h(show)

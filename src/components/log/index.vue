@@ -39,6 +39,8 @@
                 type: Function,
             }
         },
+        computed:{
+        },
         data(){
             return {
                 currentPage: 1,

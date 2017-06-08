@@ -1,12 +1,10 @@
-import store from './store'
 export default {
-    table: {
+    log: {
         vuex: { //vuex.store
             state: {
                 count: 0
             },
-            getters: {
-            },
+            getters: {},
             mutations: {
                 increment(state) {
                     state.count++
@@ -18,16 +16,11 @@ export default {
                 }
             }
         },
-        extend: {
-
-        },
-    },
-    button: {
+        extend: {},
         data: {
+            props: {
+                customFetch(){
 
-            on: {
-                click: function() {
-                    store.commit('clear')
                 }
             }
         }

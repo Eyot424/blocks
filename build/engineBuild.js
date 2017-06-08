@@ -26,7 +26,7 @@ function resolve(dir) {
 
 var webpackConfig = {
     entry: {
-        engine: './src/engine.js'
+        engine: './src/component/engine/engine.js'
     },
     output: {
         path: config.build.assetsRoot,

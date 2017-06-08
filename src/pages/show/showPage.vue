@@ -8,7 +8,7 @@
 <script>
     import config from './config'
     import mapConfig from './mapConfig'
-    import engine from './engine.js'
+    import engine from '@/components/engine/engine.js'
 
 
     export default {
