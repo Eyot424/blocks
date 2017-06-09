@@ -12,7 +12,7 @@
                        @current-change="handleCurrentChange"
                        :page-sizes="[20, 50, 100]"
                        layout="total, sizes, prev, pager, next, jumper"
-                       :total="50"></el-pagination>
+                       :total="total"></el-pagination>
     </div>
 </template>
 
@@ -40,11 +40,14 @@
             }
         },
         computed:{
+            logData(){},
+            total(){},
+            currentPage(){
+                return 1
+            }
         },
         data(){
             return {
-                currentPage: 1,
-                logData: []
             }
         },
         method: {

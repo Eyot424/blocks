@@ -7,11 +7,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
-})
+var devModule = process.argv[2];
+var devPath = `./src/pages/${devModule}/${devModule}.js`
 
-module.exports = merge(baseWebpackConfig, {
+baseWebpackConfig = merge(baseWebpackConfig, {
+    entry: {
+        // app: './src/pages/main/main.js',
+        // [devModule]: './src/pages/show/show.js',
+        [devModule]: devPath
+    },
     module: {
         rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})
     },
@@ -34,7 +38,7 @@ module.exports = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
-            chunks: ['show'],
+            // chunks: ['show'],
             inject: true
         }),
         new webpack.optimize.UglifyJsPlugin({
@@ -46,3 +50,9 @@ module.exports = merge(baseWebpackConfig, {
         new FriendlyErrorsPlugin()
     ]
 })
+
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+})
+
+module.exports = baseWebpackConfig
