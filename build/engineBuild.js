@@ -26,7 +26,7 @@ function resolve(dir) {
 
 var webpackConfig = {
     entry: {
-        engine: './src/component/engine/engine.js'
+        engine: './src/components/engine/engine.js'
     },
     output: {
         path: config.build.assetsRoot,
@@ -86,7 +86,7 @@ var webpackConfig = {
             // filename: utils.assetsPath('css/[name].[contenthash].css')
             filename: '[name].[contenthash].css'
         }),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ]
 }
 
@@ -109,13 +109,13 @@ rm(path.join(config.build.assetsRoot), err => {
     webpack(webpackConfig, function (err, stats) {
         spinner.stop()
         if (err) throw err
-        /*process.stdout.write(stats.toString({
+        process.stdout.write(stats.toString({
                 colors: true,
                 modules: true,
                 children: true,
                 chunks: true,
                 chunkModules: true
-            }) + '\n\n')*/
+            }) + '\n\n')
 
         console.log(chalk.cyan('  Build complete.\n'))
         console.log(chalk.yellow(
