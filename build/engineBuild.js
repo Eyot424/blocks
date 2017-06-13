@@ -5,7 +5,7 @@ var vueLoaderConfig = require('./vue-loader.conf')
 var merge = require('webpack-merge')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
@@ -47,9 +47,9 @@ var webpackConfig = {
         }
     },
     externals: {
-        'vue': 'Vue',
+        /*'vue': 'Vue',
         'vuex': 'Vuex',
-        'lodash': '_'
+        'lodash': '_'*/
     },
     module: {
         rules: [
@@ -84,7 +84,18 @@ var webpackConfig = {
     plugins: [
         new ExtractTextPlugin({
             // filename: utils.assetsPath('css/[name].[contenthash].css')
-            filename: '[name].[contenthash].css'
+            filename: '[name].css'
+        }),
+        new OptimizeCSSPlugin({
+            cssProcessorOptions: {
+                safe: true
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            sourceMap: true
         }),
         // new BundleAnalyzerPlugin(),
     ]

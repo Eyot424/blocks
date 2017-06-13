@@ -1,6 +1,16 @@
 import Vue from 'vue';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
+import Vuex from 'vuex'
 import _ from 'lodash'
+
+window.Vue = Vue
+window.Vuex = Vuex
+window._ = _
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+Vue.use(ElementUI)
+Vue.use(Vuex)
 
 import breadCrumb from '@/components/breadCrumb'
 import button from '@/components/button'
@@ -146,6 +156,9 @@ export default{
             return h(tag, data, children);
         }
     },
+    mounted(){
+
+    },
     render: function (_h) {
         this.$data.componentList.map((item, index) => {
             Vue.component(item.name, item);
@@ -158,7 +171,8 @@ export default{
             }
         );
         return wrapVnode
-
     },
-    components: {}
+    components: {
+
+    }
 }
