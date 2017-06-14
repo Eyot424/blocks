@@ -18,8 +18,9 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认',
+                    url: '跳转链接'
                 }]
             },
         },
@@ -29,8 +30,8 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认'
                 }]
             },
         },
@@ -40,8 +41,8 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认'
                 }]
             },
         }

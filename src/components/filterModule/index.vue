@@ -9,9 +9,20 @@
         <el-form :inline="true">
             <slot></slot>
         </el-form>
-        <el-table border>
-            <el-table-column v-for="item in tableList" :key="item.label" :prop="item.prop" :label="item.label">
-            </el-table-column>
+        <el-table border :data="tableData">
+            <template v-for="item in tableList">
+                <template v-if="!!item.url">
+                    <el-table-column :label="item.label">
+                        <template scope="scope">
+                            <a :href="item.url">{{getScopeData(scope,item)}}</a>
+                        </template>
+                    </el-table-column>
+                </template>
+                <template v-else>
+                    <el-table-column :prop="item.prop" :label="item.label">
+                    </el-table-column>
+                </template>
+            </template>
             <el-table-column label="操作">
                 <template scope="scope">
                     <!-- <el-button v-for="item in buttonList" :key="item.label" :prop="item.prop" :label="item.label">
@@ -21,22 +32,26 @@
             </el-table-column>
         </el-table>
         <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page="currentPage4"
-            :page-sizes="[100, 200, 300, 400]"
-            :page-size="100"
+            @current-change="changePage"
+            :current-page="curPage"
+            :page-size="perPage"
             layout="total, prev, pager, next, jumper"
-            :total="400">
+            :total="total">
         </el-pagination>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
+    import tableData from './data.js'
     import nestRender from './nestRender'
     export default {
         name: 'filterModule',
         props: {
+            tableData: {
+                type: Array,
+                default: []
+            },
             tableList: {
                 type: Array,
                 default: [{
@@ -45,10 +60,8 @@
                 }]
             },
             url: {
-                type: Array,
-                default: {
-                    value: '',
-                }
+                type: String,
+                default: ''
             },
             buttonList: {
                 type: Array,
@@ -56,13 +69,58 @@
                     label: '默认',
                     prop: ''
                 }]
+            },
+            total: {
+                type: Number,
+                default: 20
+            },
+            curPage: {
+                type: Number,
+                default: 1
+            },
+            perPage: {
+                type: Number,
+                default: 20
             }
         },
         data(){
             return {}
         },
         methods: {
-            handleClick: function(scope) {
+            changePage: function(val) {
+                axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)
+                .then(response => {
+                    this.tableData = response.data.item;
+                    this.curPage = response.data.curpage;
+                    this.perPage = response.data.perpage;
+                    this.total = response.data.total;
+                })
+                .catch(error => {
+                    this.tableData = tableData.data.item;
+                    this.curPage = tableData.data.curpage;
+                    this.perPage = tableData.data.perpage;
+                    this.total = tableData.data.total;
+                });
+            },
+            getScopeData: function(scope, item) {
+                return scope.row[item.prop];
+            }
+        },
+        watch: {
+            url: function(val) {
+                axios.get(this.url)
+                .then(response => {
+                    this.tableData = response.data.item;
+                    this.curPage = response.data.curpage;
+                    this.perPage = response.data.perpage;
+                    this.total = response.data.total;
+                })
+                .catch(error => {
+                    this.tableData = tableData.data.item;
+                    this.curPage = tableData.data.curpage;
+                    this.perPage = tableData.data.perpage;
+                    this.total = tableData.data.total;
+                });
             }
         },
         nest: true,
