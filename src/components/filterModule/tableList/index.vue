@@ -2,25 +2,27 @@
     <div class="wrap">
         <template v-for="(item,index) in selfValue">
             <el-row>
-                <el-col :span="7">
+                <el-col :span="12">
                     <el-input placeholder="请输入内容"
                               v-model="item.label">
                         <template slot="prepend">列标题</template>
                     </el-input>
                 </el-col>
-                <el-col :span="7">
+                <el-col :span="12">
                     <el-input placeholder="请输入内容"
                               v-model="item.prop">
                         <template slot="prepend">列属性</template>
                     </el-input>
                 </el-col>
-                <el-col :span="7">
+            </el-row>
+            <el-row>
+                <el-col :span="16">
                     <el-input placeholder="请输入内容"
                               v-model="item.url">
                         <template slot="prepend">列链接</template>
                     </el-input>
                 </el-col>
-                <el-col :span="3">
+                <el-col :span="8">
                     <template v-if="index === 0">
                         <el-button type="primary"
                                    @click="addColumn">增加一列
@@ -58,7 +60,8 @@
             addColumn: function () {
                 this.selfValue.push({
                     label: '',
-                    prop: ''
+                    prop: '',
+                    url: ''
                 })
             }
         },

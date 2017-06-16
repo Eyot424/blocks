@@ -469,6 +469,8 @@
             #settingBridge {
                 background-color: #eff2f7;
                 height: 100vh;
+                overflow-y: auto;
+                padding-bottom: 100px;
             }
         }
     }
