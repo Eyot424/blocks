@@ -5,7 +5,7 @@ var vueLoaderConfig = require('./vue-loader.conf')
 var merge = require('webpack-merge')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
@@ -26,7 +26,7 @@ function resolve(dir) {
 
 var webpackConfig = {
     entry: {
-        engine: './src/engine.js'
+        engine: './src/components/engine/engine.js'
     },
     output: {
         path: config.build.assetsRoot,
@@ -47,9 +47,9 @@ var webpackConfig = {
         }
     },
     externals: {
-        'vue': 'Vue',
+        /*'vue': 'Vue',
         'vuex': 'Vuex',
-        'lodash': '_'
+        'lodash': '_'*/
     },
     module: {
         rules: [
@@ -84,9 +84,20 @@ var webpackConfig = {
     plugins: [
         new ExtractTextPlugin({
             // filename: utils.assetsPath('css/[name].[contenthash].css')
-            filename: '[name].[contenthash].css'
+            filename: '[name].css'
         }),
-        new BundleAnalyzerPlugin(),
+        new OptimizeCSSPlugin({
+            cssProcessorOptions: {
+                safe: true
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            sourceMap: true
+        }),
+        // new BundleAnalyzerPlugin(),
     ]
 }
 
@@ -109,13 +120,13 @@ rm(path.join(config.build.assetsRoot), err => {
     webpack(webpackConfig, function (err, stats) {
         spinner.stop()
         if (err) throw err
-        /*process.stdout.write(stats.toString({
+        process.stdout.write(stats.toString({
                 colors: true,
                 modules: true,
                 children: true,
                 chunks: true,
                 chunkModules: true
-            }) + '\n\n')*/
+            }) + '\n\n')
 
         console.log(chalk.cyan('  Build complete.\n'))
         console.log(chalk.yellow(

@@ -1,16 +1,13 @@
 import Vue from 'vue'
 import store from './store'
 import show from './showPage'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-Vue.use(ElementUI)
-
+import engine from '@/components/engine/engine.js'
 
 /* eslint-disable no-new */
 window.Vue = Vue;
 Vue.config.silent = true
 new Vue({
-    el: '#show',
+    el: '#app',
     store,
     render: (h) => {
         return h(show)

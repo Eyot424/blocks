@@ -20,13 +20,15 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function () {
             return {
-                columnData: this.columnData.value
+                columnData: this.columnData.value,
+                ref:this.ref
             }
         }
     },
     methods:{
         backFill:function (submitData) {
             this.columnData.value = submitData.columnData
+            this.ref = submitData.ref
         }
     }
 }

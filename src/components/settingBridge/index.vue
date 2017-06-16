@@ -54,9 +54,6 @@
         methods: {
             handleSubmit: function (data) {
                 this.instance['submitData'] = data
-                // _.forEach(data,(item,key) => {
-                //     this.instance.$set(this.instance, key, item);
-                // })
                 if(data){
                     this.$emit('changeItem', data)
                 }

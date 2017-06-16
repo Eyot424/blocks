@@ -7,12 +7,13 @@
                                  key="index"></el-table-column>
             </template>
         </el-table>
-        <el-pagination :page-size="20"
+        <el-pagination :page-size="pageSize"
                        :current-page="currentPage"
+                       @size-change="handleSizeChange"
                        @current-change="handleCurrentChange"
                        :page-sizes="[20, 50, 100]"
                        layout="total, sizes, prev, pager, next, jumper"
-                       :total="50"></el-pagination>
+                       :total="total"></el-pagination>
     </div>
 </template>
 
@@ -39,15 +40,22 @@
                 type: Function,
             }
         },
+        computed:{
+            logData(){},
+            total(){},
+            currentPage(){
+                return 1
+            },
+            pageSize(){}
+        },
         data(){
             return {
-                currentPage: 1,
-                logData: []
             }
         },
         method: {
             handleCurrentChange(){
-                this.currentPage = val;
+            },
+            handleSizeChange(){
             }
         },
         mounted(){
