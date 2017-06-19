@@ -27,6 +27,6 @@
     }
 
     .inputWithLabel{
-        margin: 20px 0;
+        margin-bottom: 20px;
     }
 </style>

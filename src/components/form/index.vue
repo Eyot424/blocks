@@ -24,17 +24,13 @@
 <script>
     import nestRender from './nestRender'
     export default {
-        props: {
-            formInline: {
-                type: String,
-                default: 'false'
-            }
-        },
         name: 'forms',
-        data(){
+        props: {
+        },
+        data() {
             return {}
         },
-        nest:true,
+        nest: true,
         nestRender,
         components: {}
     }

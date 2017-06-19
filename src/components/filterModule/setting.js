@@ -1,59 +1,74 @@
 import index from './index'
-import gatherColumnData from './gatherColumnData/index.vue'
-import gatherFormItemData from './gatherFormItemData/index.vue'
+import tableList from './tableList/index.vue'
+import formList from './formList/index.vue'
+import buttonList from './buttonList/index.vue'
 index.props['settingDefinition'] = {
-    nest: {
-        render:function (h,component,item) {
-
-            var label = item ? item.label : '默认'
-
-            return (
-                <el-form-item label={label}>
-                    {component}
-                </el-form-item>
-            )
-        }
-    },
     setting: {
-        columnData: {
-            type: 'gatherColumnData',
-            label: '表格显示',
+        urlData: {
+            type: 'el-input',
+            label: '请求地址',
+            require: true,
+            componentData: {
+                value: ''
+            },
+        },
+        tableListData: {
+            type: 'tableList',
+            label: 'table信息显示',
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认',
+                    url: ''
                 }]
             },
         },
         formItemData: {
-            type: 'gatherFormItemData',
-            label: '显示信息',
+            type: 'formList',
+            label: 'form信息显示',
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认'
+                }]
+            },
+        },
+        buttonListData: {
+            type: 'buttonList',
+            label: 'button信息显示',
+            require: true,
+            componentData: {
+                value:[{
+                    type: '1',
+                    url: '',
+                    condition: ''
                 }]
             },
         }
     },
     components:{
-        gatherColumnData,
-        gatherFormItemData
+        tableList,
+        formList,
+        buttonList
     },
     computed: {
         submitData: function () {
             return {
-                columnData: this.columnData.value,
-                nestedData: this.formItemData.value
+                tableList: this.tableListData.value,
+                buttonList: this.buttonListData.value,
+                nestedData: this.formItemData.value,
+                url: this.urlData.value
             }
         }
     },
     methods:{
         backFill:function (submitData) {
-            this.columnData.value = submitData.columnData,
-            this.formItemData.value = submitData.nestedData
+            this.tableListData.value = submitData.tableList,
+            this.buttonListData.value = submitData.buttonList,
+            this.formItemData.value = submitData.nestedData,
+            this.urlData.value = submitData.url
         }
     }
 }

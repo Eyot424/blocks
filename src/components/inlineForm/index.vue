@@ -8,9 +8,7 @@
         </el-form>
     </div>
 </template>
-<style lang="less"
-       rel="stylesheet/less"
-       scoped>
+<style scoped>
     .el-form {
         padding: 15px;
         background: #fff;

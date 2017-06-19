@@ -30,10 +30,9 @@
         </template>
     </div>
 </template>
-<style lang="less"
-       rel="stylesheet/less"
-       scoped>
-    .wrap {
+<style scoped>
+    .el-row{
+           height: 42px;
     }
 </style>
 <script>
