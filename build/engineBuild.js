@@ -6,6 +6,8 @@ var merge = require('webpack-merge')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+var env = config.build.env
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
@@ -82,6 +84,9 @@ var webpackConfig = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': env
+        }),
         new ExtractTextPlugin({
             // filename: utils.assetsPath('css/[name].[contenthash].css')
             filename: '[name].css'
