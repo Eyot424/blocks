@@ -56,7 +56,7 @@
             <span>{{dialogInfo.text}}</span>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogInfo.visible = false">取 消</el-button>
-                <el-button type="primary" @click="handleOperate(dialogInfo.url, dialogInfo.id)">确 定</el-button>
+                <el-button type="primary" @click="handleOperate(dialogInfo)">确 定</el-button>
             </span>
         </el-dialog>
     </div>
@@ -107,7 +107,7 @@
                 type: Object,
                 default: {
                     text: '',
-                    id: '',
+                    data: {},
                     visible: false,
                     url: ''
                 }
@@ -133,27 +133,25 @@
                 });
             },
             getScopeData: function(scope, item) {
-                let propsArray = item.prop.split('&&');
-                let dataString = '';
-                for(let i in propsArray){
-                    dataString += scope.row[propsArray[i]] ? scope.row[propsArray[i]] : propsArray[i];
-                }
-                return dataString;
+                let data = scope.row;
+                return eval(item.prop)
             },
             handleOpen(index, row, item) {
-                window.open(item.url + row.activity_id)
+                let data = row;
+                window.open(eval(item.url))
             },
             handleEnsure(index, row, item) {
                 this.dialogInfo.visible = true;
                 this.dialogInfo = {
                     text: '确定要' + this.getButtonText(item.type) + '活动' + row.activity_name + '吗？',
-                    id: row.activity_id,
+                    data: row,
                     url: item.url
                 }
             },
-            handleOperate(url, id) {
+            handleOperate(info) {
                 this.dialogInfo.visible = false;
-                axios.get(url + id)
+                let data = info.data;
+                axios.get(eval(info.url))
                 .then(response => {
                     if(response.errno == 0) {
                         this.$message.success(response.errmsg);
@@ -193,10 +191,10 @@
                 }
             },
             isShow(item, data) {
-                if(data.status) {
-                    return eval(item.condition.replace(/status/g,'data.status'))
+                if(item.condition == '') {
+                    return true;
                 } else {
-                    return eval(item.condition.replace(/status/g,'data.activity_status'))
+                    return eval(eval(item.condition))
                 }
             }
         },
