@@ -11,7 +11,7 @@
             return (
                     <div class="vueForm">
                         <el-form ref="ruleForm"
-                                 label-width="80px"
+                                 label-width="50px"
                                  class="demo-ruleForm">
                             {
                                 (()=> {
@@ -58,11 +58,15 @@
             submitData: {
                 deep: true,
                 handler: function (newVal) {
+                    newVal.ref = this.ref
                     this.$emit('submit', newVal)
                 }
             }
         },
-        methods: {},
+        methods: {
+            backFill: function(submitData) {
+            }
+        },
         data(){
             var setting = this.$options.setting
             var sortChildComponentData = []
@@ -85,10 +89,17 @@
             if (submitData) {
                 if (this.backFill) {
                     this.backFill(submitData)
+                    this.ref = submitData.ref
                 }
             }
         },
-        computed: {},
+        computed: {
+            submitData: function() {
+                return {
+                    ref:this.ref
+                }
+            }
+        },
         components: {
             templateInput,
 

@@ -19,6 +19,7 @@
     import inlineForm from '@/components/inlineForm/setting'
     import inputs from '@/components/input/setting'
     import inputWithLabel from '@/components/inputWithLabel/setting'
+    import cityButtonBar from '@/components/cityButtonBar/setting'
     import radio from '@/components/radio/setting'
     import selects from '@/components/select/setting'
     import log from '@/components/log/setting'
@@ -37,6 +38,7 @@
             breadCrumb,
             buttons,
             checkBox,
+            cityButtonBar,
             citySelect,
             datePicker,
             dateRangePicker,
@@ -280,6 +282,7 @@
                     'inputWithLabel',
                     'radio',
                     'log',
+                    'cityButtonBar',
                     'selects',
                     'upload',
                 ],
@@ -318,18 +321,19 @@
                     if (!componentConstruct) {
                         componentConstruct = Vue.options.components[item];
                     }
-                    let instance = new Vue(componentConstruct);
+//                    let instance = new Vue(componentConstruct);
                     ComponentSetting[item] = componentConstruct.props.settingDefinition;
                     ComponentOptions[item] = componentConstruct;
 
-                    if (instance.$options.name) {
-                        return instance.$options.name
-                    }
-                    return componentConstruct.options.name;
+//                    if (instance.$options.name) {
+//                        return instance.$options.name
+//                    }
+                    return componentConstruct.name;
                 })
             }
         },
         mounted: function () {
+            window.inBlockCanvas = true
             if (UrlObjQuery.edit) {
                 if (UrlObjQuery.component) {
                     this.canvasComponentList = [{tag: UrlObjQuery.component}].map((item, index) => {
