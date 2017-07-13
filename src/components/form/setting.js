@@ -20,15 +20,13 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function () {
             return {
-                nestedData: this.formItemData.value,
-                ref: this.ref
+                nestedData: this.formItemData.value
             }
         }
     },
     methods:{
         backFill: function (submitData) {
             this.formItemData.value = submitData.nestedData
-            this.ref = submitData.ref
         }
     }
 }

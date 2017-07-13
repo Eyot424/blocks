@@ -41,6 +41,8 @@ export default {
 			"tag": "checkBox",
 			"data": {
 				"props": {
+					"allCheckData": [],
+					"checkList": [],
 					"ref": "sources"
 				}
 			}

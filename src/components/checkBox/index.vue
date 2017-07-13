@@ -14,11 +14,11 @@
                 type: Array,
                 default() {
                         return [
-                        // {
-                        //     value: 'test',
-                        //     label: '默认',
-                        //     checked: false
-                        // }
+                        {
+                            value: 'test',
+                            label: '默认',
+                            checked: false
+                        }
                     ]
                 }
             },
@@ -27,6 +27,14 @@
                 default() {
                     return []
                 }
+            },
+            getAllCheckData: {
+                type: Function
+            }
+        },
+        mounted() {
+            if(this.getAllCheckData) {
+                this.getAllCheckData();
             }
         }
     }

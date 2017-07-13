@@ -60,7 +60,6 @@
         },
         mounted(){
             if(this.customFetch){
-                debugger
                 this.customFetch();
             }
         }

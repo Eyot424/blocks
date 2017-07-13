@@ -1,9 +1,29 @@
 import store from './store'
 export default {
-    forms: {
+    ruleForm: {
         vuex: { //vuex.store
             state: {
                 
+            },
+            getters: {},
+            mutations: {
+
+            },
+            actions: {
+                
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                
+            }
+        }
+    },
+    sources: {
+    	vuex: { //vuex.store
+            state: {
+                allCheckData: []
             },
             getters: {},
             mutations: {
@@ -29,12 +49,12 @@ export default {
 					        5:"激活未注册"
 					    }
 					};
-					let allCheckData = [];
+					let result = [];
 					if(res.errno === 0) {
 						for(var item in res.data) {
-							allCheckData.push({
+							result.push({
 	                            value: item,
-	                            label: res.data[label],
+	                            label: res.data[item],
 	                            checked: false
                         	});
 						}
@@ -44,4 +64,5 @@ export default {
             }
         }
     }
+
 }
