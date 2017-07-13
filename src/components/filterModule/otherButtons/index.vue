@@ -2,24 +2,30 @@
     <div class="wrap">
         <template v-for="(item,index) in selfValue">
             <el-row>
-                <el-col :span="12">
+                <el-col :span="8">
                     <el-input placeholder="请输入内容"
                               v-model="item.label">
-                        <template slot="prepend">表单项标签</template>
+                        <template slot="prepend">文案</template>
                     </el-input>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="16">
                     <el-input placeholder="请输入内容"
-                              v-model="item.prop">
-                        <template slot="prepend">表单项属性</template>
+                              v-model="item.url">
+                        <template slot="prepend">跳转url</template>
                     </el-input>
                 </el-col>
             </el-row>
-                <el-row>
-                <el-col :span="18">
+            <el-row>
+                <el-col :span="8">
                     <el-input placeholder="请输入内容"
-                              v-model="item.ref">
-                        <template slot="prepend">表单项ref</template>
+                              v-model="item.icon">
+                        <template slot="prepend">图标</template>
+                    </el-input>
+                </el-col>
+                <el-col :span="10">
+                    <el-input placeholder="请输入内容"
+                              v-model="item.event">
+                        <template slot="prepend">绑定事件</template>
                     </el-input>
                 </el-col>
                 <el-col :span="6">
@@ -60,7 +66,9 @@
             addColumn: function () {
                 this.selfValue.push({
                     label: '',
-                    prop: ''
+                    event: '',
+                    icons: '',
+                    url: ''
                 })
             }
         },
@@ -68,7 +76,6 @@
             selfValue: {
                 deep: true,
                 handler: function (value) {
-
                     this.$emit('input', value)
                 }
             }

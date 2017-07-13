@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
+        <el-input v-model="inputValue" :icon="inputIcon" placeholder="请输入内容"></el-input>
     </div>
 </template>
 
@@ -11,6 +11,31 @@
             inputIcon: {
                 type: String,
                 default: ''
+            },
+            inputRef: {
+                type: String,
+                default: ''
+            },
+            inputValue: {
+                type: String,
+                default: ''
+            }
+        },
+        watch: {
+            inputRef: function() {
+                this.commitState()
+            },
+            inputValue: function() {
+                this.commitState()
+            }
+        },
+        methods: {
+            commitState() {
+                let data = {
+                    ref: this.inputRef,
+                    value: this.inputValue
+                }
+                this.$store.commit('setFormData', data)
             }
         }
     }

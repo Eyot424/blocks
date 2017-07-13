@@ -3,11 +3,18 @@
         <el-form :inline="true">
             <slot></slot>
             <el-form-item>
-                <el-button type="primary" icon="edit">提交</el-button>
+                <el-button type="primary" @click="handleSubmit" icon="edit">提交</el-button>
             </el-form-item>
         </el-form>
-        <el-form :inline="true">
-            <slot></slot>
+        <el-form :inline="true" class="button-list">
+            <el-form-item v-for="item in otherButtons" key="item.label">
+                <template v-if="item.url">
+                    <el-button :icon="item.icon" type="primary" @click="jumpUrl(item.url)">{{item.label}}</el-button>
+                </template>
+                <template v-else>
+                    <el-button type="primary" @click="item.event">{{item.label}}</el-button>
+                </template>
+            </el-form-item>
         </el-form>
         <el-table border :data="tableData">
             <template v-for="item in tableList">
@@ -66,6 +73,7 @@
     import axios from 'axios'
     import tableData from './data.js'
     import nestRender from './nestRender'
+    import store from './store.js'
     export default {
         name: 'filterModule',
         props: {
@@ -91,17 +99,25 @@
                     prop: ''
                 }]
             },
-            total: {
-                type: Number,
-                default: 20
+            otherButtons: {
+                type: Array,
+                default: [{
+                    label: '默认',
+                    event: '',
+                    icons: '',
+                    url: ''
+                }]
             },
-            curPage: {
-                type: Number,
-                default: 1
+            nestedData:{
+                type: Array,
+                default: [{
+                    prop: '',
+                    label: '默认'
+                }]
             },
-            perPage: {
-                type: Number,
-                default: 20
+            formData:{
+                type: Array,
+                default: []
             },
             dialogInfo: {
                 type: Object,
@@ -116,6 +132,7 @@
         data(){
             return {}
         },
+        store,
         methods: {
             changePage: function(val) {
                 axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)
@@ -196,6 +213,12 @@
                 } else {
                     return eval(eval(item.condition))
                 }
+            },
+            jumpUrl(url) {
+                window.open(url)
+            },
+            handleSubmit() {
+                console.log(this.$store)
             }
         },
         watch: {
@@ -213,6 +236,9 @@
                     this.perPage = tableData.data.perpage;
                     this.total = tableData.data.total;
                 });
+            },
+            nestedData: function(val){
+                window.ref = this.$refs;
             }
         },
         nest: true,
@@ -233,5 +259,9 @@
 
     .el-table{
         margin-bottom: 20px;
+    }
+
+    .button-list .el-form-item{
+        margin-bottom: 0;
     }
 </style>
