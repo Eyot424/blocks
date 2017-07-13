@@ -8,18 +8,28 @@ index.props['settingDefinition'] = {
             componentData: {
                 value:''
             },
+        },
+        inputRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     computed: {
         submitData: function() {
             return {
-                inputIcon: this.inputIcon.value
+                inputIcon: this.inputIcon.value,
+                inputRef: this.inputRef.value
             }
         }
     },
     methods:{
         backFill: function(submitData) {
-            this.inputIcon.value = submitData.inputIcon
+            this.inputIcon.value = submitData.inputIcon,
+            this.inputRef.value = submitData.inputRef
         }
     }
 }

@@ -13,6 +13,14 @@ index.props['settingDefinition'] = {
                     value: ''
                 }]
             },
+        },
+        radioRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     components: {
@@ -21,13 +29,15 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function() {
             return {
-                allRadioData: this.allRadioData.value
+                allRadioData: this.allRadioData.value,
+                radioRef: this.radioRef.value
             }
         }
     },
     methods: {
         backFill: function(submitData) {
-            this.allRadioData.value = submitData.allRadioData
+            this.allRadioData.value = submitData.allRadioData,
+            this.radioRef.value = submitData.radioRef
         }
     }
 }

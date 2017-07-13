@@ -23,6 +23,27 @@
                 default() {
                     return []
                 }
+            },
+            checkRef: {
+                type: String,
+                default: ''
+            }
+        },
+        watch: {
+            checkRef: function() {
+                this.commitState()
+            },
+            checkList: function() {
+                this.commitState()
+            }
+        },
+        methods: {
+            commitState() {
+                let data = {
+                    ref: this.checkRef,
+                    value: this.checkList
+                }
+                this.$store.commit('setFormData', data)
             }
         }
     }

@@ -11,25 +11,31 @@ index.props['settingDefinition'] = {
                     label: '默认'
                 }]
             },
+        },
+        selectRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     components: {
         selectList
     },
     computed: {
-        submitData: function() {
-            let getData = this.allData.value;
-            let getList = [];
+        submitData: function () {
             return {
-                allData: getData,
-                checkList: getList
+                allData: this.allData.value,
+                selectRef: this.selectRef.value
             }
         }
     },
     methods: {
         backFill: function(submitData) {
             this.allData.value = submitData.allData,
-                this.checkList.value = submitData.checkList
+            this.selectRef.value = submitData.selectRef
         }
     }
 }
