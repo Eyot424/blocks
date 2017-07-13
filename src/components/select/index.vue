@@ -36,6 +36,14 @@
                 default() {
                     return ''
                 }
+            },
+            getAllData: {
+                type: Function
+            }
+        },
+        mounted() {
+            if(this.getAllData) {
+                this.getAllData();
             }
         }
     }

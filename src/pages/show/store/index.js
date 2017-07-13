@@ -7,7 +7,8 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-    allCheckData: []
+    allCheckData: [],
+    allData: []
 }
 
 export default new Vuex.Store({

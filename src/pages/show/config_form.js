@@ -62,7 +62,7 @@ export default {
 						"value": ""
 					}],
 					"checkList": [],
-					"detail": "",
+					"detail": "注意：使用部门是预算统计的重要依据,请认真选择",
 					"ref": "department"
 				}
 			}
@@ -74,11 +74,11 @@ export default {
 				}
 			}
 		}, {
-			"tag": "dateTimePicker",
+			"tag": "datePicker",
 			"data": {
 				"props": {
-					"datetimeFormat": "",
-					"placeholder": "",
+					"dateFormat": "",
+					"placeholder": "发券时间",
 					"detail": "时间必须选择今天之后",
 					"ref": "coupon_date"
 				}
