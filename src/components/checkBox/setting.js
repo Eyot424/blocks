@@ -29,13 +29,15 @@ index.props['settingDefinition'] = {
             };
             return {
                 allCheckData: getCheckData,
-                checkList: getCheckList
+                checkList: getCheckList,
+                ref:this.ref
             }
         }
     },
     methods: {
         backFill: function(submitData) {
             this.allCheckData.value = submitData.allCheckData;
+            this.ref = submitData.ref
         }
     }
 }

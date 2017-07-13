@@ -11,6 +11,14 @@ index.props['settingDefinition'] = {
                     label: '默认'
                 }]
             },
+        },
+        detail: {
+            type: 'el-input',
+            label: '文案',
+            require: true,
+            componentData: {
+                value: ''
+            }
         }
     },
     components: {
@@ -22,14 +30,18 @@ index.props['settingDefinition'] = {
             let getList = [];
             return {
                 allData: getData,
-                checkList: getList
+                checkList: getList,
+                detail: this.detail.value,
+                ref: this.ref
             }
         }
     },
     methods: {
         backFill: function(submitData) {
-            this.allData.value = submitData.allData,
-                this.checkList.value = submitData.checkList
+            this.allData.value = submitData.allData
+            this.checkList.value = submitData.checkList
+            this.detail.value = submitData.detail
+            this.ref = submitData.ref
         }
     }
 }

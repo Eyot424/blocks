@@ -8,10 +8,12 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 radioValue: '',
-                value: [{
+                value: [
+                {
                     label: '默认',
                     value: ''
-                }]
+                }
+                ]
             },
         }
     },
@@ -21,13 +23,15 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function() {
             return {
-                allRadioData: this.allRadioData.value
+                allRadioData: this.allRadioData.value,
+                ref: this.ref
             }
         }
     },
     methods: {
         backFill: function(submitData) {
             this.allRadioData.value = submitData.allRadioData
+            this.ref = submitData.ref
         }
     }
 }

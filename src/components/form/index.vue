@@ -26,12 +26,20 @@
     export default {
         name: 'forms',
         props: {
+            getAllCheckData: {
+                type: Function
+            }
         },
         data() {
             return {}
         },
         nest: true,
         nestRender,
-        components: {}
+        components: {},
+        mounted() {
+            if(this.getAllCheckData) {
+                this.getAllCheckData();
+            }
+        }
     }
 </script>

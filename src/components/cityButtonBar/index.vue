@@ -7,8 +7,7 @@
             <div class="alignSelf">点击已选择城市</div>
             <el-upload class="upload-demo"
                        action="/coupon/mis/importcsv"
-                       :show-file-list="false"
-                       :on-change="handleChange">
+                       :show-file-list="false">
                 <el-button type="primary">点击上传
                 </el-button>
             </el-upload>

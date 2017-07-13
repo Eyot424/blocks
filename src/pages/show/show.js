@@ -5,7 +5,7 @@ import engine from '@/components/engine/engine.js'
 
 /* eslint-disable no-new */
 window.Vue = Vue;
-Vue.config.silent = true
+Vue.config.silent = false
 new Vue({
     el: '#app',
     store,

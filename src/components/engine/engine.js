@@ -29,6 +29,7 @@ import select from '@/components/select'
 import upload from '@/components/upload'
 import table from '@/components/table'
 import log from '@/components/log/'
+import cityButtonBar from '@/components/cityButtonBar/'
 
 const CloneDeep = _.cloneDeep
 const Merge = _.mergeWith
@@ -69,7 +70,8 @@ export default{
                 select,
                 log,
                 upload,
-                table
+                table,
+                cityButtonBar
             ]
         }
     },
@@ -141,7 +143,7 @@ export default{
                         if (definition && definition.options) {
                             let options = definition.options
                             if (options.nest && options.nestRender) {
-                                let nestedData = data.nestedData;
+                                let nestedData = data.props.nestedData;
                                 childNode = options.nestRender(h, childNode, nestedData[index])
                             }
                         }

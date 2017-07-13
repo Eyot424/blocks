@@ -12,11 +12,15 @@
         props: {
             allCheckData: {
                 type: Array,
-                default: [{
-                    value: 'test',
-                    label: '默认',
-                    checked: false
-                }]
+                default() {
+                        return [
+                        // {
+                        //     value: 'test',
+                        //     label: '默认',
+                        //     checked: false
+                        // }
+                    ]
+                }
             },
             checkList: {
                 type: Array,

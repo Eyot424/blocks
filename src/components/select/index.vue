@@ -8,6 +8,7 @@
                 :value="item.value">
             </el-option>
         </el-select>
+        <span>{{detail}}</span>
     </div>
 </template>
 
@@ -17,14 +18,24 @@
         props: {
             allData: {
                 type: Array,
-                default: [{
-                    label: '默认',
-                    value: '1'
-                }]
+                default() { 
+                    return [{
+                        label: '请选择',
+                        value: ''
+                    }]
+                }
             },
             selectList: {
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
+            },
+            detail: {
+                type: String,
+                default() {
+                    return ''
+                }
             }
         }
     }

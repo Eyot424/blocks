@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input v-model="value" :icon="inputIcon" placeholder="请输入内容"></el-input>
+        <el-input v-model="value" :icon="inputIcon" :placeholder="placeholder"></el-input>
     </div>
 </template>
 
@@ -10,7 +10,15 @@
         props: {
             inputIcon: {
                 type: String,
-                default: ''
+                default() {
+                    return ''
+                }
+            },
+            placeholder: {
+                type: String,
+                default() {
+                    return '请输入内容'
+                }
             }
         }
     }
