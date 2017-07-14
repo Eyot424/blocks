@@ -21,6 +21,7 @@
     import inputWithLabel from '@/components/inputWithLabel/setting'
     import radio from '@/components/radio/setting'
     import selects from '@/components/select/setting'
+    import table from '@/components/table/setting'
     import log from '@/components/log/setting'
     import settingBridge from '@/components/settingBridge'
     import tables from '@/components/table/setting'
@@ -48,6 +49,7 @@
             inputWithLabel,
             radio,
             selects,
+            tables,
             settingBridge,
             upload,
             log,
@@ -281,6 +283,7 @@
                     'radio',
                     'log',
                     'selects',
+                    'tables',
                     'upload',
                 ],
                 settingData: {},
