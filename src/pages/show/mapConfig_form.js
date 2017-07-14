@@ -163,6 +163,26 @@ export default {
                 }
             }
         }
+    },
+    pushPackages: {
+        vuex: { //vuex.store
+            state: {
+                getFormData: 'getFormData'
+            },
+            getters: {},
+            mutations: {
+
+            },
+            actions: {
+                
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                
+            }
+        }
     }
 
 }

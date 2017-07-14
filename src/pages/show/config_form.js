@@ -25,9 +25,6 @@ export default {
 				}, {
 					"label": "每个文案包发放人数",
 					"prop": "each_type"
-				}, {
-					"label": "",
-					"prop": ""
 				}],
 				"ref": "ruleForm"
 			}
@@ -103,61 +100,62 @@ export default {
 					"ref": "each_type"
 				}
 			}
-		}, {
-			"tag": "filterModuleWithDialog",
-			"data": {
-				"props": {
-					"tableList": [{
-						"prop": "id",
-						"label": "文案包编号",
-						"url": ""
-					}, {
-						"label": "短信文案",
-						"prop": "sms",
-						"url": ""
-					}, {
-						"label": "短信发放时间",
-						"prop": "sms_start_time",
-						"url": ""
-					}, {
-						"label": "push文案",
-						"prop": "push",
-						"url": ""
-					}, {
-						"label": "push发放时间",
-						"prop": "push_start_time",
-						"url": ""
-					}, {
-						"label": "触达人数",
-						"prop": "num",
-						"url": ""
-					}],
-					"buttonList": [{
-						"type": 2,
-						"url": "",
-						"condition": ""
-					}, {
-						"type": 5,
-						"url": "",
-						"condition": ""
-					}],
-					"nestedData": [{
-						"prop": "",
-						"label": "默认"
-					}],
-					"url": "",
-					"otherButtons": [{
-						"label": "创建文案包",
-						"prop": "",
-						"event": "",
-						"icon": "plus",
-						"url": ""
-					}],
-					"ref": "pushPackages"
-				}
-			},
-			"children": []
 		}]
+	},
+	{
+		"tag": "filterModule",
+		"data": {
+			"props": {
+				"tableList": [{
+					"prop": "id",
+					"label": "文案包编号",
+					"url": ""
+				}, {
+					"label": "短信文案",
+					"prop": "sms",
+					"url": ""
+				}, {
+					"label": "短信发放时间",
+					"prop": "sms_start_time",
+					"url": ""
+				}, {
+					"label": "push文案",
+					"prop": "push",
+					"url": ""
+				}, {
+					"label": "push发放时间",
+					"prop": "push_start_time",
+					"url": ""
+				}, {
+					"label": "触达人数",
+					"prop": "num",
+					"url": ""
+				}],
+				"buttonList": [{
+					"type": 2,
+					"url": "",
+					"condition": ""
+				}, {
+					"type": 5,
+					"url": "",
+					"condition": ""
+				}],
+				"nestedData": [{
+					"prop": "",
+					"label": "默认"
+				}],
+				"url": "",
+				"otherButtons": [{
+					"label": "创建文案包",
+					"prop": "",
+					"event": "",
+					"icon": "plus",
+					"url": ""
+				}],
+				"ref": "pushPackages"
+			}
+		},
+		"children": []
 	},
 	{
 		"tag": "dialogList",
