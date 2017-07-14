@@ -30,6 +30,9 @@ import upload from '@/components/upload'
 import table from '@/components/table'
 import log from '@/components/log/'
 import cityButtonBar from '@/components/cityButtonBar/'
+import filterModule from '@/components/filterModule/'
+import filterModuleWithDialog from '@/components/filterModuleWithDialog/'
+import dialogList from '@/components/dialogList/'
 
 const CloneDeep = _.cloneDeep
 const Merge = _.mergeWith
@@ -71,7 +74,10 @@ export default{
                 log,
                 upload,
                 table,
-                cityButtonBar
+                cityButtonBar,
+                filterModule,
+                filterModuleWithDialog,
+                dialogList
             ]
         }
     },

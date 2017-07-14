@@ -10,7 +10,7 @@ index.props['settingDefinition'] = {
                 value: [{
                     label: '默认'
                 }]
-            },
+            }
         },
         detail: {
             type: 'el-input',
@@ -19,29 +19,36 @@ index.props['settingDefinition'] = {
             componentData: {
                 value: ''
             }
+        },
+        selectRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            }
         }
     },
     components: {
         selectList
     },
     computed: {
-        submitData: function() {
-            let getData = this.allData.value;
-            let getList = [];
+        submitData: function () {
             return {
                 allData: getData,
-                checkList: getList,
+                // checkList: getList,
+                allData: this.allData.value,
                 detail: this.detail.value,
-                ref: this.ref
+                selectRef: this.selectRef.value     
             }
         }
     },
     methods: {
         backFill: function(submitData) {
             this.allData.value = submitData.allData
-            this.checkList.value = submitData.checkList
+            // this.checkList.value = submitData.checkList
             this.detail.value = submitData.detail
-            this.ref = submitData.ref
+            this.selectRef.value = submitData.selectRef
         }
     }
 }

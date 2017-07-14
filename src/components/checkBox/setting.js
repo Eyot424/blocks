@@ -13,6 +13,14 @@ index.props['settingDefinition'] = {
                     value: ''
                 }]
             },
+        },
+        checkRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     components: {
@@ -30,14 +38,14 @@ index.props['settingDefinition'] = {
             return {
                 allCheckData: getCheckData,
                 checkList: getCheckList,
-                ref:this.ref
+                checkRef: this.checkRef.value
             }
         }
     },
     methods: {
         backFill: function(submitData) {
-            this.allCheckData.value = submitData.allCheckData;
-            this.ref = submitData.ref
+            this.allCheckData.value = submitData.allCheckData,
+            this.checkRef.value = submitData.checkRef
         }
     }
 }

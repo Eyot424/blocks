@@ -55,7 +55,10 @@ index.props['settingDefinition'] = {
             componentData: {
                 value:[{
                     label: '默认',
-                    prop: ''
+                    prop: '',
+                    event: '',
+                    icon: '',
+                    url: ''
                 }]
             },
         }
@@ -64,7 +67,8 @@ index.props['settingDefinition'] = {
         tableList,
         formList,
         buttonList,
-        otherButtons
+        otherButtons,
+        dialogList
     },
     computed: {
         submitData: function () {

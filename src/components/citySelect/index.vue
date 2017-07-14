@@ -1,6 +1,6 @@
 <template>
     <div class="citySelect">
-        <el-autocomplete class="inline-input" :icon="inputIcon" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
+        <el-autocomplete v-model="inputValue" class="inline-input" :icon="inputIcon" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
     </div>
 </template>
 
@@ -15,8 +15,31 @@
                 type: String,
                 default: ''
             },
+            inputRef: {
+                type: String,
+                default: ''
+            },
+            inputValue: {
+                type: String,
+                default: ''
+            }
+        },
+        watch: {
+            inputRef: function() {
+                this.commitState()
+            },
+            inputValue: function() {
+                this.commitState()
+            }
         },
         methods: {
+            commitState() {
+                let data = {
+                    ref: this.inputRef,
+                    value: this.inputValue
+                }
+                this.$store.commit('setFormData', data)
+            },
             querySearch(queryString, cb) {
                 var citys = this.citys;
                 var results = queryString ? citys.filter(this.createFilter(queryString)) : citys;

@@ -1,11 +1,11 @@
 <template>
     <div class="filterModule">
-        <el-form :inline="true">
+        <!-- <el-form :inline="true">
             <slot></slot>
             <el-form-item>
                 <el-button type="primary" @click="handleSubmit" icon="edit">提交</el-button>
             </el-form-item>
-        </el-form>
+        </el-form> -->
         <el-form :inline="true" class="button-list">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
@@ -75,7 +75,7 @@
     import nestRender from './nestRender'
     import store from './store.js'
     export default {
-        name: 'filterModule',
+        name: 'filterModuleWithDialog',
         props: {
             tableData: {
                 type: Array,
@@ -104,7 +104,7 @@
                 default: [{
                     label: '默认',
                     event: '',
-                    icons: '',
+                    icon: '',
                     url: ''
                 }]
             },

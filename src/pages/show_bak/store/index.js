@@ -8,9 +8,7 @@ Vue.use(Vuex)
 
 const state = {
     allCheckData: [],
-    allData: [],
-    pushPackages: [],
-    allJumpPageData: []
+    allData: []
 }
 
 export default new Vuex.Store({

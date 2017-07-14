@@ -2,27 +2,19 @@
     <div class="wrap">
         <template v-for="(item,index) in selfValue">
             <el-row>
-                <el-col :span="12">
+                <el-col :span="10">
                     <el-input placeholder="请输入内容"
                               v-model="item.label">
                         <template slot="prepend">表单项标签</template>
                     </el-input>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="10">
                     <el-input placeholder="请输入内容"
                               v-model="item.prop">
                         <template slot="prepend">表单项属性</template>
                     </el-input>
                 </el-col>
-            </el-row>
-                <el-row>
-                <el-col :span="18">
-                    <el-input placeholder="请输入内容"
-                              v-model="item.ref">
-                        <template slot="prepend">表单项ref</template>
-                    </el-input>
-                </el-col>
-                <el-col :span="6">
+                <el-col :span="2">
                     <template v-if="index === 0">
                         <el-button type="primary"
                                    @click="addColumn">增加一列

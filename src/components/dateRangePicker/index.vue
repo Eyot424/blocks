@@ -3,8 +3,9 @@
         <el-date-picker
                 v-model="value"
                 type="daterange"
-                placeholder="选择日期">
+                :placeholder="placeholder">
         </el-date-picker>
+        {{detail}}
     </div>
 </template>
 
@@ -12,6 +13,24 @@
     export default {
         name: 'dateRangePicker',
         props: {
+            // dateRangeFormat: {
+            //     type: Array,
+            //     default(){
+            //         return ['yyyy-MM-dd','yyyy-MM-dd']
+            //     } 
+            // },
+            placeholder: {
+                type: String,
+                default() {
+                    return ''
+                }
+            },
+            detail: {
+                type: String,
+                default() {
+                    return ''
+                }
+            }
         }
     }
 </script>

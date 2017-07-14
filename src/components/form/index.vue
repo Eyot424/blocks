@@ -25,21 +25,13 @@
     import nestRender from './nestRender'
     export default {
         name: 'forms',
-        props: {
-            getAllCheckData: {
-                type: Function
-            }
+        props: {          
         },
         data() {
             return {}
         },
         nest: true,
         nestRender,
-        components: {},
-        mounted() {
-            if(this.getAllCheckData) {
-                this.getAllCheckData();
-            }
-        }
+        components: {}
     }
 </script>

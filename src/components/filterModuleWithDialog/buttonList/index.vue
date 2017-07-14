@@ -2,27 +2,34 @@
     <div class="wrap">
         <template v-for="(item,index) in selfValue">
             <el-row>
-                <el-col :span="12">
-                    <el-input placeholder="请输入内容"
-                              v-model="item.label">
-                        <template slot="prepend">表单项标签</template>
-                    </el-input>
+                <el-col :span="24">
+                    <span class="el-input-group__prepend button-span">按钮类型</span>
+                    <el-radio-group v-model="item.type">
+                        <el-radio :label="1">查看</el-radio>
+                        <el-radio :label="2">编辑</el-radio>
+                        <el-radio :label="3">上线</el-radio>
+                        <el-radio :label="4">下线</el-radio>
+                        <el-radio :label="5">删除</el-radio>
+                        <el-radio :label="6">日志</el-radio>
+                    </el-radio-group>
                 </el-col>
-                <el-col :span="12">
+            </el-row>
+            <el-row>
+                <el-col :span="24">
                     <el-input placeholder="请输入内容"
-                              v-model="item.prop">
-                        <template slot="prepend">表单项属性</template>
+                              v-model="item.url">
+                        <template slot="prepend">链接</template>
                     </el-input>
                 </el-col>
             </el-row>
-                <el-row>
-                <el-col :span="18">
+            <el-row>
+                <el-col :span="16">
                     <el-input placeholder="请输入内容"
-                              v-model="item.ref">
-                        <template slot="prepend">表单项ref</template>
+                              v-model="item.condition">
+                        <template slot="prepend">显示条件</template>
                     </el-input>
                 </el-col>
-                <el-col :span="6">
+                <el-col :span="8">
                     <template v-if="index === 0">
                         <el-button type="primary"
                                    @click="addColumn">增加一列
@@ -42,6 +49,12 @@
     .el-row{
            height: 42px;
     }
+    .button-span{
+        display: inline-block;
+        width: auto;
+        border-right: 1px solid #bfcbd9;
+        border-radius: 4px;
+    }
 </style>
 <script>
     export default{
@@ -59,8 +72,9 @@
         methods: {
             addColumn: function () {
                 this.selfValue.push({
-                    label: '',
-                    prop: ''
+                    type: '',
+                    url: '',
+                    condition: ''
                 })
             }
         },
@@ -68,7 +82,6 @@
             selfValue: {
                 deep: true,
                 handler: function (value) {
-
                     this.$emit('input', value)
                 }
             }

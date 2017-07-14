@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 /* eslint-disable no-new */
-Vue.config.silent = true
+Vue.config.silent = false
 window.Vue = Vue
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'

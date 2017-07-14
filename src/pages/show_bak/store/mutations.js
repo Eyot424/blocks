@@ -6,12 +6,6 @@ export default {
     },
     [types.DEPARTMENT_INFO](state, val) {
     	state.allData = val;
-    },
-    [types.PUSH_PACKAGES](state, val) {
-    	state.pushPackages = val;
-    },
-    [types.JUMP_TARGET_LIST](state, val) {
-    	state.allJumpPageData = val;
     }
 }
 

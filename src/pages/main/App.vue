@@ -26,6 +26,7 @@
     import settingBridge from '@/components/settingBridge'
     import tables from '@/components/table/setting'
     import upload from '@/components/upload/setting'
+    import dialogList from '@/components/dialogList/setting'
 
     const generateCanvasComponentListData = handler.generateCanvasComponentListData
     const ComponentSetting = {}
@@ -53,7 +54,8 @@
             settingBridge,
             upload,
             log,
-            draggable
+            draggable,
+            dialogList
         },
         render: function (h) {
             return (
@@ -285,6 +287,7 @@
                     'cityButtonBar',
                     'selects',
                     'upload',
+                    'dialogList'
                 ],
                 settingData: {},
                 settingId: 1,
