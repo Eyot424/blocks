@@ -1,32 +1,49 @@
 import index from './index'
-import gatherColumnData from '@/components/gatherColumnData/index.vue'
+import tableList from './tableList/index.vue'
+import buttonList from './buttonList/index.vue'
 index.props['settingDefinition'] = {
     setting: {
-        columnData: {
-            type: 'gatherColumnData',
-            label: '表格显示',
+        tableListData: {
+            type: 'tableList',
+            label: 'table信息显示',
             require: true,
             componentData: {
                 value:[{
-                    prop:'',
-                    label:'默认'
+                    prop: '',
+                    label: '默认',
+                    url: ''
+                }]
+            },
+        },
+        buttonListData: {
+            type: 'buttonList',
+            label: 'table按钮信息显示',
+            require: true,
+            componentData: {
+                value:[{
+                    type: '1',
+                    url: '',
+                    condition: ''
                 }]
             },
         }
     },
     components:{
-        gatherColumnData
+        tableList,
+        buttonList
     },
     computed: {
         submitData: function () {
             return {
-                columnData: this.columnData.value
+                tableList: this.tableListData.value,
+                buttonList: this.buttonListData.value,
             }
         }
     },
     methods:{
         backFill:function (submitData) {
-            this.columnData.value = submitData.columnData
+            this.tableListData.value = submitData.tableList,
+            this.buttonListData.value = submitData.buttonList
         }
     }
 }
