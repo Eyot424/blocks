@@ -30,14 +30,15 @@
             },
             checkRef: {
                 type: String,
-                default: ''
+                default() {
+                    return ''
+                }
             },
             getAllCheckData: {
                 type: Function
             }
         },
         mounted() {
-            debugger
             if(this.getAllCheckData) {
                 this.getAllCheckData();
             }

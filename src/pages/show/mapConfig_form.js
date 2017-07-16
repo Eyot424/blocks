@@ -23,7 +23,7 @@ export default {
     sources: {
     	vuex: { //vuex.store
             state: {
-                allCheckData: 'allCheckData'
+                allCheckData: 'allDataSourceData'
             },
             getters: {},
             mutations: {
@@ -66,7 +66,7 @@ export default {
     department: {
     	vuex: { //vuex.store
             state: {
-                allData: 'allData'
+                allData: 'allDepartmentData'
             },
             getters: {},
             mutations: {

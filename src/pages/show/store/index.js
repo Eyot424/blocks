@@ -7,10 +7,11 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-    allCheckData: [],
-    allData: [],
+    allDataSourceData: [],
+    allDepartmentData: [],
     pushPackages: [],
-    allJumpPageData: []
+    allJumpPageData: [],
+    formData: {}
 }
 
 export default new Vuex.Store({

@@ -16,7 +16,7 @@
             dialogFormVisible: {
                 type: Boolean,
                 default() {
-                    return true
+                    return false
                 }
             }
         },

@@ -103,7 +103,7 @@ export default {
 		}]
 	},
 	{
-		"tag": "filterModule",
+		"tag": "tables",
 		"data": {
 			"props": {
 				"tableList": [{
@@ -140,11 +140,6 @@ export default {
 					"url": "",
 					"condition": ""
 				}],
-				"nestedData": [{
-					"prop": "",
-					"label": "默认"
-				}],
-				"url": "",
 				"otherButtons": [{
 					"label": "创建文案包",
 					"prop": "",

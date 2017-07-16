@@ -15,6 +15,7 @@ const actions = {
 
 const mutations = {
     setFormData: (state, items) => {
+    	debugger
         state.getFormData[items.ref] = items.value
     }
 }

@@ -1,5 +1,15 @@
 <template>
     <div class="tables">
+         <el-form :inline="true" class="button-list">
+            <el-form-item v-for="item in otherButtons" key="item.label">
+                <template v-if="item.url">
+                    <el-button :icon="item.icon" type="primary" @click="jumpUrl(item.url)">{{item.label}}</el-button>
+                </template>
+                <template v-else>
+                    <el-button type="primary" @click="item.event">{{item.label}}</el-button>
+                </template>
+            </el-form-item>
+        </el-form>
         <el-table border :data="tableData">
             <template v-for="item in tableList">
                 <template v-if="!!item.url">
@@ -35,7 +45,7 @@
         <el-dialog
             title="提示"
             :visible.sync="dialogInfo.visible"
-            show-close="false"
+            
             size="tiny">
             <span>{{dialogInfo.text}}</span>
             <span slot="footer" class="dialog-footer">
@@ -52,7 +62,9 @@
         props: {
             tableData: {
                 type: Array,
-                default: []
+                default(){
+                    return []
+                }
             },
             tableList: {
                 type: Array,
@@ -68,13 +80,24 @@
                     prop: ''
                 }]
             },
+            otherButtons: {
+                type: Array,
+                default: [{
+                    label: '默认',
+                    event: '',
+                    icons: '',
+                    url: ''
+                }]
+            },
             dialogInfo: {
                 type: Object,
-                default: {
-                    text: '',
-                    data: {},
-                    visible: false,
-                    url: ''
+                default(){ 
+                    return {
+                        text: '',
+                        data: {},
+                        visible: false,
+                        url: ''
+                    }
                 }
             }
         },

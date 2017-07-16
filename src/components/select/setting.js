@@ -35,7 +35,7 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function () {
             return {
-                allData: getData,
+                // allData: getData,
                 // checkList: getList,
                 allData: this.allData.value,
                 detail: this.detail.value,

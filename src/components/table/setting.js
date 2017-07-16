@@ -26,6 +26,17 @@ index.props['settingDefinition'] = {
                     condition: ''
                 }]
             },
+        },
+        otherButtonsData: {
+            type: 'otherButtons',
+            label: '按钮组信息显示',
+            require: true,
+            componentData: {
+                value:[{
+                    label: '默认',
+                    prop: ''
+                }]
+            },
         }
     },
     components:{
@@ -37,13 +48,15 @@ index.props['settingDefinition'] = {
             return {
                 tableList: this.tableListData.value,
                 buttonList: this.buttonListData.value,
+                otherButtons: this.otherButtonsData.value
             }
         }
     },
     methods:{
         backFill:function (submitData) {
             this.tableListData.value = submitData.tableList,
-            this.buttonListData.value = submitData.buttonList
+            this.buttonListData.value = submitData.buttonList,
+            this.otherButtonsData.value = submitData.otherButtons
         }
     }
 }
