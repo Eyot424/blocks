@@ -3,24 +3,24 @@ export default {
     errmsg: "",
     data: {
         total: 791,
-        item: [{
-            activity_id: "1992440",
-            city_names: "北京市",
-            city_id: "131",
-            activity_name: "乐诚优选便利店+",
-            activity_description: "更多优惠活动等你来~~",
-            activity_owner: "彭洁亮",
-            start_time: "2017-06-13 00:00:00",
-            end_time: "2017-08-14 23:59:59",
-            activity_status: "1",
-            is_owner: 1,
-            shop_num: 0,
-            type_desc: [],
-            smart: 0,
-            approve_status: 5
+        item: [
+        {
+            "id":10001,                                 //活动id
+            "name":"测试活动",                          //活动名称
+            "sources":"1,2",                            //数据来源id
+            "sources_name":"百度竞品，注册未转化",        //数据来源名称，用于展示
+            "city_ids":"131,289",                      //城市id
+            "city_ids_name":"北京市,上海市",          //城市名称
+            "coupon_start_time":1499066195,             //注券开始时间
+            "coupon_date":"2017-07-03",                 //注券日
+            "status":"2",                               //状态id
+            "status_name":"上线",                     //状态名称
+            "operator":"王笑天" ,                         //操作人
+            "coupon_succ_num":299999,           //注券成功数
+            "coupon_fail_num":1,                //注券失败数
         },
         {
-            activity_id: "1992307",
+            id: "1992307",
             city_names: "北京市",
             city_id: "131",
             activity_name: "便利店大酬宾返券活动",
@@ -36,7 +36,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1990476",
+            id: "1990476",
             city_names: "霍邱县",
             city_id: "2498",
             activity_name: "霍邱下单返券活动",
@@ -52,7 +52,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1984689",
+            id: "1984689",
             city_names: "兴化市",
             city_id: "1324",
             activity_name: "兴化云小苗下单返券20-10互斥",
@@ -68,7 +68,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1973927",
+            id: "1973927",
             city_names: "沈阳市",
             city_id: "58",
             activity_name: "果飘飘奶茶进店满15送2元代金券",
@@ -84,7 +84,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1963410",
+            id: "1963410",
             city_names: "大连市",
             city_id: "167",
             activity_name: "大连下单反卷",
@@ -100,7 +100,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1949329",
+            id: "1949329",
             city_names: "赣州市",
             city_id: "365",
             activity_name: "赣州满50-3元",
@@ -116,7 +116,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1949205",
+            id: "1949205",
             city_names: "哈尔滨市",
             city_id: "48",
             activity_name: "吃到嗨，下单返红包",
@@ -132,7 +132,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1942075",
+            id: "1942075",
             city_names: "全国",
             city_id: "1",
             activity_name: "百利家100返5",
@@ -148,7 +148,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1939756",
+            id: "1939756",
             city_names: "迁安市",
             city_id: "1223",
             activity_name: "人人赚：打开APP点击右下角【我的】【分享有礼】【面对面邀请】每成功邀请一个新客户下单返6元",
@@ -164,7 +164,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1938725",
+            id: "1938725",
             city_names: "北京市",
             city_id: "131",
             activity_name: "花舍餐饮管理（北京）有限公司",
@@ -180,7 +180,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1935711",
+            id: "1935711",
             city_names: "西安市",
             city_id: "233",
             activity_name: "九九精武",
@@ -196,7 +196,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1930231",
+            id: "1930231",
             city_names: "武汉市",
             city_id: "218",
             activity_name: "满35元送三元现金券",
@@ -212,7 +212,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1927136",
+            id: "1927136",
             city_names: "全国",
             city_id: "1",
             activity_name: "个个鲜满59返25元",
@@ -228,7 +228,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1923128",
+            id: "1923128",
             city_names: "鸡西市",
             city_id: "46",
             activity_name: "鸡西下单返券",
@@ -244,7 +244,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1913639",
+            id: "1913639",
             city_names: "镇江市",
             city_id: "160",
             activity_name: "下单返券测试",
@@ -260,7 +260,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1913569",
+            id: "1913569",
             city_names: "镇江市",
             city_id: "160",
             activity_name: "镇江下单返券测试",
@@ -276,7 +276,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1913551",
+            id: "1913551",
             city_names: "泰州市",
             city_id: "276",
             activity_name: "泰州下单返券",
@@ -292,7 +292,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1911149",
+            id: "1911149",
             city_names: "衡阳市",
             city_id: "159",
             activity_name: "衡阳5月下单返红包30-5",
@@ -308,7 +308,7 @@ export default {
             approve_status: 5
         },
         {
-            activity_id: "1898890",
+            id: "1898890",
             city_names: "通化市",
             city_id: "165",
             activity_name: "25元返3元代金券",
@@ -325,7 +325,7 @@ export default {
         }],
         curpage: 1,
         perpage: 20,
-        activity_id: "",
+        id: "",
         activity_name: "",
         activity_status: 0,
         start_time: "",

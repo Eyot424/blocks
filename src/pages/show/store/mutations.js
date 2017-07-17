@@ -15,6 +15,9 @@ export default {
     },
     [types.SET_FORM_DATA](state,items) {
         state.getFormData[items.ref] = items.value;
+    },
+    getActivityStatusList(state, val) {
+        state.activityStatusList = val;
     }
 }
 

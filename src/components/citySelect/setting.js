@@ -26,14 +26,16 @@ index.props['settingDefinition'] = {
         submitData: function() {
             return {
                 inputIcon: this.inputIcon.value,
-                inputRef: this.inputRef.value
+                inputRef: this.inputRef.value,
+                ref: this.ref
             }
         }
     },
     methods:{
         backFill: function(submitData) {
             this.inputIcon.value = submitData.inputIcon,
-            this.inputRef.value = submitData.inputRef
+            this.inputRef.value = submitData.inputRef,
+            this.ref = submitData.ref
         }
     }
 }

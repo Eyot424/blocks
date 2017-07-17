@@ -3,7 +3,7 @@
         <el-form :inline="true">
             <slot></slot>
             <el-form-item>
-                <el-button type="primary" @click="handleSubmit" icon="edit">提交</el-button>
+                <el-button type="primary" @click="handleSubmit" icon="search">查询</el-button>
             </el-form-item>
         </el-form>
         <el-form :inline="true" class="button-list">
@@ -81,25 +81,33 @@
         props: {
             tableData: {
                 type: Array,
-                default: []
+                default() {
+                    return tableData.data.item;
+                }
             },
             tableList: {
                 type: Array,
-                default: [{
-                    label: '默认',
-                    prop: ''
-                }]
+                default() { 
+                    return [{
+                        label: '默认',
+                        prop: ''
+                    }]
+                }
             },
             url: {
                 type: String,
-                default: ''
+                default() {
+                    return ''
+                }
             },
             buttonList: {
                 type: Array,
-                default: [{
-                    label: '默认',
-                    prop: ''
-                }]
+                default() {
+                    return [{
+                        label: '默认',
+                        prop: ''
+                    }]
+                } 
             },
             otherButtons: {
                 type: Array,
@@ -112,23 +120,29 @@
             },
             nestedData:{
                 type: Array,
-                default: [{
-                    prop: '',
-                    label: '默认'
-                }]
+                default() {
+                    return [{
+                        prop: '',
+                        label: '默认'
+                    }]
+                }
             },
             formData:{
                 type: Array,
-                default: []
+                default() {
+                    return []
+                }
             },
             dialogInfo: {
                 type: Object,
-                default: {
-                    text: '',
-                    data: {},
-                    visible: false,
-                    url: ''
-                }
+                default() {
+                    return {
+                        text: '',
+                        data: {},
+                        visible: false,
+                        url: ''
+                    }
+                } 
             }
         },
         data(){

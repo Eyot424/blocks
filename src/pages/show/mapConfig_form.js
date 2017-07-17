@@ -174,7 +174,6 @@ export default {
             getters: {},
             mutations: {
                 createPackage() {
-                    debugger
                     this.dialogList.state.dialogFormVisible = true;
                 }
             },

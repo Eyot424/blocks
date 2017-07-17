@@ -111,28 +111,28 @@ export default {
 		"data": {
 			"props": {
 				"tableList": [{
-					"prop": "id",
+					"prop": "`${data.id}`",
 					"label": "文案包编号",
 					"url": ""
 				}, {
 					"label": "短信文案",
-					"prop": "sms",
+					"prop": "`${data.sms_content}`",
 					"url": ""
 				}, {
 					"label": "短信发放时间",
-					"prop": "sms_start_time",
+					"prop": "`${data.sms_start_time}-${data.sms_end_time}`",
 					"url": ""
 				}, {
 					"label": "push文案",
-					"prop": "push",
+					"prop": "`${data.push_content}`",
 					"url": ""
 				}, {
 					"label": "push发放时间",
-					"prop": "push_start_time",
+					"prop": "`${data.push_start_time}-${data.push_end_time}`",
 					"url": ""
 				}, {
 					"label": "触达人数",
-					"prop": "num",
+					"prop": "`${data.user_num}`",
 					"url": ""
 				}],
 				"buttonList": [{
