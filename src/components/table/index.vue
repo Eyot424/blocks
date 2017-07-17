@@ -3,10 +3,11 @@
          <el-form :inline="true" class="button-list">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
-                    <el-button :icon="item.icon" type="primary" @click="jumpUrl(item.url)">{{item.label}}</el-button>
+                    <el-button :icon="item.icon" type="primary" 
+                    @click="jumpUrl(item.url)">{{item.label}}</el-button>
                 </template>
                 <template v-else>
-                    <el-button type="primary" @click="item.event">{{item.label}}</el-button>
+                    <el-button :icon="item.icon" type="primary" @click="item.event">{{item.label}}</el-button>
                 </template>
             </el-form-item>
         </el-form>
@@ -31,10 +32,10 @@
                 <template scope="scope">
                     <template v-for="item in buttonList">
                         <template v-if="isShow(item, scope.row)">
-                            <template v-if="item.type == 1 || item.type == 2 || item.type == 6">
+                            <template v-if="item.type == 1 || item.type == 6">
                                 <el-button type="primary" size="small" @click="handleOpen(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
-                            <template v-else-if="item.type == 3 || item.type == 4 || item.type == 5">
+                            <template v-else-if="item.type == 3 || item.type == 2 || item.type == 4 || item.type == 5">
                                 <el-button type="primary" size="small" @click="handleEnsure(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
                         </template>
@@ -57,14 +58,15 @@
 </template>
 
 <script>
+    import mockData from './data.js'
     export default {
         name: 'tables',
         props: {
             tableData: {
                 type: Array,
-                default(){
-                    return []
-                }
+                default() {
+                    return mockData.data.item
+                } 
             },
             tableList: {
                 type: Array,

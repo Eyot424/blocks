@@ -9,10 +9,12 @@
         <el-form :inline="true" class="button-list">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
-                    <el-button :icon="item.icon" type="primary" @click="jumpUrl(item.url)">{{item.label}}</el-button>
+                    <el-button :icon="item.icon" type="primary" 
+                    @click="jumpUrl(item.url)">{{item.label}}</el-button>
                 </template>
                 <template v-else>
-                    <el-button type="primary" @click="item.event">{{item.label}}</el-button>
+                    <el-button type="primary" @click="item.event">{{item.label}}
+                    </el-button>
                 </template>
             </el-form-item>
         </el-form>

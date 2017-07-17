@@ -1,6 +1,7 @@
 import index from './index'
 import tableList from './tableList/index.vue'
 import buttonList from './buttonList/index.vue'
+import otherButtons from './otherButtons/index.vue'
 index.props['settingDefinition'] = {
     setting: {
         tableListData: {
@@ -41,7 +42,8 @@ index.props['settingDefinition'] = {
     },
     components:{
         tableList,
-        buttonList
+        buttonList,
+        otherButtons
     },
     computed: {
         submitData: function () {

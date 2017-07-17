@@ -13,7 +13,9 @@ export default {
                 
             }
         },
-        extend: {},
+        extend: {
+            
+        },
         data: {
             props: {
                 
@@ -177,13 +179,17 @@ export default {
                 }
             },
             actions: {
-                createPackage() {
+                
+            }
+        },
+        extend: {
+            methods: {
+                createPackage: function() {
                     debugger
-                    this.dialogList.state.dialogFormVisible = true;
+                    console.log('test')
                 }
             }
         },
-        extend: {},
         data: {
             props: {
                 

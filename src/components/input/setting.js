@@ -1,4 +1,5 @@
 import index from './index'
+import ensureRef from '../ensureRef/index.vue'
 index.props['settingDefinition'] = {
     setting: {
         inputIcon: {
@@ -18,13 +19,16 @@ index.props['settingDefinition'] = {
             }
         },
         inputRef: {
-            type: 'el-input',
+            type: 'ensureRef',
             label: '绑定字段',
             require: true,
             componentData: {
                 value:''
             },
         }
+    },
+    components: {
+        ensureRef
     },
     computed: {
         submitData: function () {

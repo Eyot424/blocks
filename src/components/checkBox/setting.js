@@ -1,4 +1,5 @@
 import index from './index'
+import ensureRef from '../ensureRef/index.vue'
 import checkBoxList from './checkBoxList/index.vue'
 index.props['settingDefinition'] = {
     setting: {
@@ -15,7 +16,7 @@ index.props['settingDefinition'] = {
             },
         },
         checkRef: {
-            type: 'el-input',
+            type: 'ensureRef',
             label: '绑定字段',
             require: true,
             componentData: {
@@ -24,7 +25,8 @@ index.props['settingDefinition'] = {
         }
     },
     components: {
-        checkBoxList
+        checkBoxList,
+        ensureRef
     },
     computed: {
         submitData: function() {

@@ -1,5 +1,6 @@
 import index from './index'
 import radioList from './radioList/index.vue'
+import ensureRef from '../ensureRef/index.vue'
 index.props['settingDefinition'] = {
     setting: {
         allRadioData: {
@@ -17,7 +18,7 @@ index.props['settingDefinition'] = {
             },
         },
         radioRef: {
-            type: 'el-input',
+            type: 'ensureRef',
             label: '绑定字段',
             require: true,
             componentData: {
@@ -26,7 +27,8 @@ index.props['settingDefinition'] = {
         }
     },
     components: {
-        radioList
+        radioList,
+        ensureRef
     },
     computed: {
         submitData: function() {
