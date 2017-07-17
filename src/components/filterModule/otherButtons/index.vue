@@ -24,7 +24,7 @@
                 </el-col>
                 <el-col :span="10">
                     <el-input placeholder="请输入内容"
-                              v-model="item.event">
+                              v-model="item.clickEvent">
                         <template slot="prepend">绑定事件</template>
                     </el-input>
                 </el-col>
@@ -66,7 +66,7 @@
             addColumn: function () {
                 this.selfValue.push({
                     label: '',
-                    event: '',
+                    clickEvent: '',
                     icons: '',
                     url: ''
                 })
