@@ -3,11 +3,9 @@ let state = {
     getFormData: {}
 }
 const getters = {
-
 }
 
 const actions = {
-
 }
 
 const mutations = {

@@ -13,11 +13,10 @@ export default {
     [types.JUMP_TARGET_LIST](state, val) {
     	state.allJumpPageData = val;
     },
-    [SET_FORM_PAGE_DATA](state, items) {
-        state.getFormPageData[item.ref] = items.value;
+    [types.SET_FORM_PAGE_DATA](state, items) {
+        state.getFormPageData[items.ref] = items.value;
     },
     getActivityStatusList(state, val) {
         state.activityStatusList = val;
     }
 }
-

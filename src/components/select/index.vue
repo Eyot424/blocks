@@ -25,10 +25,6 @@
                     }]
                 }
             },
-            selectRef: {
-                type: String,
-                default: ''
-            },
             selectValue: {
                 type: String,
                 default: ''
@@ -43,8 +39,10 @@
                 type: Function
             }
         },
-        computed:{
-
+        data() {
+            return {
+                selectValue: ''
+            }
         },
         mounted() {
             if(this.getAllData) {
@@ -63,10 +61,15 @@
         methods: {
             commitState() {
                 let data = {
-                    ref: this.selectRef,
-                    value: this.selectValue
+                    ref: this.checkRef,
+                    value: this.checkList
                 }
-                this.$store.commit('setFormData', data)
+                if(this.$store.state.getFormPageData) {
+                    this.$store.commit('setFormPageData', data)
+                }
+                if(this.$store.state.getFormData) {
+                    this.$store.commit('setFormData', data)
+                }
             }
         }
     }

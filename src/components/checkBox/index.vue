@@ -22,12 +22,6 @@
                     ]
                 }
             },
-            checkList: {
-                type: Array,
-                default() {
-                    return []
-                }
-            },
             checkRef: {
                 type: String,
                 default() {
@@ -38,13 +32,18 @@
                 type: Function
             }
         },
+        data() {
+            return {
+                checkList: []
+            }
+        },
         mounted() {
             if(this.getAllCheckData) {
                 this.getAllCheckData();
             }
         },
         computed:{
-            
+
         },
         watch: {
             checkRef: function() {
@@ -60,7 +59,12 @@
                     ref: this.checkRef,
                     value: this.checkList
                 }
-                this.$store.commit('setFormData', data)
+                if(this.$store.state.getFormPageData) {
+                    this.$store.commit('setFormPageData', data)
+                }
+                if(this.$store.state.getFormData) {
+                    this.$store.commit('setFormData', data)
+                }
             }
         }
     }

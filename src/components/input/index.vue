@@ -23,10 +23,11 @@
             inputRef: {
                 type: String,
                 default: ''
-            },
-            inputValue: {
-                type: String,
-                default: ''
+            }
+        },
+        data() {
+            return {
+                inputValue: ''
             }
         },
         watch: {
@@ -43,7 +44,12 @@
                     ref: this.inputRef,
                     value: this.inputValue
                 }
-                this.$store.commit('setFormData', data)
+                if(this.$store.state.getFormPageData) {
+                    this.$store.commit('setFormPageData', data)
+                }
+                if(this.$store.state.getFormData) {
+                    this.$store.commit('setFormData', data)
+                }
             }
         }
     }

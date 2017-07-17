@@ -60,7 +60,6 @@
             selfValue: {
                 deep: true,
                 handler: function (value) {
-
                     this.$emit('input', value)
                 }
             }
