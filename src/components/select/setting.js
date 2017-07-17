@@ -1,5 +1,6 @@
 import index from './index'
 import selectList from './selectList/index.vue'
+import ensureRef from '../ensureRef/index.vue'
 index.props['settingDefinition'] = {
     setting: {
         allData: {
@@ -8,12 +9,13 @@ index.props['settingDefinition'] = {
             require: true,
             componentData: {
                 value: [{
-                    label: '默认'
+                    label: '默认',
+                    value: ''
                 }]
             },
         },
         selectRef: {
-            type: 'el-input',
+            type: 'ensureRef',
             label: '绑定字段',
             require: true,
             componentData: {
@@ -22,7 +24,8 @@ index.props['settingDefinition'] = {
         }
     },
     components: {
-        selectList
+        selectList,
+        ensureRef
     },
     computed: {
         submitData: function () {
