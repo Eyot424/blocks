@@ -148,7 +148,7 @@
         data(){
             return {}
         },
-        store,
+        // store,
         methods: {
             changePage: function(val) {
                 axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)

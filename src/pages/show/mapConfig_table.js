@@ -64,7 +64,6 @@ export default {
                             });
                         }
                     }
-                    debugger
                     store.commit('getActivityStatusList', result)
                 }
             }

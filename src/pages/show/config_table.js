@@ -81,7 +81,7 @@ export default {
 					"label": "创建活动",
 					"prop": "",
 					"icon": "plus",
-					"url": "’/usercrm/mis/createtouchnewactivity‘"
+					"url": "/usercrm/mis/createtouchnewactivity"
 				}],
 				"ref": "activityList"
 			}
@@ -136,6 +136,7 @@ export default {
 			"tag": "selects",
 			"data": {
 				"props": {
+					"selectValue": "",
 					"selectRef": "source",
 					"ref": "source"
 				}
