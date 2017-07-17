@@ -1,6 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
+let formStore;
 
 let state = {
     getFormPageData: {}
@@ -18,9 +16,9 @@ const mutations = {
         state.getFormPageData[items.ref] = items.value
     }
 }
-export default new Vuex.Store({
+export default formStore = {
     state,
     getters,
     actions,
     mutations
-})
+}

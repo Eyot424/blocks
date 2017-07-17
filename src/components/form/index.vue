@@ -23,7 +23,8 @@
 </style>
 <script>
     import nestRender from './nestRender'
-    // import store from './store.js'
+    import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
+    import formStore from './formStore.js'
     export default {
         name: 'forms',
         props: {
@@ -37,7 +38,6 @@
         data() {
             return {}
         },
-        // store,
         mounted() {
             if(this.getAllCheckData) {
                 this.getAllCheckData();
@@ -48,6 +48,12 @@
         },
         nest: true,
         nestRender,
-        components: {}
+        components: {},
+        computed: {
+            ...mapState(formStore.state),
+            ...mapGetters(formStore.getters),
+            ...mapMutations(formStore.mutations),
+            ...mapActions(formStore.actions)
+        }
     }
 </script>
