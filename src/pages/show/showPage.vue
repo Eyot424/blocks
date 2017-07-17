@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import config from './config_table'
-    import mapConfig from './mapConfig_table'
+    import config from './config_form'
+    import mapConfig from './mapConfig_form'
     import engine from '@/components/engine/engine.js'
 
 

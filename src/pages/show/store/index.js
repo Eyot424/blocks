@@ -11,7 +11,7 @@ const state = {
     allDepartmentData: [],
     pushPackages: [],
     allJumpPageData: [],
-    getFormData: {},
+    getFormPageData: {},
     activityStatusList: []
 }
 

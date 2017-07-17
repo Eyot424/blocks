@@ -28,23 +28,13 @@
     export default {
         name: 'forms',
         props: {
-            getAllCheckData: {
-                type: Function
-            },
-            getAllData: {
-                type: Function
-            }
+            
         },
         data() {
             return {}
         },
         mounted() {
-            if(this.getAllCheckData) {
-                this.getAllCheckData();
-            }
-            if(this.getAllData) {
-                this.getAllData();
-            }
+            
         },
         nest: true,
         nestRender,
