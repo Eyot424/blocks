@@ -11,7 +11,7 @@ const state = {
     allDepartmentData: [],
     pushPackages: [],
     allJumpPageData: [],
-    formData: {}
+    getFormData: {}
 }
 
 export default new Vuex.Store({

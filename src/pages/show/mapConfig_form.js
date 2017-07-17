@@ -171,6 +171,32 @@ export default {
             },
             getters: {},
             mutations: {
+                createPackage() {
+                    debugger
+                    this.dialogList.state.dialogFormVisible = true;
+                }
+            },
+            actions: {
+                createPackage() {
+                    debugger
+                    this.dialogList.state.dialogFormVisible = true;
+                }
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                
+            }
+        }
+    },
+    dialogList: {
+        vuex: { //vuex.store
+            state: {
+                dialogFormVisible: false
+            },
+            getters: {},
+            mutations: {
 
             },
             actions: {

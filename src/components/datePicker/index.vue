@@ -1,11 +1,11 @@
 <template>
     <div class="datePicker">
         <el-date-picker
-            v-model="value"
+            v-model="dateValue"
             :format="dateFormat"
             type="date"
             :placeholder="placeholder"
-            ::picker-options="pickerOptions">
+            :picker-options="pickerOptions">
         </el-date-picker>
         {{detail}}
     </div>
@@ -17,7 +17,7 @@
         props: {
             dateFormat: {
                 type: String,
-                default: 'yyyy-MM-dd'
+                default: 'yyyyMMdd'
             },
             placeholder: {
                 type: String,
@@ -31,10 +31,37 @@
                     return ''
                 }
             },
+            dateRef: {
+                type: String,
+                default: ''
+            },
+            dateValue: {
+                type: String,
+                default() {
+                    return ''
+                }
+            },
             pickerOptions: {
                 disabledDate(time) {
                     return time.getTime() < Date.now() - 8.64e7;
                 }
+            }
+        },
+        watch: {
+            dateRef: function() {
+                this.commitState()
+            },
+            dateValue: function() {
+                this.commitState()
+            }
+        },
+        methods: {
+            commitState() {
+                let data = {
+                    ref: this.dateRef,
+                    value: this.dateValue
+                }
+                this.$store.commit('setFormData', data)
             }
         }
     }

@@ -16,15 +16,15 @@
     export default {
         name: 'selects',
         props: {
-            allData: {
-                type: Array,
-                default() { 
-                    return [{
-                        label: '请选择',
-                        value: ''
-                    }]
-                }
-            },
+            // allData: {
+            //     type: Array,
+            //     default() { 
+            //         return [{
+            //             label: '请选择',
+            //             value: ''
+            //         }]
+            //     }
+            // },
             selectRef: {
                 type: String,
                 default: ''
@@ -42,6 +42,9 @@
             getAllData: {
                 type: Function
             }
+        },
+        computed:{
+            allData(){},
         },
         mounted() {
             if(this.getAllData) {

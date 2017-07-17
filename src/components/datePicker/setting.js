@@ -26,6 +26,14 @@ index.props['settingDefinition'] = {
             componentData: {
                 value:''
             },
+        },
+        dateRef: {
+            type: 'el-input',
+            label: '绑定字段',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     computed: {
@@ -34,6 +42,7 @@ index.props['settingDefinition'] = {
                 dateFormat: this.dateFormat.value,
                 placeholder: this.placeholder.value,
                 detail: this.detail.value,
+                dateRef: this.dateRef.value,
                 ref: this.ref
             }
         }
@@ -43,6 +52,7 @@ index.props['settingDefinition'] = {
             this.dateFormat.value = submitData.dateFormat
             this.placeholder.value = submitData.placeholder
             this.detail.value = submitData.detail
+            this.dateRef.value = submitData.dateRef
             this.ref = submitData.ref
         }
     }

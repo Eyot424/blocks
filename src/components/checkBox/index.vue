@@ -43,6 +43,9 @@
                 this.getAllCheckData();
             }
         },
+        computed:{
+            
+        },
         watch: {
             checkRef: function() {
                 this.commitState()

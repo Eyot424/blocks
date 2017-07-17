@@ -45,6 +45,7 @@ export default {
 				"props": {
 					"allCheckData": [],
 					"checkList": [],
+					"checkRef": "sources",
 					"ref": "sources"
 				}
 			}
@@ -65,6 +66,7 @@ export default {
 					}],
 					"checkList": [],
 					"detail": "注意：使用部门是预算统计的重要依据,请认真选择",
+					"selectRef": "department",
 					"ref": "department"
 				}
 			}
@@ -72,6 +74,7 @@ export default {
 			"tag": "inputs",
 			"data": {
 				"props": {
+					"inputRef": "total_num",
 					"ref": "total_num"
 				}
 			}
@@ -82,6 +85,7 @@ export default {
 					"dateFormat": "",
 					"placeholder": "发券时间",
 					"detail": "时间必须选择今天之后",
+					"dateRef": "coupon_date",
 					"ref": "coupon_date"
 				}
 			}
@@ -143,7 +147,7 @@ export default {
 				"otherButtons": [{
 					"label": "创建文案包",
 					"prop": "",
-					"event": "",
+					"event": "createPackage",
 					"icon": "plus",
 					"url": ""
 				}],
@@ -222,6 +226,7 @@ export default {
 					}],
 					"checkList": [],
 					"detail": "",
+					"selectRef": "push_jump_page",
 					"ref": "push_jump_page"
 				}
 			}
