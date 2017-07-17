@@ -9,7 +9,7 @@
         <el-form :inline="true" class="button-list">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
-                    <el-button :icon="item.icon" type="primary" 
+                    <el-button :icon="item.icon" type="primary"
                     @click="jumpUrl(item.url)">{{item.label}}</el-button>
                 </template>
                 <template v-else>
@@ -75,19 +75,20 @@
     import axios from 'axios'
     import tableData from './data.js'
     import nestRender from './nestRender'
-    import store from './store.js'
+    import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
+    import filterStore from './filterStore.js'
     export default {
         name: 'filterModule',
         props: {
             tableData: {
                 type: Array,
                 default() {
-                    return tableData.data.item;
+                    return []
                 }
             },
             tableList: {
                 type: Array,
-                default() { 
+                default() {
                     return [{
                         label: '默认',
                         prop: ''
@@ -100,6 +101,18 @@
                     return ''
                 }
             },
+            curPage: {
+                type: Number,
+                default: 0
+            },
+            perPage: {
+                type: Number,
+                default: 10
+            },
+            total: {
+                type: Number,
+                default: 10
+            },
             buttonList: {
                 type: Array,
                 default() {
@@ -107,16 +120,18 @@
                         label: '默认',
                         prop: ''
                     }]
-                } 
+                }
             },
             otherButtons: {
                 type: Array,
-                default: [{
-                    label: '默认',
-                    event: '',
-                    icons: '',
-                    url: ''
-                }]
+                default() {
+                    return [{
+                        label: '默认',
+                        clickEvent: '',
+                        icons: '',
+                        url: ''
+                    }]
+                }
             },
             nestedData:{
                 type: Array,
@@ -142,27 +157,26 @@
                         visible: false,
                         url: ''
                     }
-                } 
+                }
             }
         },
         data(){
             return {}
         },
-        store,
         methods: {
             changePage: function(val) {
                 axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)
                 .then(response => {
                     this.tableData = response.data.item;
-                    this.curPage = response.data.curpage;
-                    this.perPage = response.data.perpage;
-                    this.total = response.data.total;
+                    this.curPage = Number(response.data.curpage);
+                    this.perPage = Number(response.data.perpage);
+                    this.total = Number(response.data.total);
                 })
                 .catch(error => {
                     this.tableData = tableData.data.item;
-                    this.curPage = tableData.data.curpage;
-                    this.perPage = tableData.data.perpage;
-                    this.total = tableData.data.total;
+                    this.curPage = Number(tableData.data.curpage);
+                    this.perPage = Number(tableData.data.perpage);
+                    this.total = Number(tableData.data.total);
                 });
             },
             getScopeData: function(scope, item) {
@@ -241,25 +255,31 @@
             url: function(val) {
                 axios.get(this.url)
                 .then(response => {
-                    this.tableData = response.data.item;
-                    this.curPage = response.data.curpage;
-                    this.perPage = response.data.perpage;
-                    this.total = response.data.total;
+                    this.tableData = response.data.item
+                    this.curPage = Number(response.data.curpage)
+                    this.perPage = Number(response.data.perpage)
+                    this.total = Number(response.data.total)
                 })
                 .catch(error => {
-                    this.tableData = tableData.data.item;
-                    this.curPage = tableData.data.curpage;
-                    this.perPage = tableData.data.perpage;
-                    this.total = tableData.data.total;
+                    this.tableData = tableData.data.item
+                    this.curPage = Number(tableData.data.curpage)
+                    this.perPage = Number(tableData.data.perpage)
+                    this.total = Number(tableData.data.total)
                 });
             },
             nestedData: function(val){
-                window.ref = this.$refs;
+                window.ref = this.$refs
             }
         },
         nest: true,
         nestRender,
-        components: {}
+        components: {},
+        computed: {
+            ...mapState(filterStore.state),
+            ...mapGetters(filterStore.getters),
+            ...mapMutations(filterStore.mutations),
+            ...mapActions(filterStore.actions)
+        }
     }
 </script>
 

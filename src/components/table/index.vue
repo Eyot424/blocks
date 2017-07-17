@@ -3,7 +3,7 @@
          <el-form :inline="true" class="button-list">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
-                    <el-button :icon="item.icon" type="primary" 
+                    <el-button :icon="item.icon" type="primary"
                     @click="jumpUrl(item.url)">{{item.label}}</el-button>
                 </template>
                 <template v-else>
@@ -46,7 +46,7 @@
         <el-dialog
             title="提示"
             :visible.sync="dialogInfo.visible"
-            
+
             size="tiny">
             <span>{{dialogInfo.text}}</span>
             <span slot="footer" class="dialog-footer">
@@ -65,8 +65,8 @@
             tableData: {
                 type: Array,
                 default() {
-                    return mockData.data.item
-                } 
+                    return []
+                }
             },
             tableList: {
                 type: Array,
@@ -93,7 +93,7 @@
             },
             dialogInfo: {
                 type: Object,
-                default(){ 
+                default(){
                     return {
                         text: '',
                         data: {},

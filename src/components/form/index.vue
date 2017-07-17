@@ -23,21 +23,21 @@
 </style>
 <script>
     import nestRender from './nestRender'
-    import store from './store.js'
+    // import store from './store.js'
     export default {
         name: 'forms',
-        props: { 
+        props: {
             getAllCheckData: {
                 type: Function
             },
             getAllData: {
                 type: Function
-            }        
+            }
         },
         data() {
             return {}
         },
-        store,
+        // store,
         mounted() {
             if(this.getAllCheckData) {
                 this.getAllCheckData();

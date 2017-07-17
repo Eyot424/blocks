@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
-
+let filterStore;
 let state = {
     getFormData: {}
 }
@@ -10,18 +7,17 @@ const getters = {
 }
 
 const actions = {
-    
+
 }
 
 const mutations = {
     setFormData: (state, items) => {
-    	debugger
         state.getFormData[items.ref] = items.value
     }
 }
-export default new Vuex.Store({
+export default filterStore = {
     state,
     getters,
     actions,
     mutations
-})
+}

@@ -18,7 +18,7 @@
         props: {
             allData: {
                 type: Array,
-                default() { 
+                default() {
                     return [{
                         label: '请选择',
                         value: ''
@@ -44,13 +44,13 @@
             }
         },
         computed:{
-            
+
         },
         mounted() {
             if(this.getAllData) {
                 this.getAllData();
             }
-            
+
         },
         watch: {
             selectRef: function() {

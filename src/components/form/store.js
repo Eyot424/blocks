@@ -10,11 +10,11 @@ const getters = {
 }
 
 const actions = {
-    
+
 }
 
 const mutations = {
-    setFormData: (state, items) => {
+    setFormPageData: (state, items) => {
         state.getFormPageData[items.ref] = items.value
     }
 }
