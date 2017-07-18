@@ -25,6 +25,22 @@ index.props['settingDefinition'] = {
             componentData: {
                 value:''
             },
+        },
+        mutationName: {
+            type: 'el-input',
+            label: '绑定事件名',
+            require: true,
+            componentData: {
+                value:''
+            },
+        },
+        stateName: {
+            type: 'el-input',
+            label: '默认回填数据',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     components: {
@@ -35,7 +51,9 @@ index.props['settingDefinition'] = {
             return {
                 inputIcon: this.inputIcon.value,
                 placeholder: this.placeholder.value,
-                inputRef: this.inputRef.value
+                inputRef: this.inputRef.value,
+                mutationName: this.mutationName.value,
+                stateName: this.stateName.value
             }
         }
     },
@@ -44,6 +62,8 @@ index.props['settingDefinition'] = {
             this.inputIcon.value = submitData.inputIcon
             this.placeholder.value = submitData.placeholder
             this.inputRef.value = submitData.inputRef
+            this.mutationName.value = submitData.mutationName,
+            this.stateName.value = submitData.stateName
         }
     }
 }

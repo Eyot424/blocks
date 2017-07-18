@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
+        <el-input :value="selfInputValue" @input="updateValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
     </div>
 </template>
 
