@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input v-model="inputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
+        <el-input v-model="selfInputValue" :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
     </div>
 </template>
 
@@ -23,18 +23,31 @@
             inputRef: {
                 type: String,
                 default: ''
+            },
+            changeInputValue: {
+                type: Function
             }
         },
         data() {
             return {
-                inputValue: ''
+                selfInputValue: ''
+            }
+        },
+        computed:{
+            inputValue:function () {
+                return this.selfInputValue
+//                return this.$store.state.total;
             }
         },
         watch: {
             inputRef: function() {
                 this.commitState()
             },
-            inputValue: function() {
+            inputValue: function(value) {
+                this.selfInputValue = value
+                this.commitState()
+            },
+            selfInputValue: function(value) {
                 this.commitState()
             }
         },
@@ -42,7 +55,7 @@
             commitState() {
                 let data = {
                     ref: this.inputRef,
-                    value: this.inputValue
+                    value: this.selfInputValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)
@@ -50,7 +63,7 @@
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
                 }
-            }
+            },
         }
     }
 </script>
