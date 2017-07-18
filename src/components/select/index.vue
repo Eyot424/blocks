@@ -1,6 +1,6 @@
 <template>
     <div class="selects">
-        <el-select v-model="selectValue" placeholder="请选择">
+        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange">
             <el-option
                 v-for="item in allData"
                 :key="item.label"
@@ -25,6 +25,10 @@
                     }]
                 }
             },
+            selectRef: {
+                type: String,
+                default: ''
+            },
             selectValue: {
                 type: String,
                 default: ''
@@ -36,6 +40,9 @@
                 }
             },
             getAllData: {
+                type: Function
+            },
+            changeOption: {
                 type: Function
             }
         },
@@ -61,14 +68,19 @@
         methods: {
             commitState() {
                 let data = {
-                    ref: this.checkRef,
-                    value: this.checkList
+                    ref: this.selectRef,
+                    value: this.selectValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)
                 }
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
+                }
+            },
+            optionChange() {
+                if(this.changeOption) {
+                    this.changeOption();
                 }
             }
         }

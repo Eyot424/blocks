@@ -12,7 +12,19 @@ const state = {
     pushPackages: [],
     allJumpPageData: [],
     getFormPageData: {},
-    activityStatusList: []
+    getFormData: {},
+    packageDialogShow: false,
+    ruleForm: {
+        name: '',
+        sources: [],
+        department: '',
+        totalNumber: '',
+        totalNum: '',
+        couponDate: '',
+        dispatchType: 2,
+        cityIds: []
+    },
+    total: 0
 }
 
 export default new Vuex.Store({

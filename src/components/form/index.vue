@@ -4,7 +4,7 @@
             <slot></slot>
             <el-row>
                 <el-col :span="12" :offset="10">
-                    <el-button type="primary" icon="edit">提交</el-button>
+                    <el-button type="primary" icon="edit" @click="submit">提交</el-button>
                 </el-col>
             </el-row>
         </el-form>
@@ -23,8 +23,6 @@
 </style>
 <script>
     import nestRender from './nestRender'
-    import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
-    import formStore from './formStore.js'
     export default {
         name: 'forms',
         props: {
@@ -36,14 +34,13 @@
         mounted() {
             
         },
+        methods: {
+            submit() {
+                this.$store.dispatch('submitForm')
+            }
+        },
         nest: true,
         nestRender,
-        components: {},
-        computed: {
-            ...mapState(formStore.state),
-            ...mapGetters(formStore.getters),
-            ...mapMutations(formStore.mutations),
-            ...mapActions(formStore.actions)
-        }
+        components: {}
     }
 </script>

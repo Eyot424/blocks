@@ -16,6 +16,9 @@ export default {
 				}, {
 					"label": "使用部门",
 					"prop": "department"
+				},{
+					"label": "总人数",
+					"prop": "total"
 				}, {
 					"label": "人数",
 					"prop": "total_num"
@@ -24,7 +27,7 @@ export default {
 					"prop": "coupon_date"
 				}, {
 					"label": "每个文案包发放人数",
-					"prop": "each_type"
+					"prop": "dispatch_type"
 				}],
 				"ref": "ruleForm"
 			}
@@ -53,7 +56,7 @@ export default {
 			"tag": "cityButtonBar",
 			"data": {
 				"props": {
-					"ref": "city_ids"
+					"ref": "cityIds"
 				}
 			}
 		}, {
@@ -67,6 +70,7 @@ export default {
 					"checkList": [],
 					"detail": "注意：使用部门是预算统计的重要依据,请认真选择",
 					"selectRef": "department",
+					"selectValue": "",
 					"ref": "department"
 				}
 			}
@@ -74,6 +78,19 @@ export default {
 			"tag": "inputs",
 			"data": {
 				"props": {
+					"inputIcon": "",
+					"placeholder": "",
+					"inputRef": "total",
+					"ref": "total",
+					"disabled": true
+				}
+			}
+		}, {
+			"tag": "inputs",
+			"data": {
+				"props": {
+					"inputIcon": "",
+					"placeholder": "",
 					"inputRef": "total_num",
 					"ref": "total_num"
 				}
@@ -100,8 +117,8 @@ export default {
 						"label": "自定义",
 						"value": "2"
 					}],
-					"radioRef": "each_type",
-					"ref": "each_type"
+					"radioRef": "dispatchType",
+					"ref": "dispatchType"
 				}
 			}
 		}]
@@ -188,7 +205,7 @@ export default {
 					"label": "发放人数",
 					"prop": "user_num"
 				}],
-				"ref": "packageForm"
+				"ref": "packageDialog"
 			}
 		},
 		"children": [{

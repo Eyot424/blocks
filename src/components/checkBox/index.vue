@@ -1,6 +1,6 @@
 <template>
     <div class="checkBox">
-        <el-checkbox-group v-model="checkList">
+        <el-checkbox-group v-model="checkList" @change="valueChange">
             <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
         </el-checkbox-group>
     </div>
@@ -29,6 +29,9 @@
                 }
             },
             getAllCheckData: {
+                type: Function
+            },
+            changeValue: {
                 type: Function
             }
         },
@@ -64,6 +67,11 @@
                 }
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
+                }
+            },
+            valueChange(value) {
+                if(this.changeValue) {
+                    this.changeValue(value);
                 }
             }
         }

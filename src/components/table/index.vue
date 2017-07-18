@@ -7,7 +7,7 @@
                     @click="jumpUrl(item.url)">{{item.label}}</el-button>
                 </template>
                 <template v-else>
-                    <el-button :icon="item.icon" type="primary" @click="item.event">{{item.label}}</el-button>
+                    <el-button :icon="item.icon" type="primary" @click="buttonEvent">{{item.label}}</el-button>
                 </template>
             </el-form-item>
         </el-form>
@@ -46,7 +46,6 @@
         <el-dialog
             title="提示"
             :visible.sync="dialogInfo.visible"
-
             size="tiny">
             <span>{{dialogInfo.text}}</span>
             <span slot="footer" class="dialog-footer">
@@ -101,6 +100,9 @@
                         url: ''
                     }
                 }
+            },
+            createPackage: {
+                type: Function,
             }
         },
         methods: {
@@ -167,6 +169,11 @@
                     return true;
                 } else {
                     return eval(eval(item.condition))
+                }
+            },
+            buttonEvent() {
+                if(this.createPackage) {
+                    this.createPackage();
                 }
             }
         }

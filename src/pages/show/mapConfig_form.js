@@ -7,7 +7,7 @@ export default {
             },
             getters: {},
             mutations: {
-
+                
             },
             actions: {
                 
@@ -18,7 +18,7 @@ export default {
         },
         data: {
             props: {
-                
+
             }
         }
     },
@@ -61,7 +61,44 @@ export default {
 						}
 					}
 					store.commit('getDataSourceList', result)
+                },
+                changeValue(value) {
+                   store.dispatch('getSelectedDataSource',value)
                 }
+            }
+        }
+    },
+    cityIds: {
+        vuex: {
+            state: {
+
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                changeSelectedCityIds(cityIds) {
+                    store.dispatch('getSelectedCityIds',cityIds)
+                }
+            }
+        }
+    },
+    total: {
+        vuex: {//vuex.store
+            state: {
+                inputValue: 'total'
+            },
+            getters: {
+
+            },
+            mutations: {
+
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                
             }
         }
     },
@@ -123,6 +160,32 @@ export default {
             }
         }
     },
+    dispatch_Type: {
+        vuex: {
+            state: {
+
+            }
+        },
+        data: {
+            props: {
+
+            }
+        }
+    },
+    packageDialog: {
+        vuex: {
+            state: {
+                dialogFormVisible: 'packageDialogShow'
+            },
+            getters: {},
+            mutations: {
+                
+            },
+            actions: {
+                
+            }
+        }
+    },
     push_jump_page: {
     	vuex: { //vuex.store
             state: {
@@ -173,9 +236,7 @@ export default {
             },
             getters: {},
             mutations: {
-                createPackage() {
-                    this.dialogList.state.dialogFormVisible = true;
-                }
+                
             },
             actions: {
                 
@@ -183,35 +244,14 @@ export default {
         },
         extend: {
             methods: {
-                createPackage: function() {
-                    debugger
-                    console.log('test')
-                }
-            }
-        },
-        data: {
-            props: {
-                
-            }
-        }
-    },
-    dialogList: {
-        vuex: { //vuex.store
-            state: {
-                dialogFormVisible: false
-            },
-            getters: {},
-            mutations: {
 
-            },
-            actions: {
-                
             }
         },
-        extend: {},
         data: {
             props: {
-                
+                createPackage() {
+                    store.commit('createPackageDialog')
+                }
             }
         }
     }

@@ -61,7 +61,12 @@
                     ref: this.dateRef,
                     value: this.dateValue
                 }
-                this.$store.commit('setFormData', data)
+                if(this.$store.state.getFormPageData) {
+                    this.$store.commit('setFormPageData', data)
+                }
+                if(this.$store.state.getFormData) {
+                    this.$store.commit('setFormData', data)
+                }
             }
         }
     }

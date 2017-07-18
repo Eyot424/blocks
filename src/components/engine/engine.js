@@ -132,6 +132,7 @@ export default{
             var result;
             if (data && data.props && data.props.ref) {
                 var ref = data.props.ref;
+                data.ref = ref;
                 var itemMapConfig = mapConfig[ref];
                 if (itemMapConfig) {
                     result = this.mergeOptionsByMapConfig(definition, data, itemMapConfig)
