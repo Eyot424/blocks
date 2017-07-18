@@ -256,9 +256,9 @@
                 axios.get(this.url)
                 .then(response => {
                     this.tableData = response.data.item
-                    this.curPage = Number(response.data.curpage)
-                    this.perPage = Number(response.data.perpage)
-                    this.total = Number(response.data.total)
+                    this.curPage = Number(response.data.page_no) || 1
+                    this.perPage = Number(response.data.perpage) || 10
+                    this.total = Number(response.data.total_num) || Number(response.data.total) || 0
                 })
                 .catch(error => {
                     this.tableData = tableData.data.item
