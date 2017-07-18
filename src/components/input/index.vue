@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input v-model="selfInputValue" :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
+        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
     </div>
 </template>
 
@@ -36,7 +36,6 @@
         computed:{
             inputValue:function () {
                 return this.selfInputValue
-//                return this.$store.state.total;
             }
         },
         watch: {
