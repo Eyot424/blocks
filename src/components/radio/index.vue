@@ -1,6 +1,6 @@
 <template>
     <div class="radios">
-        <el-radio-group v-model="radioValue">
+        <el-radio-group v-model="selfRadioValue" @change="radioValueChange">
             <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
         </el-radio-group>
     </div>
@@ -13,27 +13,38 @@
             allRadioData: {
                 type: Array,
                 default: [
-                    // {
-                    //     value: 'test',
-                    //     label: '默认'
-                    // }
                 ]
             },
             radioRef: {
                 type: String,
                 default: ''
+            },
+            changeValue: {
+                type: Function
+            },
+            changeRadioValue: {
+                type: Function
             }
         },
         data() {
             return {
-                radioValue: ''
+                selfRadioValue: ''
+            }
+        },
+        computed:{
+            radioValue:function () {
+                return this.selfInputValue
             }
         },
         watch: {
             radioRef: function() {
                 this.commitState()
             },
-            radioValue: function() {
+            radioValue: function(value) {
+                this.selfRadioValue = value
+                this.commitState()
+            },
+            selfRadioValue: function(value) {
                 this.commitState()
             }
         },
@@ -41,13 +52,18 @@
             commitState() {
                 let data = {
                     ref: this.radioRef,
-                    value: this.radioValue
+                    value: this.selfRadioValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)
                 }
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
+                }
+            },
+            radioValueChange(value) {
+                if(this.changeRadioValue) {
+                    this.changeRadioValue(value);
                 }
             }
         }

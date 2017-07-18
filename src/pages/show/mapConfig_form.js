@@ -160,7 +160,30 @@ export default {
             }
         }
     },
-    dispatch_Type: {
+    totalNum: {
+        vuex: {
+
+        },
+        data: {
+            props: {
+               inputValueChange(value) {
+                    store.commit('changeTotalNum',value);
+               } 
+            }
+        }
+    },
+    couponDate: {
+        data: {
+            props: {
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() < Date.now() - 8.64e7;
+                    }
+                }
+            }
+        }
+    },
+    dispatchType: {
         vuex: {
             state: {
 
@@ -168,7 +191,9 @@ export default {
         },
         data: {
             props: {
-
+                changeRadioValue(value) {
+                    store.commit('changeDisplayType',value)
+                }
             }
         }
     },

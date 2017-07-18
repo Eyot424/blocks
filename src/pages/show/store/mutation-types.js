@@ -8,4 +8,6 @@ export const CREATE_PACKAGE_DIALOG = 'createPackageDialog'
 export const CLOSE_PACKAGE_DIALOG = 'closePackageDialog'
 export const GET_SELECTED_DATA_SOURCES = 'getSelectedDataSource'
 export const GET_SELECTED_CITY_IDS = 'getSelectedCityIds'
+export const CHANGE_DISPLAY_TYPE = 'changeDisplayType'
+export const CHANGE_TOTAL_NUM = 'changeTotalNum'
 

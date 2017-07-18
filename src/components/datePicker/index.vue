@@ -42,8 +42,9 @@
                 }
             },
             pickerOptions: {
-                disabledDate(time) {
-                    return time.getTime() < Date.now() - 8.64e7;
+                type: Object,
+                default() {
+                    return {}
                 }
             }
         },

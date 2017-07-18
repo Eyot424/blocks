@@ -91,19 +91,19 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "",
-					"inputRef": "total_num",
-					"ref": "total_num"
+					"inputRef": "totalNum",
+					"ref": "totalNum"
 				}
 			}
 		}, {
-			"tag": "datePicker",
+			"tag": "dateTimePicker",
 			"data": {
 				"props": {
 					"dateFormat": "",
 					"placeholder": "发券时间",
 					"detail": "时间必须选择今天之后",
-					"dateRef": "coupon_date",
-					"ref": "coupon_date"
+					"dateTimeRef": "couponDate",
+					"ref": "couponDate"
 				}
 			}
 		}, {
@@ -112,10 +112,10 @@ export default {
 				"props": {
 					"allRadioData": [{
 						"label": "随机分配",
-						"value": "1"
+						"value": "2"
 					}, {
 						"label": "自定义",
-						"value": "2"
+						"value": "1"
 					}],
 					"radioRef": "dispatchType",
 					"ref": "dispatchType"

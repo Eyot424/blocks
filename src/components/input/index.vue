@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
+        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
     </div>
 </template>
 
@@ -24,8 +24,14 @@
                 type: String,
                 default: ''
             },
-            changeInputValue: {
+            inputValueChange: {
                 type: Function
+            },
+            disabled: {
+                type: Boolean,
+                default() {
+                    return false
+                }
             }
         },
         data() {
@@ -63,6 +69,11 @@
                     this.$store.commit('setFormData', data)
                 }
             },
+            changeInputValue(value) {
+                if(this.inputValueChange) {
+                    this.inputValueChange(value);
+                }
+            }
         }
     }
 </script>
