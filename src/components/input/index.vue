@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input v-model="inputValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
+        <el-input :value="selfInputValue" @input="updateValue" :icon="inputIcon" :placeholder="placeholder"></el-input>
     </div>
 </template>
 
@@ -23,33 +23,52 @@
             inputRef: {
                 type: String,
                 default: ''
+            },
+            inputValue: {
+                type: String,
+                default: ''
+            },
+            mutationName: {
+                type: String,
+                default: ''
+            },
+            stateName: {
+                type: String,
+                default: ''
             }
         },
         data() {
             return {
-                inputValue: ''
+                selfInputValue: ''
+            }
+        },
+        computed: {
+            selfInputValue() {
+                return this.$store.state[this.stateName][this.inputRef]
             }
         },
         watch: {
             inputRef: function() {
-                this.commitState()
+                this.commitState(this.mutationName)
             },
-            inputValue: function() {
-                this.commitState()
+            inputValue: function(value) {
+                this.selfInputValue = value
+                this.commitState(this.mutationName)
+            },
+            selfInputValue: function() {
+                this.commitState(this.mutationName)
             }
         },
         methods: {
-            commitState() {
+            commitState(mutationName) {
                 let data = {
                     ref: this.inputRef,
-                    value: this.inputValue
+                    value: this.selfInputValue
                 }
-                if(this.$store.state.getFormPageData) {
-                    this.$store.commit('setFormPageData', data)
-                }
-                if(this.$store.state.getFormData) {
-                    this.$store.commit('setFormData', data)
-                }
+                this.$store.commit(mutationName, data)
+            },
+            updateValue(value) {
+                this.selfInputValue = value
             }
         }
     }

@@ -77,8 +77,10 @@
     import nestRender from './nestRender'
     import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
     import filterStore from './filterStore.js'
+    // import store from './store.js'
     export default {
         name: 'filterModule',
+        // store,
         props: {
             tableData: {
                 type: Array,
@@ -274,12 +276,12 @@
         nest: true,
         nestRender,
         components: {},
-        computed: {
-            ...mapState(filterStore.state),
-            ...mapGetters(filterStore.getters),
-            ...mapMutations(filterStore.mutations),
-            ...mapActions(filterStore.actions)
-        }
+        // computed: {
+        //     ...mapState(filterStore.state),
+        //     ...mapGetters(filterStore.getters),
+        //     ...mapMutations(filterStore.mutations),
+        //     ...mapActions(filterStore.actions)
+        // }
     }
 </script>
 
