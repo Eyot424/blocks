@@ -3,7 +3,8 @@
         <el-row>
             <el-col :span="12">
                 <el-input placeholder="请输入内容"
-                          v-model="refValue">
+                          :value="refValue"
+                          @input="updateValue">
                     <template slot="prepend">绑定字段</template>
                 </el-input>
             </el-col>
@@ -19,11 +20,15 @@
 <script>
     export default{
         props: {
-            refValue: {},
-            value: {}
+            value: {
+                type: String,
+                default: ''
+            }
         },
-        data(){
-            return {}
+        data() {
+            return {
+                refValue: ''
+            }
         },
         computed: {
             selfValue: function () {
@@ -33,12 +38,16 @@
         methods: {
             ensure: function () {
                 this.value = this.refValue
+            },
+            updateValue: function(value) {
+                this.refValue = value
             }
         },
         watch: {
             selfValue: {
                 deep: true,
                 handler: function (value) {
+                    this.refValue = value
                     this.$emit('input', value)
                 }
             }
