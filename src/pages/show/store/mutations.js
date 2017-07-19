@@ -76,8 +76,12 @@ export default {
         state.rulePackageForm.smsContent = val;
     },
     [types.GET_PUSH_TIME](state,val) {
-        console.log(val);
-        state.rulePackageForm.pushStartTime = val[0];
+        debugger
+        if(val && val.length > 0 ) {
+            // state.rulePackageForm.pushStartTime = (val[0] && val[0].getTime()) ? val[0].getTime / 1000 : '';
+            // state.rulePackageForm.pushEndTime = (val[1] && val[1].getTime()) ? val[0].getTime / 1000 : '';
+            state.pushTime = val;
+        }
     },
     [types.GET_JUMP_TARGET_VALUE](state,val) {
         state.rulePackageForm.jumpTarget = val;
@@ -91,13 +95,16 @@ export default {
         state.rulePackageForm.isSmsContent = val;
     },
     [types.GET_SMS_TIME](state,val) {
-        debugger
-        state.rulePackageForm.smsStartTime = val[0];
+        if(val) {
+            state.rulePackageForm.smsStartTime = (val[0] && val[0].getTime()) ? val[0].getTime / 1000 : '';
+            state.rulePackageForm.smsEndTime = (val[1] && val[1].getTime()) ? val[0].getTime / 1000 : '';
+        }
     },
     [types.GET_USER_NUM](state,val) {
         state.rulePackageForm.userNum = val || 0;
     },
     [types.GET_DIALOG_SUBMIT_DATA](state) {
+        console.log(state.pushTime)
         console.log(state.rulePackageForm);
     }
 }

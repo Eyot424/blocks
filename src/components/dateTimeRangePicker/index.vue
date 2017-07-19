@@ -1,12 +1,12 @@
 <template>
     <div class="dateTimeRangePicker">
         <el-date-picker
-                v-model="selfDateTimeRangeValue"
+                :value="selfDateTimeRangeVal"
+                @input="changeDateTimeRangeValue"
                 type="datetimerange"
                 placeholder="选择日期"
                 :placeholder="placeholder"
-                :picker-options="pickerOptions"
-                @change="changeDateTimeRangeValue">
+                :picker-options="pickerOptions">
         </el-date-picker>
     </div>
 </template>
@@ -27,14 +27,21 @@
                     return ''
                 }
             },
-            selfDateTimeRangeValue: {
-                type: Array,
-                default() {
-                    return []
-                }
-            },
             dateTimeRangeValue: {
                 type: Function
+            }
+        },
+        computed: {
+            dateTimeRangeVal: function() {
+                return this.selfDateTimeRangeVal
+            }
+        },
+         watch: {
+            dateTimeRangeVal: function(value) {
+                this.selfDateTimeRangeVal = value
+            },
+            selfDateTimeRangeVal: function() {
+
             }
         },
         methods: {

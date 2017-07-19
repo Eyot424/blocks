@@ -277,6 +277,14 @@ export default {
         }
     },
     pushTime: {
+        vuex: {
+            state: {
+                dateTimeRangeVal: 'pushTime'
+            },
+            getters: {
+
+            }
+        },
         data: {
             props: {
                 dateTimeRangeValue(value) {
@@ -337,7 +345,7 @@ export default {
                 
             },
             getters: {
-                
+
             }
         },
         data: {
