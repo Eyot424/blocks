@@ -1,8 +1,18 @@
 <template>
     <div class="checkBox">
-        <el-checkbox-group :value="checkList" @input="valueChange">
-            <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
-        </el-checkbox-group>
+        <div class="inputs"
+             v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-checkbox-group :value="checkList" @input="valueChange">
+                <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
+            </el-checkbox-group>
+        </div>
+        <div v-else>
+            <span v-for="item in allCheckData"
+                  :key="item.label"
+                  v-if="checkList.indexOf(item.value) !== -1">
+                {{item.label}}&nbsp&nbsp&nbsp&nbsp
+            </span>
+        </div>
     </div>
 </template>
 
@@ -13,7 +23,7 @@
             allCheckData: {
                 type: Array,
                 default() {
-                        return [
+                    return [
                         {
                             value: 'test',
                             label: '默认',
@@ -40,20 +50,20 @@
             }
         },
         mounted() {
-            if(this.getAllCheckData) {
+            if (this.getAllCheckData) {
                 this.getAllCheckData();
             }
         },
         computed:{
             checkList: function(){
 
-            }      
+            }
         },
         watch: {
-            checkRef: function() {
+            checkRef: function () {
                 this.commitState()
             },
-            checkList: function() {
+            checkList: function () {
                 this.commitState()
             }
         },
@@ -63,15 +73,15 @@
                     ref: this.checkRef,
                     value: this.checkList
                 }
-                if(this.$store.state.getFormPageData) {
+                if (this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)
                 }
-                if(this.$store.state.getFormData) {
+                if (this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
                 }
             },
             valueChange(value) {
-                if(this.changeValue) {
+                if (this.changeValue) {
                     this.changeValue(value);
                 }
             }
@@ -80,7 +90,7 @@
 </script>
 
 <style scoped>
-    .checkBox{
+    .checkBox {
         margin-bottom: 20px;
     }
 </style>

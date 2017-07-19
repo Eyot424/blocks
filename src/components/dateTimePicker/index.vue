@@ -1,12 +1,17 @@
 <template>
     <div class="dateTimePicker">
-        <el-date-picker
-                v-model="selfDateTimeValue" @change="changeDateTimeValue"
-                type="datetime"
-                :placeholder="placeholder"
-                :picker-options="pickerOptions">
-        </el-date-picker>
-        <span>{{detail}}</span>
+        <div v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-date-picker
+                    v-model="selfDateTimeValue" @change="changeDateTimeValue"
+                    type="datetime"
+                    :placeholder="placeholder"
+                    :picker-options="pickerOptions">
+            </el-date-picker>
+            <span>{{detail}}</span>
+        </div>
+        <div v-else>
+            {{selfDateTimeValue}}
+        </div>
     </div>
 </template>
 
@@ -30,12 +35,12 @@
                     return ''
                 }
             },
-            selfDateTimeValue: {
+            /*selfDateTimeValue: {
                 type: String,
                 default() {
                     return ''
                 }
-            },
+            },*/
             changeDateTimeValue: {
                 type: Function
             },
@@ -48,10 +53,13 @@
         },
         data() {
             return {
-                selfDateTimeValue: ''
+//                selfDateTimeValue: ''
             }
         },
         computed:{
+            selfDateTimeValue:function () {
+                return ''
+            },
             dateTimeValue:function () {
                 return this.selfDateTimeValue
             }

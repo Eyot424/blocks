@@ -25,7 +25,7 @@ const state = {
         "totalNumber": "",
         "totalNum": "10",
         "couponDate": "2017-07-21 20:45:56",
-        "dispatchType": 2,
+        "dispatchType": '2',
         "cityIds": [
             "85",
             "731"

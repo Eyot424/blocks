@@ -1,8 +1,17 @@
 <template>
     <div class="radios">
-        <el-radio-group v-model="radioValue">
-            <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
-        </el-radio-group>
+        <div v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-radio-group v-model="radioValue">
+                <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
+            </el-radio-group>
+        </div>
+        <div v-else>
+            <span v-for="item in allRadioData"
+                  :key="item.label"
+                  v-if="radioValue === item.value">
+                {{item.label}}&nbsp&nbsp&nbsp&nbsp
+            </span>
+        </div>
     </div>
 </template>
 
@@ -26,7 +35,12 @@
         },
         data() {
             return {
-                radioValue: ''
+//                radioValue: ''
+            }
+        },
+        computed:{
+            radioValue(){
+                return []
             }
         },
         watch: {

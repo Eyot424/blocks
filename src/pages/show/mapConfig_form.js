@@ -87,7 +87,7 @@ export default {
     cityIds: {
         vuex: {
             state: {
-
+                selectedCityIds: 'ruleForm.cityIds'
             }
         },
         extend: {},
@@ -121,7 +121,8 @@ export default {
     department: {
     	vuex: { //vuex.store
             state: {
-                allData: 'allDepartmentData'
+                allData: 'allDepartmentData',
+                selectValue : 'ruleForm.department'
             },
             getters: {},
             mutations: {
@@ -192,6 +193,11 @@ export default {
         }
     },
     couponDate: {
+        vuex:{
+            state: {
+                selfDateTimeValue : 'ruleForm.couponDate'
+            }
+        },
         data: {
             props: {
                 pickerOptions: {
@@ -208,7 +214,7 @@ export default {
     dispatchType: {
         vuex: {
             state: {
-                radioValue: 'dispatchTypeValue'
+                radioValue: 'ruleForm.dispatchType'
             }
         },
         data: {

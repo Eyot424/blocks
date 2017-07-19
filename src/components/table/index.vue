@@ -1,6 +1,6 @@
 <template>
     <div class="tables">
-         <el-form :inline="true" class="button-list">
+         <el-form :inline="true" class="button-list" v-if="$engine.globalObj.pageState !== 'detail'">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
                     <el-button :icon="item.icon" type="primary"
@@ -28,7 +28,7 @@
                     </el-table-column>
                 </template>
             </template>
-            <el-table-column label="操作">
+            <el-table-column label="操作" v-if="$engine.globalObj.pageState !== 'detail'">
                 <template scope="scope">
                     <template v-for="item in buttonList">
                         <template v-if="isShow(item, scope.row)">

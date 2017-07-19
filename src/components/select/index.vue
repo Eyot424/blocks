@@ -1,15 +1,24 @@
 <template>
     <div class="selects">
-        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" :disable="disabled">
-            <el-option
-                v-for="item in allData"
-                :key="item.label"
-                :label="item.label"
-                :value="item.value"
-                :disabled="disabled">
-            </el-option>
-        </el-select>
-        <span>{{detail}}</span>
+        <div v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" :disable="disabled">
+                <el-option
+                        v-for="item in allData"
+                        :key="item.label"
+                        :label="item.label"
+                        :value="item.value"
+                        :disabled="disabled">
+                </el-option>
+            </el-select>
+            <span>{{detail}}</span>
+        </div>
+        <div v-else>
+            <span v-for="item in allData"
+                  :key="item.label"
+                  v-if="selectValue === item.value">
+                {{item.label}}&nbsp&nbsp&nbsp&nbsp
+            </span>
+        </div>
     </div>
 </template>
 
@@ -55,7 +64,11 @@
         },
         data() {
             return {
-                selectValue: ''
+            }
+        },
+        computed:{
+            selectValue:function () {
+
             }
         },
         mounted() {

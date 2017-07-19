@@ -1,6 +1,6 @@
 <template>
     <div class="cityButtonBar filter">
-        <div class="bar barWrap">
+        <div class="bar barWrap" v-if="$engine.globalObj.pageState !== 'detail'">
             <el-button @click="reverseDialog"
                        type="primary">添加城市
             </el-button>
@@ -18,6 +18,7 @@
         </div>
         <div class="">
             <show-items :items="selectedCityInfos"
+                        :disabled="$engine.globalObj.pageState === 'detail'"
                         @change="onChangeSelfSelectedCityIds"></show-items>
         </div>
         <el-dialog :visible.sync="dialogVisible"
@@ -76,12 +77,12 @@
     export default {
         name: 'cityButtonBar',
         props: {
-            selectedCityIds: {
+            /*selectedCityIds: {
                 type: Array,
                 default: function () {
                     return []
                 }
-            },
+            },*/
             disabled: {
                 type: Boolean,
                 default: false
@@ -104,26 +105,22 @@
                 }
                 return this.showSelectContent;
             },
-            /*selfSelectedCityIds: {
-             get: function () {
-             return this.selectedCityIds;
-             },
-             set: function (v) {
-             this.$emit('change', v, this.getCityInfo(v))
-             }
-             },*/
             selectedCityInfos: function () {
-
                 return this.getCityInfo(this.selfSelectedCityIds)
             },
             countyWideSelected: function () {
                 return this.isCountyWide(this.selfSelectedCityIds[0]);
+            },
+            selectedCityIds: function () {
+                return this.selfSelectedCityIds
             }
         },
         watch: {
             selectedCityIds: {
                 deep: true,
+                immediate: true,
                 handler(v){
+                    debugger
                     this.selfSelectedCityIds = v
                 }
             },
@@ -248,7 +245,7 @@
                 activeIndex: 0,
                 cityIds: [],
                 dialogVisible: false,
-                selfSelectedCityIds: this.selectedCityIds
+                selfSelectedCityIds: this.selectedCityIds ? this.selectedCityIds : []
             }
         }
     }
