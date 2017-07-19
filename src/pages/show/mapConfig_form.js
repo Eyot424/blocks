@@ -40,7 +40,8 @@ export default {
     sources: {
     	vuex: { //vuex.store
             state: {
-                allCheckData: 'allDataSourceData'
+                allCheckData: 'allDataSourceData',
+                checkList: 'ruleForm.sources'
             },
             getters: {},
             mutations: {

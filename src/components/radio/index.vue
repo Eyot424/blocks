@@ -1,6 +1,6 @@
 <template>
     <div class="radios">
-        <el-radio-group v-model="selfRadioValue" @change="changeRadioValue">
+        <el-radio-group v-model="radioValue">
             <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
         </el-radio-group>
     </div>
@@ -13,35 +13,27 @@
             allRadioData: {
                 type: Array,
                 default: [
+                    {
+                        value: 'test',
+                        label: '默认'
+                    }
                 ]
             },
             radioRef: {
                 type: String,
                 default: ''
-            },
-            changeRadioValue: {
-                type: Function
             }
         },
         data() {
             return {
-                selfRadioValue: ''
-            }
-        },
-        computed:{
-            radioValue:function () {
-                return this.selfInputValue
+                radioValue: ''
             }
         },
         watch: {
             radioRef: function() {
                 this.commitState()
             },
-            radioValue: function(value) {
-                this.selfRadioValue = value
-                this.commitState()
-            },
-            selfRadioValue: function(value) {
+            radioValue: function() {
                 this.commitState()
             }
         },
@@ -49,18 +41,13 @@
             commitState() {
                 let data = {
                     ref: this.radioRef,
-                    value: this.selfRadioValue
+                    value: this.radioValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)
                 }
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
-                }
-            },
-            changeRadioValue(value) {
-                if(this.changeRadioValue) {
-                    this.changeRadioValue(value);
                 }
             }
         }

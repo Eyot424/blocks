@@ -1,6 +1,6 @@
 <template>
     <div class="checkBox">
-        <el-checkbox-group v-model="checkList" @change="valueChange">
+        <el-checkbox-group :value="checkList" @input="valueChange">
             <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
         </el-checkbox-group>
     </div>
@@ -37,7 +37,6 @@
         },
         data() {
             return {
-                checkList: []
             }
         },
         mounted() {
@@ -46,7 +45,9 @@
             }
         },
         computed:{
+            checkList: function(){
 
+            }      
         },
         watch: {
             checkRef: function() {
