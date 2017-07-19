@@ -10,4 +10,6 @@ export const GET_SELECTED_DATA_SOURCES = 'getSelectedDataSource'
 export const GET_SELECTED_CITY_IDS = 'getSelectedCityIds'
 export const CHANGE_DISPLAY_TYPE = 'changeDisplayType'
 export const CHANGE_TOTAL_NUM = 'changeTotalNum'
+export const CHANGE_PUSH_STATE = 'changePushState'
+export const GET_SUBMIT_FORM_DATA = 'getSubmitFormData'
 

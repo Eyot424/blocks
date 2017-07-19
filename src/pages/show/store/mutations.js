@@ -46,9 +46,25 @@ export default {
             alert('请先选择数据来源和活动城市');
         } else if(val > state.total) {
             alert('人数不能大于总人数');
+        }else {
+            state.ruleForm.totalNum = val;
         }
     },
     [types.CHANGE_DISPLAY_TYPE](state,val) {
         console.log(val);
+    },
+    [types.CHANGE_PUSH_STATE](state,val) {
+        if(val === '2') {
+            state.showPushContent = false;
+            state.showPushJumpTarget = false;
+            state.showLink = false;
+        } else {
+            state.showPushContent = true;
+            state.showPushJumpTarget = true;
+            state.showLink = true;
+        }
+    },
+    [types.GET_SUBMIT_FORM_DATA](state,val) {
+        console.log(state);
     }
 }

@@ -18,13 +18,16 @@ const state = {
         name: '',
         sources: [],
         department: '',
-        totalNumber: '',
+        // totalNumber: '',
         totalNum: '',
         couponDate: '',
         dispatchType: 2,
         cityIds: []
     },
-    total: 0
+    total: 0,
+    showPushContent: true,
+    showPushJumpTarget: true,
+    showLink: true
 }
 
 export default new Vuex.Store({

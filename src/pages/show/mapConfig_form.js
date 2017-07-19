@@ -18,7 +18,12 @@ export default {
         },
         data: {
             props: {
+                ruleForm: {
 
+                },
+                rules: {
+
+                }
             }
         }
     },
@@ -211,10 +216,11 @@ export default {
             }
         }
     },
-    push_jump_page: {
+    pushJumpTarget: {
     	vuex: { //vuex.store
             state: {
-                allData: 'allJumpPageData'
+                allData: 'allJumpPageData',
+                selectShow: 'showPushJumpTarget'
             },
             getters: {},
             mutations: {
@@ -277,6 +283,39 @@ export default {
                 createPackage() {
                     store.commit('createPackageDialog')
                 }
+            }
+        }
+    },
+    isPushContent: {
+        vuex: {
+            state: {
+
+            }
+        },
+        data: {
+            props: {
+                changeRadioValue(value) {
+                    store.commit('changePushState',value)
+                }
+            }
+        }
+    },
+    pushContent: {
+        vuex: {
+            state: {
+                showInput: 'showPushContent'
+            }
+        },
+        data: {
+            props: {
+
+            }
+        }
+    },
+    pushLink: {
+        vuex: {
+            state: {
+                showInput: 'showLink'
             }
         }
     }

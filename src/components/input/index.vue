@@ -1,6 +1,7 @@
 <template>
     <div class="inputs">
-        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
+        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" 
+        :disabled="disabled" v-show="showInput"></el-input>
     </div>
 </template>
 
@@ -31,6 +32,12 @@
                 type: Boolean,
                 default() {
                     return false
+                }
+            },
+            showInput: {
+                type: Boolean,
+                default() {
+                    return true;
                 }
             }
         },
