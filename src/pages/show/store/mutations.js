@@ -52,6 +52,11 @@ export default {
     },
     [types.CHANGE_DISPLAY_TYPE](state,val) {
         state.ruleForm.dispatchType = val;
+        if(val === '2') {
+            state.userNumDisabled = true;
+        } else {
+            state.userNumDisabled = false;
+        }
     },
     [types.GET_ACTIVITY_NAME](state,val) {
         state.ruleForm.name = val;
@@ -68,43 +73,75 @@ export default {
     //dialog
     [types.CHANGE_PUSH_FLAG](state,val) {
         state.rulePackageForm.isPushContent = val;
+        if(val == 2) {
+            state.pushContentDisabled = true;
+            state.pushTimeDisabled = true;
+            state.pushLinkDisabled = true;
+            state.pushJumpTargetDisabled = true;
+        } else {
+            state.pushContentDisabled = false;
+            state.pushTimeDisabled = false;
+            state.pushLinkDisabled = false;
+            state.pushJumpTargetDisabled = false;
+        }
     },
-    [types.GET_PUSH_CONTENT](state,val) {
-        state.rulePackageForm.pushContent = val;
+    [types.SET_PUSH_CONTENT](state,val) {
+        state.rulePackageForm.push_content = val;
     },
-    [types.GET_SMS_CONTENT](state,val) {
-        state.rulePackageForm.smsContent = val;
+    [types.SET_SMS_CONTENT](state,val) {
+        state.rulePackageForm.sms_content = val;
     },
-    [types.GET_PUSH_TIME](state,val) {
-        debugger
+    [types.SET_PUSH_TIME](state,val) {
         if(val && val.length > 0 ) {
-            // state.rulePackageForm.pushStartTime = (val[0] && val[0].getTime()) ? val[0].getTime / 1000 : '';
-            // state.rulePackageForm.pushEndTime = (val[1] && val[1].getTime()) ? val[0].getTime / 1000 : '';
+            state.rulePackageForm.push_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
+            state.rulePackageForm.push_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
             state.pushTime = val;
         }
     },
-    [types.GET_JUMP_TARGET_VALUE](state,val) {
-        state.rulePackageForm.jumpTarget = val;
+    [types.SET_JUMP_TARGET_VALUE](state,val) {
+        state.rulePackageForm.push_jump_target = val;
     },
-    [types.GET_PUSH_LINK](state,val) {
+    [types.SET_PUSH_LINK](state,val) {
         if(val) {
-            state.rulePackageForm.jumpTarget = val;
+            state.rulePackageForm.push_jump_target = val;
         }
     },
     [types.CHANGE_SMS_FLAG](state,val) {
         state.rulePackageForm.isSmsContent = val;
-    },
-    [types.GET_SMS_TIME](state,val) {
-        if(val) {
-            state.rulePackageForm.smsStartTime = (val[0] && val[0].getTime()) ? val[0].getTime / 1000 : '';
-            state.rulePackageForm.smsEndTime = (val[1] && val[1].getTime()) ? val[0].getTime / 1000 : '';
+        if(val == 2) {
+            state.smsContentDisabled = true;
+            state.smsTimeDisabled = true;
+        } else {
+            state.smsContentDisabled = false;
+            state.smsTimeDisabled = false;
         }
     },
-    [types.GET_USER_NUM](state,val) {
-        state.rulePackageForm.userNum = val || 0;
+    [types.SET_SMS_TIME](state,val) {
+        if(val && val.length) {
+            state.rulePackageForm.sms_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
+            state.rulePackageForm.sms_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
+            state.smsTime = val;
+        }
+    },
+    [types.SET_USER_NUM](state,val) {
+        state.rulePackageForm.user_num = val || 0;
     },
     [types.GET_DIALOG_SUBMIT_DATA](state) {
-        console.log(state.pushTime)
-        console.log(state.rulePackageForm);
+        if(!state.rulePackageForm.id) {//create
+            state.rulePackageForm.id = 123;
+            state.tableData.push(state.rulePackageForm);
+            state.packageIds.push(state.rulePackageForm.id);
+        } else {//update
+
+        }
+        state.packageDialogShow = false;
+    },
+    //table
+    [types.GET_PUSH_PACKAGES](state,val) {
+        console.log(state.tableData)
+    },
+    [types.DELETE_PACKAGE](state,index) {
+        state.tableData.splice(index);
+        state.packageIds.splice(index);
     }
 }

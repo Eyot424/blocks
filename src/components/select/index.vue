@@ -1,11 +1,12 @@
 <template>
     <div class="selects">
-        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" v-show="selectShow">
+        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" :disable="disabled">
             <el-option
                 v-for="item in allData"
                 :key="item.label"
                 :label="item.label"
-                :value="item.value">
+                :value="item.value"
+                :disabled="disabled">
             </el-option>
         </el-select>
         <span>{{detail}}</span>
@@ -45,10 +46,10 @@
             changeOption: {
                 type: Function
             },
-            selectShow: {
+            disabled: {
                 type: Boolean,
                 default() {
-                    return true
+                    return false
                 }
             }
         },
