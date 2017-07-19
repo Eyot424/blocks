@@ -27,6 +27,9 @@
             inputValueChange: {
                 type: Function
             },
+            commitValueChange:{
+                type: Function
+            },
             disabled: {
                 type: Boolean,
                 default() {
@@ -62,11 +65,8 @@
                     ref: this.inputRef,
                     value: this.selfInputValue
                 }
-                if(this.$store.state.getFormPageData) {
-                    this.$store.commit('setFormPageData', data)
-                }
-                if(this.$store.state.getFormData) {
-                    this.$store.commit('setFormData', data)
+                if(this.commitValueChange){
+                    this.commitValueChange(data)
                 }
             },
             changeInputValue(value) {
