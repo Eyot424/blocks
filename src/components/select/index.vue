@@ -1,6 +1,6 @@
 <template>
     <div class="selects">
-        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" :disable="disabled">
+        <el-select :value="selectValue" placeholder="请选择" @input="optionChange" :disable="disabled">
             <el-option
                 v-for="item in allData"
                 :key="item.label"
@@ -55,14 +55,18 @@
         },
         data() {
             return {
-                selectValue: ''
+                // selectValue: ''
+            }
+        },
+        computed: {
+            selectValue: function() {
+
             }
         },
         mounted() {
             if(this.getAllData) {
                 this.getAllData();
             }
-
         },
         watch: {
             selectRef: function() {

@@ -1,7 +1,7 @@
 <template>
     <div class="dateTimeRangePicker">
         <el-date-picker
-                :value="dateTimeRangeVal"
+                :value="dateTimeRangeValue"
                 @input="changeDateTimeRangeValue"
                 type="datetimerange"
                 placeholder="选择日期"
@@ -28,7 +28,7 @@
                     return ''
                 }
             },
-            dateTimeRangeValue: {
+            dateTimeRangeValueChange: {
                 type: Function
             },
             disabled: {
@@ -39,7 +39,7 @@
             }
         },
         computed: {
-            dateTimeRangeVal: function() {
+            dateTimeRangeValue: function() {
                 
             }
         },
@@ -47,10 +47,10 @@
         },
         methods: {
             changeDateTimeRangeValue(value) {
-                if(this.dateTimeRangeValue) {
-                    this.dateTimeRangeValue(value)
+                if(this.dateTimeRangeValueChange) {
+                    this.dateTimeRangeValueChange(value)
                 }
-                this.dateTimeRangeVal = value;
+                // this.dateTimeRangeValue = value;
             }
         }
     }

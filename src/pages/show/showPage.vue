@@ -25,7 +25,7 @@
                 config,
                 mapConfig,
                 engineGlobalObj: {
-                    pageState: 'detail'
+                    // pageState: 'detail'
                 }
             }
         },

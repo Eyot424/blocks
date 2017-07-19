@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="inputs" v-if="$engine.globalObj.pageState !== 'detail'">
-            <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType"></el-input>
+            <el-input :value="inputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType"></el-input>
         </div>
         <div v-else>
             <div>{{inputValue}}</div>
@@ -41,12 +41,12 @@
         },
         data() {
             return {
-                selfInputValue: ''
+                // selfInputValue: ''
             }
         },
         computed:{
             inputValue:function () {
-                return this.selfInputValue
+                
             }
         },
         watch: {
@@ -54,10 +54,6 @@
                 this.commitState()
             },
             inputValue: function(value) {
-                this.selfInputValue = value
-                this.commitState()
-            },
-            selfInputValue: function(value) {
                 this.commitState()
             }
         },
@@ -65,7 +61,7 @@
             commitState() {
                 let data = {
                     ref: this.inputRef,
-                    value: this.selfInputValue
+                    value: this.inputValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)

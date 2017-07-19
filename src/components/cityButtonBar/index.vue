@@ -170,26 +170,24 @@
                 return this.citys[id];
             },
             getCityData: function (callback) {
-                // var me = this;
-                // if (window.inBlockCanvas) {
-                //     var result = transformData.cityData(cityList)
-                //     callback.apply(this, result)
-                // } else {
-                //     axios({
-                //         url: '/marketing/mis/listformatrolecity',
-                //         type: 'GET',
-                //         dataType: 'json',
-                //         async: false,
-                //         success: function (ret) {
-                //             if (ret && ret.errno == 0 && ret.data) {
-                //                 var result = transformData.cityData(ret)
-                //                 callback.apply(this, result)
-                //             }
-                //         }
-                //     });
-                // }
-                var result = transformData.cityData(cityList)
-                callback.apply(this, result)
+                var me = this;
+                if (window.inBlockCanvas) {
+                    var result = transformData.cityData(cityList)
+                    callback.apply(this, result)
+                } else {
+                    axios({
+                        url: '/marketing/mis/listformatrolecity',
+                        type: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        success: function (ret) {
+                            if (ret && ret.errno == 0 && ret.data) {
+                                var result = transformData.cityData(ret)
+                                callback.apply(this, result)
+                            }
+                        }
+                    });
+                }
             },
             removeSelectedCity: function (city) {
                 this.selfSelectedCityIds.splice(_.indexOf(this.selfSelectedCityIds, city), 1);
