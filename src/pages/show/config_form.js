@@ -28,6 +28,9 @@ export default {
 				}, {
 					"label": "每个文案包发放人数",
 					"prop": "dispatch_type"
+				},{
+					"label": "",
+					"prop": ""
 				}],
 				"ref": "ruleForm"
 			}
@@ -121,57 +124,56 @@ export default {
 					"ref": "dispatchType"
 				}
 			}
+		},{
+			"tag": "tables",
+			"data": {
+				"props": {
+					"tableList": [{
+						"prop": "`${data.id}`",
+						"label": "文案包编号",
+						"url": ""
+					}, {
+						"label": "短信文案",
+						"prop": "`${data.sms_content}`",
+						"url": ""
+					}, {
+						"label": "短信发放时间",
+						"prop": "`${data.sms_start_time}-${data.sms_end_time}`",
+						"url": ""
+					}, {
+						"label": "push文案",
+						"prop": "`${data.push_content}`",
+						"url": ""
+					}, {
+						"label": "push发放时间",
+						"prop": "`${data.push_start_time}-${data.push_end_time}`",
+						"url": ""
+					}, {
+						"label": "触达人数",
+						"prop": "`${data.user_num}`",
+						"url": ""
+					}],
+					"buttonList": [{
+						"type": 2,
+						"url": "",
+						"condition": ""
+					}, {
+						"type": 5,
+						"url": "",
+						"condition": ""
+					}],
+					"otherButtons": [{
+						"label": "创建文案包",
+						"prop": "",
+						"event": "createPackage",
+						"icon": "plus",
+						"url": ""
+					}],
+					"ref": "pushPackages"
+				}
+			},
+			"children": []
 		}]
-	},
-	{
-		"tag": "tables",
-		"data": {
-			"props": {
-				"tableList": [{
-					"prop": "`${data.id}`",
-					"label": "文案包编号",
-					"url": ""
-				}, {
-					"label": "短信文案",
-					"prop": "`${data.sms_content}`",
-					"url": ""
-				}, {
-					"label": "短信发放时间",
-					"prop": "`${data.sms_start_time}-${data.sms_end_time}`",
-					"url": ""
-				}, {
-					"label": "push文案",
-					"prop": "`${data.push_content}`",
-					"url": ""
-				}, {
-					"label": "push发放时间",
-					"prop": "`${data.push_start_time}-${data.push_end_time}`",
-					"url": ""
-				}, {
-					"label": "触达人数",
-					"prop": "`${data.user_num}`",
-					"url": ""
-				}],
-				"buttonList": [{
-					"type": 2,
-					"url": "",
-					"condition": ""
-				}, {
-					"type": 5,
-					"url": "",
-					"condition": ""
-				}],
-				"otherButtons": [{
-					"label": "创建文案包",
-					"prop": "",
-					"event": "createPackage",
-					"icon": "plus",
-					"url": ""
-				}],
-				"ref": "pushPackages"
-			}
-		},
-		"children": []
 	},
 	{
 		"tag": "dialogList",
@@ -230,6 +232,7 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "推送文案，最多50个字",
+					"inputType": "textarea",
 					"inputRef": "pushContent",
 					"ref": "pushContent"
 				}
@@ -289,6 +292,7 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "短信文案，最多50个字",
+					"inputType": "textarea",
 					"inputRef": "smsContent",
 					"ref": "smsContent"
 				}

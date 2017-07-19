@@ -14,6 +14,7 @@ const state = {
     getFormPageData: {},
     getFormData: {},
     packageDialogShow: false,
+    dispatchType: 2,
     ruleForm: {
         "name": "活动名称",
         "sources": [
@@ -41,6 +42,7 @@ const state = {
         total: 0*/
     },
     total: 0,
+    dispatchType: 1,
     rulePackageForm: {
         id: '',
         isPushContent: 1,

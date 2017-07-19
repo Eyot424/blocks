@@ -51,6 +51,8 @@ export default {
         }
     },
     [types.CHANGE_DISPLAY_TYPE](state,val) {
+        debugger
+        state.dispatchType = Number(val);
         state.ruleForm.dispatchType = val;
         if(val === '2') {
             state.userNumDisabled = true;
@@ -100,6 +102,11 @@ export default {
     },
     [types.SET_JUMP_TARGET_VALUE](state,val) {
         state.rulePackageForm.push_jump_target = val;
+        if(val === 'bdwm') {
+            state.pushLinkDisabled = false;
+        } else {
+            state.pushLinkDisabled = true;
+        }
     },
     [types.SET_PUSH_LINK](state,val) {
         if(val) {

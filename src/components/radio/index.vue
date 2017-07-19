@@ -1,6 +1,6 @@
 <template>
     <div class="radios">
-        <el-radio-group v-model="selfRadioValue" @change="radioValueChange">
+        <el-radio-group v-model="selfRadioValue" @change="changeRadioValue">
             <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
         </el-radio-group>
     </div>
@@ -18,9 +18,6 @@
             radioRef: {
                 type: String,
                 default: ''
-            },
-            changeValue: {
-                type: Function
             },
             changeRadioValue: {
                 type: Function
@@ -61,7 +58,7 @@
                     this.$store.commit('setFormData', data)
                 }
             },
-            radioValueChange(value) {
+            changeRadioValue(value) {
                 if(this.changeRadioValue) {
                     this.changeRadioValue(value);
                 }
