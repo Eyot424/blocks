@@ -1,6 +1,6 @@
 <template>
     <div class="inputs">
-        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
+        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType"></el-input>
     </div>
 </template>
 
@@ -31,6 +31,12 @@
                 type: Boolean,
                 default() {
                     return false
+                }
+            },
+            inputType: {
+                type: String,
+                default() {
+                    return ''
                 }
             }
         },

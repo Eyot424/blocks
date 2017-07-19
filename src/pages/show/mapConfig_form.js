@@ -206,7 +206,7 @@ export default {
     dispatchType: {
         vuex: {
             state: {
-
+                radioValue: 'dispatchTypeValue'
             }
         },
         data: {
