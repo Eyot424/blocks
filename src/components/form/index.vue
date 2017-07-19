@@ -1,6 +1,6 @@
 <template>
     <div class="wrap">
-        <el-form>
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
             <slot></slot>
             <el-row>
                 <el-col :span="12" :offset="10">
@@ -26,7 +26,18 @@
     export default {
         name: 'forms',
         props: {
-            
+            ruleForm: {
+                type: Object,
+                default() {
+                    return {}
+                }
+            },
+            rules: {
+                type: Object,
+                default() {
+                    return {}
+                }
+            }
         },
         data() {
             return {}

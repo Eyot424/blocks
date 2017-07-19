@@ -178,17 +178,17 @@ export default {
 		"data": {
 			"props": {
 				"nestedData": [{
-					"prop": "",
+					"prop": "isPushContent",
 					"label": "是否推送消息"
 				}, {
 					"label": "推送文案",
-					"prop": "push_content"
+					"prop": "pushContent"
 				}, {
 					"label": "跳转页面",
-					"prop": "push_jump_page"
+					"prop": "pushJumpTarget"
 				}, {
 					"label": "跳转页面链接",
-					"prop": "push_jump_target"
+					"prop": "pushLink"
 				}, {
 					"label": "发送时间",
 					"prop": "push_start_time"
@@ -203,7 +203,8 @@ export default {
 					"prop": "push_end_time"
 				}, {
 					"label": "发放人数",
-					"prop": "user_num"
+					"prop": "user_num",
+					"showItem": false
 				}],
 				"ref": "packageDialog"
 			}
@@ -219,7 +220,7 @@ export default {
 						"label": "否",
 						"value": "2"
 					}],
-					"radioRef": "",
+					"radioRef": "isPushContent",
 					"ref": "isPushContent"
 				}
 			}
@@ -229,8 +230,8 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "推送文案，最多50个字",
-					"inputRef": "push_content",
-					"ref": "push_content"
+					"inputRef": "pushContent",
+					"ref": "pushContent"
 				}
 			}
 		}, {
@@ -243,8 +244,8 @@ export default {
 					}],
 					"checkList": [],
 					"detail": "",
-					"selectRef": "push_jump_page",
-					"ref": "push_jump_page"
+					"selectRef": "pushJumpTarget",
+					"ref": "pushJumpTarget"
 				}
 			}
 		}, {
@@ -253,8 +254,8 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "",
-					"inputRef": "push_jump_target",
-					"ref": "push_jump_target"
+					"inputRef": "pushLink",
+					"ref": "pushLink"
 				}
 			}
 		}, {

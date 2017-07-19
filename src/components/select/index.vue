@@ -1,6 +1,6 @@
 <template>
     <div class="selects">
-        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange">
+        <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" v-show="selectShow">
             <el-option
                 v-for="item in allData"
                 :key="item.label"
@@ -44,6 +44,12 @@
             },
             changeOption: {
                 type: Function
+            },
+            selectShow: {
+                type: Boolean,
+                default() {
+                    return true
+                }
             }
         },
         data() {
