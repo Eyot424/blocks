@@ -1,7 +1,7 @@
 <template>
     <div class="selects">
         <div v-if="$engine.globalObj.pageState !== 'detail'">
-            <el-select v-model="selectValue" placeholder="请选择" @change="optionChange" :disable="disabled">
+            <el-select :value="selectValue" placeholder="请选择" @input="optionChange" :disable="disabled">
                 <el-option
                         v-for="item in allData"
                         :key="item.label"
@@ -64,10 +64,11 @@
         },
         data() {
             return {
+                // selectValue: ''
             }
         },
-        computed:{
-            selectValue:function () {
+        computed: {
+            selectValue: function() {
 
             }
         },
@@ -75,7 +76,6 @@
             if(this.getAllData) {
                 this.getAllData();
             }
-
         },
         watch: {
             selectRef: function() {

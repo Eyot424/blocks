@@ -32,9 +32,17 @@ index.props['settingDefinition'] = {
     },
     computed: {
         submitData: function() {
+            let getRadioData = this.allRadioData.value;
+            let radioValue = '';
+            for (let i = 0; i < getRadioData.length; i++) {
+                if (getRadioData[i].checked == true) {
+                   radioValue = getRadioData[i].value;
+                };
+            };
             return {
                 allRadioData: this.allRadioData.value,
-                radioRef: this.radioRef.value
+                radioRef: this.radioRef.value,
+                radioValue: radioValue
             }
         }
     },
@@ -42,6 +50,7 @@ index.props['settingDefinition'] = {
         backFill: function(submitData) {
             this.allRadioData.value = submitData.allRadioData,
             this.radioRef.value = submitData.radioRef
+            this.radioValue = submitData.radioValue
         }
     }
 }

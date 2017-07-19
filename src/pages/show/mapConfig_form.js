@@ -182,7 +182,9 @@ export default {
     },
     totalNum: {
         vuex: {
-
+            state: {
+                inputValue: 'ruleForm.totalNum'
+            }
         },
         data: {
             props: {
@@ -193,9 +195,9 @@ export default {
         }
     },
     couponDate: {
-        vuex:{
+        vuex: {
             state: {
-                selfDateTimeValue : 'ruleForm.couponDate'
+                dateTimeValue: 'ruleForm.couponDate'
             }
         },
         data: {
@@ -278,7 +280,9 @@ export default {
     },
     isPushContent: {
         vuex: {
-
+            state: {
+                radioValue: 'rulePackageForm.isPushContent'
+            }
         },
         data: {
             props: {
@@ -291,7 +295,8 @@ export default {
     pushContent: {
         vuex: {
             state: {
-                disabled: 'pushContentDisabled'
+                disabled: 'pushContentDisabled',
+                inputValue: 'rulePackageForm.push_content'
             }
         },
         data: {
@@ -305,8 +310,8 @@ export default {
     pushTime: {
         vuex: {
             state: {
-                dateTimeRangeVal: 'pushTime',
-                disabled: ''
+                dateTimeRangeValue: 'rulePackageForm.pushTime',
+                disabled: 'pushTimeDisabled'
             },
             getters: {
 
@@ -314,7 +319,7 @@ export default {
         },
         data: {
             props: {
-                dateTimeRangeValue(value) {
+                dateTimeRangeValueChange(value) {
                     store.commit('setPushTime',value)
                 }
             }
@@ -324,7 +329,8 @@ export default {
         vuex: { //vuex.store
             state: {
                 allData: 'allJumpPageData',
-                disabled: 'pushJumpTargetDisabled'
+                disabled: 'pushJumpTargetDisabled',
+                selectValue: 'rulePackageForm.push_jump_target'
             },
             getters: {},
             mutations: {
@@ -385,6 +391,11 @@ export default {
         }
     },
     isSmsContent: {
+        vuex: {
+            state: {
+                radioValue: 'rulePackageForm.isSmsContent'
+            }
+        },
         data: {
             props: {
                 changeRadioValue(value) {
@@ -396,7 +407,8 @@ export default {
     smsContent: {
          vuex: {
             state: {
-                disabled: 'smsContentDisabled'
+                disabled: 'smsContentDisabled',
+                inputValue: 'rulePackageForm.sms_content'
             },
             getters: {
 
@@ -413,7 +425,7 @@ export default {
     smsTime: {
         vuex: {
             state: {
-                dateTimeRangeVal: 'smsTime',
+                dateTimeRangeValue: 'rulePackageForm.smsTime',
                 disabled: 'smsTimeDisabled'
             },
             getters: {
@@ -422,7 +434,7 @@ export default {
         },
         data: {
             props: {
-               dateTimeRangeValue(value) {
+               dateTimeRangeValueChange(value) {
                     store.commit('setSmsTime',value)
                 } 
             }
@@ -431,7 +443,8 @@ export default {
     userNum: {
          vuex: {
             state: {
-                disabled: 'userNumDisabled'
+                disabled: 'userNumDisabled',
+                inputValue: 'rulePackageForm.user_num'
             },
             getters: {
 

@@ -2,7 +2,7 @@
     <div class="dateTimePicker">
         <div v-if="$engine.globalObj.pageState !== 'detail'">
             <el-date-picker
-                    v-model="selfDateTimeValue" @change="changeDateTimeValue"
+                    :value="dateTimeValue" @input="changeDateTimeValue"
                     type="datetime"
                     :placeholder="placeholder"
                     :picker-options="pickerOptions">
@@ -10,7 +10,7 @@
             <span>{{detail}}</span>
         </div>
         <div v-else>
-            {{selfDateTimeValue}}
+            {{dateTimeValue}}
         </div>
     </div>
 </template>
@@ -53,15 +53,12 @@
         },
         data() {
             return {
-//                selfDateTimeValue: ''
+                // dateTimeValue: ''
             }
         },
         computed:{
-            selfDateTimeValue:function () {
-                return ''
-            },
             dateTimeValue:function () {
-                return this.selfDateTimeValue
+
             }
         },
         watch: {
@@ -69,10 +66,6 @@
                 this.commitState()
             },
             dateTimeValue: function(value) {
-                this.selfDateTimeValue = value
-                this.commitState()
-            },
-            selfDateTimeValue: function(value) {
                 this.commitState()
             }
         },
@@ -80,7 +73,7 @@
             commitState() {
                 let data = {
                     ref: this.dateTimeRef,
-                    value: this.selfDateTimeValue
+                    value: this.dateTimeValue
                 }
                 if(this.$store.state.getFormPageData) {
                     this.$store.commit('setFormPageData', data)

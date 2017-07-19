@@ -19,8 +19,14 @@ export default {
     [types.SET_FORM_DATA](state, items) {
         state.getFormData[items.ref] = items.value;
     },
-    [types.CREATE_PACKAGE_DIALOG](state) {
+    [types.CREATE_PACKAGE_DIALOG](state,param) {
         state.packageDialogShow = true;
+        if(param) {
+            state.rulePackageForm.pushTime = [new Date(state.rulePackageForm.push_start_time * 1000),
+            new Date(state.rulePackageForm.push_end_time * 1000)];
+            state.rulePackageForm.smsTime = [new Date(state.rulePackageForm.sms_start_time * 1000),
+            new Date(state.rulePackageForm.sms_end_time * 1000)];
+        }
     },
     [types.CLOSE_PACKAGE_DIALOG](state) {
         state.packageDialogShow = false;
