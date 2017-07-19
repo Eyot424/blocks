@@ -14,11 +14,9 @@ export default {
             }
         },
         extend: {
-            
         },
         data: {
             props: {
-
             }
         }
     },
