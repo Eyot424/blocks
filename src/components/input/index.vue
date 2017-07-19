@@ -1,6 +1,11 @@
 <template>
-    <div class="inputs">
-        <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
+    <div>
+        <div class="inputs" v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-input :value="selfInputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled"></el-input>
+        </div>
+        <div v-else>
+            <div>{{inputValue}}</div>
+        </div>
     </div>
 </template>
 

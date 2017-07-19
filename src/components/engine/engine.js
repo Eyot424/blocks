@@ -51,6 +51,12 @@ export default{
             default: function () {
                 return {}
             }
+        },
+        globalObj:{
+            type:Object,
+            default(){
+                return {}
+            }
         }
     },
     data: function () {
@@ -128,6 +134,26 @@ export default{
             var mapConfig = this.freezeMapConfig;
             var tag = item.tag;
             var definition = this.getComponent(tag);
+            var engineThis = this;
+            if(definition){
+                let beforeCreate = function () {
+                    this.$engine = {
+                        globalObj: engineThis.globalObj
+                    }
+                }
+                if(definition.mixin){
+                    definition.mixin({
+                        beforeCreate
+                    })
+                }else{
+                    definition.mixin = [{
+                        beforeCreate
+                    }]
+                }
+            }else{
+                definition = tag
+            }
+
             var children = [];
             var result;
             if (data && data.props && data.props.ref) {
@@ -160,7 +186,7 @@ export default{
             if (result) {
                 return h(result, data, children);
             }
-            return h(tag, data, children);
+            return h(definition, data, children);
         }
     },
     mounted(){

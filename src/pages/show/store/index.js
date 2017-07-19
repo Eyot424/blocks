@@ -15,7 +15,22 @@ const state = {
     getFormData: {},
     packageDialogShow: false,
     ruleForm: {
-        name: '',
+        "name": "活动名称",
+        "sources": [
+            "1",
+            "2"
+        ],
+        "department": "9",
+        "totalNumber": "",
+        "totalNum": "10",
+        "couponDate": "2017-07-21 20:45:56",
+        "dispatchType": 2,
+        "cityIds": [
+            "85",
+            "731"
+        ],
+        "total": 0,
+        /*name: '',
         sources: [],
         department: '',
         totalNumber: '',
@@ -23,7 +38,7 @@ const state = {
         couponDate: '',
         dispatchType: 2,
         cityIds: [],
-        total: 0
+        total: 0*/
     },
     total: 0,
     rulePackageForm: {

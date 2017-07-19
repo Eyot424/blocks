@@ -1,6 +1,6 @@
 <template>
     <span>
-        <engine :config="config" :map-config="mapConfig" ref="engine">
+        <engine :config="config" :map-config="mapConfig" ref="engine" :global-obj="engineGlobalObj">
         </engine>
     </span>
 </template>
@@ -23,7 +23,10 @@
         data: function () {
             return {
                 config,
-                mapConfig
+                mapConfig,
+                engineGlobalObj: {
+                    pageState: 'detail'
+                }
             }
         },
         watch: {
