@@ -35,7 +35,13 @@
                             <template v-if="item.type == 1 || item.type == 6">
                                 <el-button type="primary" size="small" @click="handleOpen(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
-                            <template v-else-if="item.type == 3 || item.type == 2 || item.type == 4 || item.type == 5">
+                            <template v-else-if="item.type == 2">
+                                <el-button type="primary" size="small" @click="handleEditEvent(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
+                            </template>
+                             <template v-else-if="item.type == 5">
+                                <el-button type="primary" size="small" @click="handleDeleteEvent(scope.$index)">{{getButtonText(item.type)}}</el-button>
+                            </template>
+                            <template v-else>
                                 <el-button type="primary" size="small" @click="handleEnsure(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
                         </template>
@@ -101,8 +107,14 @@
                     }
                 }
             },
-            createPackage: {
+            createHandle: {
                 type: Function,
+            },
+            editHandle: {
+                type: Function
+            },
+            deleteHandle: {
+                type: Function
             }
         },
         methods: {
@@ -172,8 +184,18 @@
                 }
             },
             buttonEvent() {
-                if(this.createPackage) {
-                    this.createPackage();
+                if(this.createHandle) {
+                    this.createHandle();
+                }
+            },
+            handleEditEvent(index, row, item) {
+                if(this.editHandle) {
+                    this.editHandle(index, row, item);
+                }
+            },
+            handleDeleteEvent(index) {
+                if(this.deleteHandle) {
+                    this.deleteHandle(index);
                 }
             }
         }

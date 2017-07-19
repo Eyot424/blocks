@@ -234,7 +234,7 @@ export default {
     pushPackages: {
         vuex: { //vuex.store
             state: {
-                getFormData: 'getFormData'
+                tableData: 'tableData'
             },
             getters: {},
             mutations: {
@@ -251,14 +251,27 @@ export default {
         },
         data: {
             props: {
-                createPackage() {
+                createHandle() {
                     store.commit('createPackageDialog')
+                },
+                editHandle(index, row, item) {
+                    var param = {
+                        index: index,
+                        row: row,
+                        item: item
+                    }
+                    store.commit('createPackageDialog', param);
+                },
+                deleteHandle(index) {
+                    store.commit('deletePackage',index);
                 }
             }
         }
     },
     isPushContent: {
-        vuex: {},
+        vuex: {
+
+        },
         data: {
             props: {
                 changeRadioValue(value) {
@@ -268,10 +281,15 @@ export default {
         }
     },
     pushContent: {
+        vuex: {
+            state: {
+                disabled: 'pushContentDisabled'
+            }
+        },
         data: {
             props: {
                 inputValueChange(value) {
-                    store.commit('getPushContent',value)
+                    store.commit('setPushContent',value)
                 }
             }
         }
@@ -279,7 +297,8 @@ export default {
     pushTime: {
         vuex: {
             state: {
-                dateTimeRangeVal: 'pushTime'
+                dateTimeRangeVal: 'pushTime',
+                disabled: ''
             },
             getters: {
 
@@ -288,7 +307,7 @@ export default {
         data: {
             props: {
                 dateTimeRangeValue(value) {
-                    store.commit('getPushTime',value)
+                    store.commit('setPushTime',value)
                 }
             }
         }
@@ -296,7 +315,8 @@ export default {
     pushJumpTarget: {
         vuex: { //vuex.store
             state: {
-                allData: 'allJumpPageData'
+                allData: 'allJumpPageData',
+                disabled: 'pushJumpTargetDisabled'
             },
             getters: {},
             mutations: {
@@ -334,7 +354,7 @@ export default {
                     store.commit('getJumpTargetList', result)
                 },
                 changeOption(value) {
-                    store.commit('getJumpTargetValue', value)
+                    store.commit('setJumpTargetValue', value)
                 }
             }
         }
@@ -342,7 +362,7 @@ export default {
     pushLink: {
         vuex: {
             state: {
-                
+                disabled: 'pushLinkDisabled'
             },
             getters: {
 
@@ -351,7 +371,7 @@ export default {
         data: {
             props: {
                 inputValueChange(value) {
-                    store.commit('getPushLink',value)
+                    store.commit('setPushLink',value)
                 }
             }
         }
@@ -366,28 +386,53 @@ export default {
         }
     },
     smsContent: {
+         vuex: {
+            state: {
+                disabled: 'smsContentDisabled'
+            },
+            getters: {
+
+            }
+        },
         data: {
             props: {
                 inputValueChange(value) {
-                    store.commit('getSmsContent',value)
+                    store.commit('setSmsContent',value)
                 }
             }
         }
     },
     smsTime: {
+        vuex: {
+            state: {
+                dateTimeRangeVal: 'smsTime',
+                disabled: 'smsTimeDisabled'
+            },
+            getters: {
+
+            }
+        },
         data: {
             props: {
                dateTimeRangeValue(value) {
-                    store.commit('getSmsTime',value)
+                    store.commit('setSmsTime',value)
                 } 
             }
         }
     },
     userNum: {
+         vuex: {
+            state: {
+                disabled: 'userNumDisabled'
+            },
+            getters: {
+
+            }
+        },
         data: {
             props: {
                 inputValueChange(value) {
-                    store.commit('getUserNum',value)
+                    store.commit('setUserNum',value)
                 }
             }
         }

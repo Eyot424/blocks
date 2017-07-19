@@ -27,20 +27,30 @@ const state = {
     },
     total: 0,
     rulePackageForm: {
+        id: '',
         isPushContent: 1,
-        pushContent: '',
-        jumpTarget: '',
-        link:'',
-        pushStartTime: '',
-        pushEndTime: '',
+        push_content: '',
+        push_jump_target: '',
+        push_start_time: '',
+        push_end_time: '',
         isSmsContent: 1,
-        smsContent: '',
-        smsStartTime: '',
-        smsEndTime: '',
-        userNum: '',
+        sms_content: '',
+        sms_start_time: '',
+        sms_end_time: '',
+        user_num: '',
         
     },
-    pushTime: []
+    pushTime: [],
+    smsTime: [],
+    tableData: [],
+    packageIds: [],
+    pushContentDisabled: false,
+    pushJumpTargetDisabled: false,
+    pushLinkDisabled: true,
+    pushTimeDisabled: false,
+    smsContentDisabled: false,
+    smsTimeDisabled: false,
+    userNumDisabled: false
 }
 
 export default new Vuex.Store({
