@@ -22,6 +22,20 @@ export default {
             }
         }
     },
+    name: {
+        vuex: {
+            state: {
+                inputValue: 'ruleForm.name'
+            }
+        },
+        data: {
+            props: {
+                inputValueChange(value) {
+                    store.commit('getActivityName',value)
+                }
+            }
+        }
+    },
     sources: {
     	vuex: { //vuex.store
             state: {
@@ -156,6 +170,9 @@ export default {
 						}
 					}
 					store.commit('getDepartmentInfo', result)
+                },
+                changeOption(value) {
+                    store.commit('getDepartmentValue', value)
                 }
             }
         }
@@ -179,6 +196,9 @@ export default {
                     disabledDate(time) {
                         return time.getTime() < Date.now() - 8.64e7;
                     }
+                },
+                changeDateTimeValue(value) {
+                    store.commit('changeCouponDate',value);
                 }
             }
         }
@@ -211,49 +231,6 @@ export default {
             }
         }
     },
-    push_jump_page: {
-    	vuex: { //vuex.store
-            state: {
-                allData: 'allJumpPageData'
-            },
-            getters: {},
-            mutations: {
-
-            },
-            actions: {
-                
-            }
-        },
-        extend: {},
-        data: {
-            props: {
-                getAllData() {
-                	let res = {    
-                        "errno": 0,
-                        "errmsg": "",
-                        "data": {
-                            "bdwm://native?pageName=home": "首页",
-                            "bdwm://native?pageName=coupon": "我的代金券",
-                            "bdwm://native?pageName=webview&url=http://waimai.baidu.com/static/pinzhi2/index.html&header=1": "质享生活",
-                            "bdwm://native?pageName=userCenter": "我的",
-                            "bdwm": "bdwm链接"
-                        }
-                    };
-					let result = [];
-					if(res.errno === 0) {
-						for(var item in res.data) {
-							result.push({
-	                            value: item,
-	                            label: res.data[item],
-	                            checked: false
-                        	});
-						}
-					}
-					store.commit('getJumpTargetList', result)
-                }
-            }
-        }
-    },
     pushPackages: {
         vuex: { //vuex.store
             state: {
@@ -279,6 +256,132 @@ export default {
                 }
             }
         }
-    }
+    },
+    isPushContent: {
+        vuex: {},
+        data: {
+            props: {
+                changeRadioValue(value) {
+                    store.commit('changePushFlag',value)
+                }
+            }
+        }
+    },
+    pushContent: {
+        data: {
+            props: {
+                inputValueChange(value) {
+                    store.commit('getPushContent',value)
+                }
+            }
+        }
+    },
+    pushTime: {
+        data: {
+            props: {
+                dateTimeRangeValue(value) {
+                    store.commit('getPushTime',value)
+                }
+            }
+        }
+    },
+    pushJumpTarget: {
+        vuex: { //vuex.store
+            state: {
+                allData: 'allJumpPageData'
+            },
+            getters: {},
+            mutations: {
 
+            },
+            actions: {
+                
+            }
+        },
+        extend: {},
+        data: {
+            props: {
+                getAllData() {
+                    let res = {    
+                        "errno": 0,
+                        "errmsg": "",
+                        "data": {
+                            "bdwm://native?pageName=home": "首页",
+                            "bdwm://native?pageName=coupon": "我的代金券",
+                            "bdwm://native?pageName=webview&url=http://waimai.baidu.com/static/pinzhi2/index.html&header=1": "质享生活",
+                            "bdwm://native?pageName=userCenter": "我的",
+                            "bdwm": "bdwm链接"
+                        }
+                    };
+                    let result = [];
+                    if(res.errno === 0) {
+                        for(var item in res.data) {
+                            result.push({
+                                value: item,
+                                label: res.data[item],
+                                checked: false
+                            });
+                        }
+                    }
+                    store.commit('getJumpTargetList', result)
+                },
+                changeOption(value) {
+                    store.commit('getJumpTargetValue', value)
+                }
+            }
+        }
+    },
+    pushLink: {
+        vuex: {
+            state: {
+                
+            },
+            getters: {
+                
+            }
+        },
+        data: {
+            props: {
+                inputValueChange(value) {
+                    store.commit('getPushLink',value)
+                }
+            }
+        }
+    },
+    isSmsContent: {
+        data: {
+            props: {
+                changeRadioValue(value) {
+                    store.commit('changeSmsFlag',value)
+                }
+            }
+        }
+    },
+    smsContent: {
+        data: {
+            props: {
+                inputValueChange(value) {
+                    store.commit('getSmsContent',value)
+                }
+            }
+        }
+    },
+    smsTime: {
+        data: {
+            props: {
+               dateTimeRangeValue(value) {
+                    store.commit('getSmsTime',value)
+                } 
+            }
+        }
+    },
+    userNum: {
+        data: {
+            props: {
+                inputValueChange(value) {
+                    store.commit('getUserNum',value)
+                }
+            }
+        }
+    }
 }

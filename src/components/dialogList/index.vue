@@ -14,18 +14,14 @@
   export default {
         name: 'dialogList',
         props: {
-            submitDialogForm: {
-                type: Function
-            }
+            
         },
         data() {
             return {}
         },
         methods: {
             handleSubmit() {
-                if(this.submitDialogForm) {
-                    this.submitDialogForm();
-                }
+                this.$store.dispatch('submitDialogForm')
             },
             closeDialog() {
                 this.$store.commit('closePackageDialog')

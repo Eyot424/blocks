@@ -259,13 +259,13 @@ export default {
 				}
 			}
 		}, {
-			"tag": "dateRangePicker",
+			"tag": "dateTimeRangePicker",
 			"data": {
 				"props": {
 					"dateRangeFormat":"",
 					"placeholder":"选择日期",
 					"detail":"时间间隔不能超过一天",
-					"ref":"push_time"
+					"ref":"pushTime"
 				}
 			}
 		}, {
@@ -289,18 +289,18 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "短信文案，最多50个字",
-					"inputRef": "sms_content",
-					"ref": "sms_content"
+					"inputRef": "smsContent",
+					"ref": "smsContent"
 				}
 			}
 		}, {
-			"tag": "dateRangePicker",
+			"tag": "dateTimeRangePicker",
 			"data": {
 				"props": {
 					"dateRangeFormat":"",
 					"placeholder":"选择日期",
 					"detail":"时间间隔不能超过一天",
-					"ref":"sms_time"
+					"ref":"smsTime"
 				}
 			}
 		}, {
@@ -309,8 +309,8 @@ export default {
 				"props": {
 					"inputIcon": "",
 					"placeholder": "",
-					"inputRef": "user_num",
-					"ref": "user_num"
+					"inputRef": "userNum",
+					"ref": "userNum"
 				}
 			}
 		}]

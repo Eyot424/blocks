@@ -84,9 +84,9 @@
                     this.$store.commit('setFormData', data)
                 }
             },
-            optionChange() {
+            optionChange(value) {
                 if(this.changeOption) {
-                    this.changeOption();
+                    this.changeOption(value);
                 }
             }
         }

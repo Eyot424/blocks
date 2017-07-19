@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
 
@@ -23,10 +24,25 @@ const state = {
         dispatchType: 2,
         cityIds: []
     },
-    total: 0
+    total: 0,
+    rulePackageForm: {
+        isPushContent: 1,
+        pushContent: '',
+        jumpTarget: '',
+        link:'',
+        pushStartTime: '',
+        pushEndTime: '',
+        isSmsContent: 1,
+        smsContent: '',
+        smsStartTime: '',
+        smsEndTime: '',
+        userNum: ''
+    }
 }
+
 export default new Vuex.Store({
         state,
+        // getters,
         actions,
         mutations
     }

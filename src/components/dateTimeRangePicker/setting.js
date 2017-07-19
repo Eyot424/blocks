@@ -15,13 +15,19 @@ index.props['settingDefinition'] = {
     computed: {
         submitData: function () {
             return {
-                datetimeRangeFormat: this.datetimeRangeFormat.value
+                // datetimeRangeFormat: this.datetimeRangeFormat.value,
+                placeholder: this.placeholder.value,
+                detail: this.detail.value,
+                ref: this.ref
             }
         }
     },
     methods:{
         backFill:function (submitData) {
-            this.datetimeRangeFormat.value = submitData.datetimeRangeFormat
+            // this.datetimeRangeFormat.value = submitData.datetimeRangeFormat,
+            this.placeholder.value = submitData.placeholder
+            this.detail.value = submitData.detail
+            this.ref = submitData.ref
         }
     }
 }

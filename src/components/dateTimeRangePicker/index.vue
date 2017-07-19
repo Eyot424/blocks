@@ -1,10 +1,12 @@
 <template>
     <div class="dateTimeRangePicker">
         <el-date-picker
-                v-model="value"
+                v-model="selfDateTimeRangeValue"
                 type="datetimerange"
-                :format="datetimeRangeFormat"
-                placeholder="选择日期">
+                placeholder="选择日期"
+                :placeholder="placeholder"
+                :picker-options="pickerOptions"
+                @change="changeDateTimeRangeValue">
         </el-date-picker>
     </div>
 </template>
@@ -13,9 +15,33 @@
     export default {
         name: 'dateTimeRangePicker',
         props: {
-            datetimeRangeFormat: {
+            placeholder: {
                 type: String,
-                default: 'yyyy-MM-dd-HH-mm-ss'
+                default() {
+                    return ''
+                }
+            },
+            detail: {
+                type: String,
+                default() {
+                    return ''
+                }
+            },
+            selfDateTimeRangeValue: {
+                type: Array,
+                default() {
+                    return []
+                }
+            },
+            dateTimeRangeValue: {
+                type: Function
+            }
+        },
+        methods: {
+            changeDateTimeRangeValue(value) {
+                if(this.dateTimeRangeValue) {
+                    this.dateTimeRangeValue(value)
+                }
             }
         }
     }
