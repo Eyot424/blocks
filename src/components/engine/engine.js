@@ -111,10 +111,23 @@ export default{
             var config = itemMapConfig.data || {};
             var options = {};
             if (vuexSetting) {
+                let state = vuexSetting.state;
+                let newState = {}
+                if(state){
+                    _.forEach(state,function (item,key) {
+                        if(item.indexOf('.')!=='-1'){
+                            newState[key] = function (state) {
+                                return _.get(state, item);
+                            }
+                        }else{
+                            newState[key] = item
+                        }
+                    })
+                }
                 options = {
                     computed: {
                         ...extend.computed,
-                        ...mapState(vuexSetting.state ? vuexSetting.state : {}),
+                        ...mapState(newState),
                         ...mapGetters(vuexSetting.getters ? vuexSetting.getters : {})
                     },
                     methods: {

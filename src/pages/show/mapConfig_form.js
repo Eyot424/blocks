@@ -23,10 +23,10 @@ export default {
     name: {
         vuex: {
             state: {
-                // inputValue: 'ruleForm.name'
+                inputValue: 'ruleForm.name'
             },
             getters:{
-                inputValue : 'inputValue'
+                // inputValue : 'inputValue'
             }
         },
         data: {
