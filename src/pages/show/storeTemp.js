@@ -15,7 +15,7 @@ const mutations = {
         state.getFormPageData[items.ref] = items.value;
     }
 }
-
+debugger
 export default new Vuex.Store({
         state,
         getters,
