@@ -202,13 +202,12 @@ export default{
             return h(definition, data, children);
         }
     },
-    mounted(){
-
-    },
-    render: function (_h) {
+    created(){
         this.$data.componentList.map((item, index) => {
             Vue.component(item.name, item);
         })
+    },
+    render: function (_h) {
         var wrapVnode = this.createVnode(
             _h, {
                 tag: 'div',

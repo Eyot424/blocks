@@ -232,13 +232,15 @@ export default {
             state: {
                 dialogFormVisible: 'packageDialogShow'
             },
-            getters: {},
-            mutations: {
-                
-            },
-            actions: {
-                
-            }
+        },
+        data: {
+          props:{
+              changeDialogFormVisible(visible){
+                  if(!visible){
+                      store.commit('closePackageDialog')
+                  }
+              }
+          }
         }
     },
     pushPackages: {

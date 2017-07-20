@@ -121,7 +121,6 @@
                 deep: true,
                 immediate: true,
                 handler(v){
-                    debugger
                     this.selfSelectedCityIds = v
                 }
             },

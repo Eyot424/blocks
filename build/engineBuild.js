@@ -7,10 +7,10 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var env = config.build.env
+var env = config.dev.env
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'development'
 
 var ora = require('ora')
 var rm = require('rimraf')
@@ -31,7 +31,8 @@ var webpackConfig = {
         engine: './src/components/engine/engine.js'
     },
     output: {
-        path: config.build.assetsRoot,
+        // path: config.build.assetsRoot,
+        path: '/Users/xiaorenhui/baidu/git/waimai/c_mis/usercrm/static/engine',
         filename: '[name].js',
         publicPath: process.env.NODE_ENV === 'production'
             ? config.build.assetsPublicPath
