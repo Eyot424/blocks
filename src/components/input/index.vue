@@ -37,6 +37,12 @@
                 default() {
                     return false
                 }
+            },
+            inputType: {
+                type: String,
+                default() {
+                    return ''
+                }
             }
         },
         data() {

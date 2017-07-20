@@ -178,8 +178,8 @@
                         dataType: 'json',
                         async: false,
                     }).then(function (ret) {
-                        if (ret && ret.errno == 0 && ret.data) {
-                            var result = transformData.cityData(ret)
+                        if (ret && ret.data) {
+                            var result = transformData.cityData(ret.data)
                             callback.apply(this, result)
                         }
                     }).catch(function () {

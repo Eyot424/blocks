@@ -2,7 +2,7 @@
     <el-dialog title="创建文案包"
                :visible="dialogFormVisible"
                @update:visible="changeDialogFormVisible"
-               >
+               :before-close="closeDialog">
         <el-form>
             <slot></slot>
             <el-form-item>
@@ -28,7 +28,7 @@
         },
         computed:{
             dialogFormVisible:function () {
-                debugger
+                
             }
         },
         methods: {

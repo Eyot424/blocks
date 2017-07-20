@@ -19,7 +19,10 @@ export default {
     [types.SET_FORM_DATA](state, items) {
         state.getFormData[items.ref] = items.value;
     },
-    [types.CREATE_PACKAGE_DIALOG](state,param) {
+    [types.CREATE_PACKAGE_DIALOG](state) {
+        state.packageDialogShow = true;
+    },
+    [types.EDIT_PACKAGE_DIALOG](state,param) {
         state.packageDialogShow = true;
         if(param) {
             state.rulePackageForm.pushTime = [new Date(state.rulePackageForm.push_start_time * 1000),
@@ -100,11 +103,12 @@ export default {
         state.rulePackageForm.sms_content = val;
     },
     [types.SET_PUSH_TIME](state,val) {
-        if(val && val.length > 0 ) {
-            state.rulePackageForm.push_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
-            state.rulePackageForm.push_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
-            state.pushTime = val;
-        }
+        // if(val && val.length > 0 ) {
+        //     state.rulePackageForm.push_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
+        //     state.rulePackageForm.push_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
+        //     state.pushTime = val;
+        // }
+        state.pushTime = val;
     },
     [types.SET_JUMP_TARGET_VALUE](state,val) {
         state.rulePackageForm.push_jump_target = val;
@@ -130,16 +134,18 @@ export default {
         }
     },
     [types.SET_SMS_TIME](state,val) {
-        if(val && val.length) {
-            state.rulePackageForm.sms_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
-            state.rulePackageForm.sms_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
-            state.smsTime = val;
-        }
+        // if(val && val.length) {
+        //     state.rulePackageForm.sms_start_time = (val[0] && val[0].getTime()) ? val[0].getTime() / 1000 : '';
+        //     state.rulePackageForm.sms_end_time = (val[1] && val[1].getTime()) ? val[1].getTime() / 1000 : '';
+        //     state.smsTime = val;
+        // }
+        state.smsTime = val;
     },
     [types.SET_USER_NUM](state,val) {
         state.rulePackageForm.user_num = val || 0;
     },
     [types.GET_DIALOG_SUBMIT_DATA](state) {
+        console.log(state.rulePackageForm)
         if(!state.rulePackageForm.id) {//create
             state.rulePackageForm.id = 123;
             state.tableData.push(state.rulePackageForm);

@@ -165,7 +165,6 @@ export default {
 					"otherButtons": [{
 						"label": "创建文案包",
 						"prop": "",
-						"event": "createPackage",
 						"icon": "plus",
 						"url": ""
 					}],

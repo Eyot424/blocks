@@ -272,7 +272,7 @@ export default {
                         row: row,
                         item: item
                     }
-                    store.commit('createPackageDialog', param);
+                    store.commit('editPackageDialog', param);
                 },
                 deleteHandle(index) {
                     store.commit('deletePackage',index);

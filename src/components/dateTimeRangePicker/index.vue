@@ -2,7 +2,7 @@
     <div class="dateTimeRangePicker">
         <el-date-picker
                 :value="dateTimeRangeValue"
-                @input="changeDateTimeRangeValue"
+                @input="dateTimeRangeValueChange"
                 type="datetimerange"
                 placeholder="选择日期"
                 :placeholder="placeholder"
@@ -46,12 +46,7 @@
         watch: {
         },
         methods: {
-            changeDateTimeRangeValue(value) {
-                if(this.dateTimeRangeValueChange) {
-                    this.dateTimeRangeValueChange(value)
-                }
-                // this.dateTimeRangeValue = value;
-            }
+
         }
     }
 </script>

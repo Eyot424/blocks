@@ -49,16 +49,6 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-dialog
-            title="提示"
-            :visible.sync="dialogInfo.visible"
-            size="tiny">
-            <span>{{dialogInfo.text}}</span>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogInfo.visible = false">取 消</el-button>
-                <el-button type="primary" @click="handleOperate(dialogInfo)">确 定</el-button>
-            </span>
-        </el-dialog>
     </div>
 </template>
 
@@ -108,7 +98,7 @@
                 }
             },
             createHandle: {
-                type: Function,
+                type: Function
             },
             editHandle: {
                 type: Function
