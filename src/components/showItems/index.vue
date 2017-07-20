@@ -4,7 +4,7 @@
                 <span class="selectedItem">
                     <i v-show="!disabled"
                        @click="changeItems(item)">+</i>
-                    {{item.name}}</span>
+                    {{item && item.name}}</span>
         </template>
     </div>
 </template>

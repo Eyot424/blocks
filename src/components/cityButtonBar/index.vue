@@ -1,6 +1,7 @@
 <template>
     <div class="cityButtonBar filter">
-        <div class="bar barWrap" v-if="$engine.globalObj.pageState !== 'detail'">
+        <div class="bar barWrap"
+             v-if="$engine.globalObj.pageState !== 'detail'">
             <el-button @click="reverseDialog"
                        type="primary">添加城市
             </el-button>
@@ -78,11 +79,11 @@
         name: 'cityButtonBar',
         props: {
             /*selectedCityIds: {
-                type: Array,
-                default: function () {
-                    return []
-                }
-            },*/
+             type: Array,
+             default: function () {
+             return []
+             }
+             },*/
             disabled: {
                 type: Boolean,
                 default: false
@@ -177,12 +178,14 @@
                         type: 'GET',
                         dataType: 'json',
                         async: false,
-                        success: function (ret) {
-                            if (ret && ret.errno == 0 && ret.data) {
-                                var result = transformData.cityData(ret)
-                                callback.apply(this, result)
-                            }
+                    }).then(function (ret) {
+                        if (ret && ret.errno == 0 && ret.data) {
+                            var result = transformData.cityData(ret)
+                            callback.apply(this, result)
                         }
+                    }).catch(function () {
+                        var result = transformData.cityData(cityList)
+                        callback.apply(this, result)
                     });
                 }
             },
@@ -224,7 +227,7 @@
                     this.selfSelectedCityIds.push(city);
                     this.selfSelectedCityIds = this.selfSelectedCityIds;
                 }
-                if(this.changeSelectedCityIds) {
+                if (this.changeSelectedCityIds) {
                     this.changeSelectedCityIds(this.selfSelectedCityIds);
                 }
             },
