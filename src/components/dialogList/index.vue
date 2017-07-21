@@ -3,7 +3,7 @@
                :visible="dialogFormVisible"
                @update:visible="changeDialogFormVisible"
                :before-close="closeDialog">
-        <el-form>
+        <el-form :label-width="labelWidth">
             <slot></slot>
             <el-form-item>
                 <el-button type="primary"
@@ -21,6 +21,12 @@
         props: {
             changeDialogFormVisible:{
                 type:Function
+            },
+            labelWidth: {
+                type: String,
+                default() {
+                    return '100px'
+                }
             }
         },
         data() {

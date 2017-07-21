@@ -74,7 +74,8 @@
                 this.selfValue.push({
                     type: '',
                     url: '',
-                    condition: ''
+                    condition: '',
+                    icon: ''
                 })
             }
         },

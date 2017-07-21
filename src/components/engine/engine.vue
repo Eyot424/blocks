@@ -1,8 +1,8 @@
+<script>
 import Vue from 'vue';
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 import Vuex from 'vuex'
 import _ from 'lodash'
-
 window.Vue = Vue
 window.Vuex = Vuex
 window._ = _
@@ -32,6 +32,7 @@ import log from '@/components/log/'
 import cityButtonBar from '@/components/cityButtonBar/'
 import filterModule from '@/components/filterModule/'
 import dialogList from '@/components/dialogList/'
+import citySelect from '@/components/citySelect/'
 
 const CloneDeep = _.cloneDeep
 const Merge = _.mergeWith
@@ -81,7 +82,8 @@ export default{
                 table,
                 cityButtonBar,
                 filterModule,
-                dialogList
+                dialogList,
+                citySelect
             ]
         }
     },
@@ -221,3 +223,14 @@ export default{
 
     }
 }
+</script>
+<style>
+    .el-upload {
+        width: 100px !important;
+    }
+    .el-upload .el-upload__input {
+        display: none !important;
+    }
+    
+</style>
+

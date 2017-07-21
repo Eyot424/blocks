@@ -79,7 +79,7 @@ export default {
 					store.commit('getDataSourceList', result)
                 },
                 changeValue(value) {
-                   store.dispatch('getSelectedDataSource',value)
+                   store.commit('getSelectedDataSource',value)
                 }
             }
         }
@@ -94,7 +94,8 @@ export default {
         data: {
             props: {
                 changeSelectedCityIds(cityIds) {
-                    store.dispatch('getSelectedCityIds',cityIds)
+                    debugger
+                    store.commit('getSelectedCityIds',cityIds)
                 }
             }
         }

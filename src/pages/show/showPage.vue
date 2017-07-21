@@ -9,7 +9,7 @@
     import config from './config_form'
     import mapConfig from './mapConfig_form'
     import vuex from 'vuex'
-    import engine from '@/components/engine/engine.js'
+    import engine from '@/components/engine/engine.vue'
 
 
     export default {

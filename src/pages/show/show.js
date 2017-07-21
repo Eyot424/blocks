@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import store from './store/index.js'
 import show from './showPage'
-import engine from '@/components/engine/engine.js'
+import engine from '@/components/engine/engine.vue'
 
 /* eslint-disable no-new */
 window.Vue = Vue;

@@ -9,6 +9,7 @@
                 :picker-options="pickerOptions"
                 :disabled="disabled">
         </el-date-picker>
+        <span>{{detail}}</span>
     </div>
 </template>
 

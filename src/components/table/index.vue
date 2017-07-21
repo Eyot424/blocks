@@ -33,16 +33,16 @@
                     <template v-for="item in buttonList">
                         <template v-if="isShow(item, scope.row)">
                             <template v-if="item.type == 1 || item.type == 6">
-                                <el-button type="primary" size="small" @click="handleOpen(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
+                                <el-button :icon="item.icon" type="primary" size="small" @click="handleOpen(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
                             <template v-else-if="item.type == 2">
-                                <el-button type="primary" size="small" @click="handleEditEvent(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
+                                <el-button :icon="item.icon" type="primary" size="small" @click="handleEditEvent(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
                              <template v-else-if="item.type == 5">
-                                <el-button type="primary" size="small" @click="handleDeleteEvent(scope.$index)">{{getButtonText(item.type)}}</el-button>
+                                <el-button :icon="item.icon" type="primary" size="small" @click="handleDeleteEvent(scope.$index)">{{getButtonText(item.type)}}</el-button>
                             </template>
                             <template v-else>
-                                <el-button type="primary" size="small" @click="handleEnsure(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
+                                <el-button :icon="item.icon" type="primary" size="small" @click="handleEnsure(scope.$index, scope.row, item)">{{getButtonText(item.type)}}</el-button>
                             </template>
                         </template>
                     </template>
@@ -195,6 +195,7 @@
 <style scoped>
 
     .el-table{
+        margin-top: 20px;
         margin-bottom: 20px;
     }
 </style>

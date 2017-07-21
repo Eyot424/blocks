@@ -32,7 +32,8 @@ export default {
 					"label": "",
 					"prop": ""
 				}],
-				"ref": "ruleForm"
+				"ref": "ruleForm",
+				"labelWidth": "150px"
 			}
 		},
 		"children": [{
@@ -156,11 +157,13 @@ export default {
 					"buttonList": [{
 						"type": 2,
 						"url": "",
-						"condition": ""
+						"condition": "",
+						"icon": "edit"
 					}, {
 						"type": 5,
 						"url": "",
-						"condition": ""
+						"condition": "",
+						"icon": "delete"
 					}],
 					"otherButtons": [{
 						"label": "创建文案包",
@@ -207,7 +210,8 @@ export default {
 					"prop": "user_num",
 					"showItem": false
 				}],
-				"ref": "packageDialog"
+				"ref": "packageDialog",
+				"labelWidth": "135px"
 			}
 		},
 		"children": [{
@@ -233,7 +237,9 @@ export default {
 					"placeholder": "推送文案，最多50个字",
 					"inputType": "textarea",
 					"inputRef": "pushContent",
-					"ref": "pushContent"
+					"ref": "pushContent",
+					"detail":"注：文案中代金券金额和门槛由策略返回，通配符[1]代表代金券金额，[2]代金券门槛，由策略返回。例如：满[2]减[1]",
+					"detailColor":"red"
 				}
 			}
 		}, {

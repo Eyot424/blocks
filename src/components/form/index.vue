@@ -1,8 +1,8 @@
 <template>
     <div class="wrap">
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :label-width="labelWidth">
             <slot></slot>
-            <el-row>
+            <el-row v-if="$engine.globalObj.pageState !== 'detail'">
                 <el-col :span="12" :offset="10">
                     <el-button type="primary" icon="edit" @click="submit">提交</el-button>
                 </el-col>
@@ -36,6 +36,12 @@
                 type: Object,
                 default() {
                     return {}
+                }
+            },
+            labelWidth: {
+                type: String,
+                default() {
+                    return '100px'
                 }
             }
         },

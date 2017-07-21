@@ -2,6 +2,7 @@
     <div>
         <div class="inputs" v-if="$engine.globalObj.pageState !== 'detail'">
             <el-input :value="inputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType"></el-input>
+            <div v-bind:style="{color: detailColor}">{{detail}}</div>
         </div>
         <div v-else>
             <div>{{inputValue}}</div>
@@ -43,11 +44,23 @@
                 default() {
                     return ''
                 }
+            },
+            detail: {
+                type: String,
+                default() {
+                    return ''
+                }
+            },
+            detailColor: {
+                type: String,
+                default() {
+                    return ''
+                }
             }
         },
         data() {
             return {
-                // selfInputValue: ''
+               
             }
         },
         computed:{
@@ -87,10 +100,17 @@
 
 <style scoped>
     .el-input{
-        width: auto;
+        width: 300px;
     }
 
     .inputs{
+        display: inline-block;
         margin-bottom: 20px;
+    }
+    .el-textarea {
+        width: 500px;
+    }
+    .detail {
+        color: red;
     }
 </style>

@@ -23,7 +23,8 @@
                         @change="onChangeSelfSelectedCityIds"></show-items>
         </div>
         <el-dialog :visible.sync="dialogVisible"
-                   title="请选择城市">
+                   title="请选择城市"
+                   size="large">
             <div class="cityDialog once"
                  v-show="showSelectContent">
                 <div class="bindCityBox"></div>
@@ -146,13 +147,17 @@
             },
             onChangeSelfSelectedCityIds(v){
                 let i = 0;
-                let originLength = this.selfSelectedCityIds
-                for (; i < originLength; i++) {
-                    this.selfSelectedCityIds.pop();
-                }
-                for (i = 0; i < v.length; i++) {
-                    this.selfSelectedCityIds.push(v.unshift());
-                    this.selfSelectedCityIds = this.selfSelectedCityIds;
+                // let originLength = this.selfSelectedCityIds.length
+                // for (; i < originLength; i++) {
+                //     this.selfSelectedCityIds.pop();
+                // }
+                // for (i = 0; i < v.length; i++) {
+                //     this.selfSelectedCityIds.push(v.unshift());
+                //     this.selfSelectedCityIds = this.selfSelectedCityIds;
+                // }
+                this.selfSelectedCityIds = v;
+                if (this.changeSelectedCityIds) {
+                    this.changeSelectedCityIds(this.selfSelectedCityIds);
                 }
             },
             getCityInfo: function (v) {
@@ -226,9 +231,6 @@
                     this.selfSelectedCityIds.push(city);
                     this.selfSelectedCityIds = this.selfSelectedCityIds;
                 }
-                if (this.changeSelectedCityIds) {
-                    this.changeSelectedCityIds(this.selfSelectedCityIds);
-                }
             },
             inSelectedCitys: function (city) {
                 if (_.indexOf(this.selfSelectedCityIds, city) !== -1) {
@@ -279,16 +281,14 @@
 
     .barWrap {
         display: flex;
+        height: 36px;
         .city-demo-download {
             display: inline-block;
             border: 1px solid #bbb;
             border-radius: 8px;
-            padding: 5px 10px;
+            padding: 0 5px;
             text-decoration: none;
             align-self: center;
-        }
-        .el-upload__input {
-            display: none;
         }
         .alignSelf {
             align-self: center;

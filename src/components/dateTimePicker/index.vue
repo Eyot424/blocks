@@ -10,7 +10,9 @@
             <span>{{detail}}</span>
         </div>
         <div v-else>
-            {{dateTimeValue}}
+            <template v-if="dateTimeValue && ('toLocaleString' in Date)">
+                {{dateTimeValue.toLocaleString()}}
+            </template>
         </div>
     </div>
 </template>
