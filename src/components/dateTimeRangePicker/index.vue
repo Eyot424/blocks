@@ -37,6 +37,12 @@
                 default() {
                     return false
                 }
+            },
+            pickerOptions: {
+                type: Object,
+                default() {
+                    return {}
+                }
             }
         },
         computed: {

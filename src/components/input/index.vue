@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="inputs" v-if="$engine.globalObj.pageState !== 'detail'">
-            <el-input :value="inputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType"></el-input>
+            <el-input :value="inputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType" 
+            :maxlength="maxLength"></el-input>
             <div v-bind:style="{color: detailColor}">{{detail}}</div>
         </div>
         <div v-else>
@@ -56,6 +57,9 @@
                 default() {
                     return ''
                 }
+            },
+            maxLength: {
+                type: Number
             }
         },
         data() {

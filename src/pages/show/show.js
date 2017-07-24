@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import store from './store/index.js'
+import store from './storeform/index.js'
 import show from './showPage'
 import engine from '@/components/engine/engine.vue'
 

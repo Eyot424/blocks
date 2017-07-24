@@ -1,16 +1,9 @@
-import store from './store'
+import store from './store/'
 export default {
     status: {
         vuex: { //vuex.store
             state: {
-                allData: 'activityStatusList'
-            },
-            getters: {},
-            mutations: {
-
-            },
-            actions: {
-
+                allData: 'allActivityStatusData'
             }
         },
         extend: {
@@ -42,7 +35,7 @@ export default {
                             });
                         }
                     }
-                    store.commit('getActivityStatusList', result)
+                    store.commit('getActivityStatusData', result)
                 }
             }
         }

@@ -231,6 +231,10 @@
                     this.selfSelectedCityIds.push(city);
                     this.selfSelectedCityIds = this.selfSelectedCityIds;
                 }
+                //获取已选择城市
+                if (this.changeSelectedCityIds) {
+                    this.changeSelectedCityIds(this.selfSelectedCityIds);
+                }
             },
             inSelectedCitys: function (city) {
                 if (_.indexOf(this.selfSelectedCityIds, city) !== -1) {

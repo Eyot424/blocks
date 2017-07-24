@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import config from './config_form'
-    import mapConfig from './mapConfig_form'
+    import config from './config_form.js'
+    import mapConfig from './mapConfig_form.js'
     import vuex from 'vuex'
     import engine from '@/components/engine/engine.vue'
 

@@ -21,10 +21,6 @@
     export default {
         name: 'dateTimePicker',
         props: {
-            // datetimeFormat: {
-            //     type: String,
-            //     default: 'yyyy-MM-dd HH-mm-ss'
-            // },
             placeholder: {
                 type: String,
                 default() {

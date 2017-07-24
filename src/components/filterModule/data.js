@@ -5,19 +5,20 @@ export default {
         total: 791,
         item: [
         {
-            "id":10001,                                 //活动id
-            "name":"测试活动",                          //活动名称
-            "sources":"1,2",                            //数据来源id
-            "sources_name":"百度竞品，注册未转化",        //数据来源名称，用于展示
-            "city_ids":"131,289",                      //城市id
-            "city_ids_name":"北京市,上海市",          //城市名称
-            "coupon_start_time":1499066195,             //注券开始时间
-            "coupon_date":"2017-07-03",                 //注券日
-            "status":"2",                               //状态id
-            "status_name":"上线",                     //状态名称
-            "operator":"王笑天" ,                         //操作人
-            "coupon_succ_num":299999,           //注券成功数
-            "coupon_fail_num":1,                //注券失败数
+            id: "1992307",
+            city_names: "北京市",
+            city_id: "131",
+            activity_name: "便利店大酬宾返券活动",
+            activity_description: "更多优惠活动等你来~~",
+            activity_owner: "董天宇",
+            start_time: "2017-06-13 00:00:00",
+            end_time: "2017-08-31 23:59:59",
+            activity_status: "2",
+            is_owner: 1,
+            shop_num: 0,
+            type_desc: [],
+            smart: 0,
+            approve_status: 5
         },
         {
             id: "1992307",

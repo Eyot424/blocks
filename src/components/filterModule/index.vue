@@ -35,7 +35,7 @@
                     </el-table-column>
                 </template>
             </template>
-            <el-table-column label="操作">
+            <el-table-column label="操作" width="200px">
                 <template scope="scope">
                     <template v-for="item in buttonList">
                         <template v-if="isShow(item, scope.row)">
@@ -51,7 +51,8 @@
             </el-table-column>
         </el-table>
         <el-pagination
-            @current-change="changePage"
+           @size-change="handleSizeChange"
+           @current-change="handleCurrentChange"
             :current-page="curPage"
             :page-size="perPage"
             layout="total, prev, pager, next, jumper"
@@ -64,7 +65,7 @@
             size="tiny">
             <span>{{dialogInfo.text}}</span>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogInfo.visible = false">取 消</el-button>
+                <!-- <el-button @click="dialogInfo.visible = false">取 消</el-button> -->
                 <el-button type="primary" @click="handleOperate(dialogInfo)">确 定</el-button>
             </span>
         </el-dialog>
@@ -75,17 +76,13 @@
     import axios from 'axios'
     import tableData from './data.js'
     import nestRender from './nestRender'
-    import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
-    import filterStore from './filterStore.js'
-    // import store from './store.js'
     export default {
         name: 'filterModule',
-        // store,
         props: {
             tableData: {
                 type: Array,
                 default() {
-                    return []
+                    return tableData.data.item
                 }
             },
             tableList: {
@@ -160,26 +157,38 @@
                         url: ''
                     }
                 }
+            },
+            searchHandler: {
+                type: Function
+            },
+            ensureHandle: {
+                type: Function
             }
         },
         data(){
             return {}
         },
         methods: {
-            changePage: function(val) {
-                axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)
-                .then(response => {
-                    this.tableData = response.data.item;
-                    this.curPage = Number(response.data.curpage);
-                    this.perPage = Number(response.data.perpage);
-                    this.total = Number(response.data.total);
-                })
-                .catch(error => {
-                    this.tableData = tableData.data.item;
-                    this.curPage = Number(tableData.data.curpage);
-                    this.perPage = Number(tableData.data.perpage);
-                    this.total = Number(tableData.data.total);
-                });
+            // changePage: function(val) {
+            //     axios.get(this.url + '&curpage=' + val + '&perpage=' + this.perPage)
+            //     .then(response => {
+            //         this.tableData = response.data.item;
+            //         this.curPage = Number(response.data.curpage);
+            //         this.perPage = Number(response.data.perpage);
+            //         this.total = Number(response.data.total);
+            //     })
+            //     .catch(error => {
+            //         this.tableData = tableData.data.item;
+            //         this.curPage = Number(tableData.data.curpage);
+            //         this.perPage = Number(tableData.data.perpage);
+            //         this.total = Number(tableData.data.total);
+            //     });
+            // },
+            handleSizeChange: function() {
+                
+            },
+            handleCurrentChange: function() {
+
             },
             getScopeData: function(scope, item) {
                 let data = scope.row;
@@ -190,30 +199,12 @@
                 window.open(eval(item.url))
             },
             handleEnsure(index, row, item) {
-                this.dialogInfo.visible = true;
-                this.dialogInfo = {
-                    text: '确定要' + this.getButtonText(item.type) + '活动' + row.activity_name + '吗？',
-                    data: row,
-                    url: item.url
+                if(this.ensureHandle) {
+                    this.ensureHandle(index,row,item)
                 }
             },
-            handleOperate(info) {
-                this.dialogInfo.visible = false;
-                let data = info.data;
-                axios.get(eval(info.url))
-                .then(response => {
-                    if(response.errno == 0) {
-                        this.$message.success(response.errmsg);
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 1000)
-                    } else {
-                        this.$message.error(response.errmsg);
-                    }
-                })
-                .catch(error => {
-                    this.$message.error('网络错误，请稍后重试');
-                });
+            handleOperate: function() {
+                
             },
             getButtonText(type){
                 switch (type) {
@@ -250,7 +241,9 @@
                 window.open(url)
             },
             handleSubmit() {
-                console.log(this.$store)
+                if(this.searchHandler) {
+                    this.searchHandler();
+                }
             }
         },
         watch: {
@@ -275,13 +268,7 @@
         },
         nest: true,
         nestRender,
-        components: {},
-        // computed: {
-        //     ...mapState(filterStore.state),
-        //     ...mapGetters(filterStore.getters),
-        //     ...mapMutations(filterStore.mutations),
-        //     ...mapActions(filterStore.actions)
-        // }
+        components: {}
     }
 </script>
 

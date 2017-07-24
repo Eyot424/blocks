@@ -1,4 +1,4 @@
-import store from './store/'
+import store from './storeform/'
 export default {
     ruleForm: {
         vuex: { //vuex.store
@@ -313,17 +313,34 @@ export default {
     pushTime: {
         vuex: {
             state: {
-                dateTimeRangeValue: 'rulePackageForm.pushTime',
+                dateTimeStartValue: 'rulePackageForm.push_start_time',
+                dateTimeEndValue: 'rulePackageForm.push_end_time',
                 disabled: 'pushTimeDisabled'
             },
             getters: {
 
+            },
+            mutations: {
+                
             }
         },
         data: {
             props: {
-                dateTimeRangeValueChange(value) {
+                changeStartDateTimeValue(value) {
                     store.commit('setPushTime',value)
+                },
+                changeEndDateTimeValue(value) {
+                    store.commit('setPushTime',value)
+                },
+                pickerStartOptions: {
+                    disabledDate(time) {
+                        return time.getTime() < Date.now() + 24*3600*1000 - 8.64e7;
+                    }
+                },
+                pickerEndOptions: {
+                    disabledDate(time) {
+                        return time.getTime() < Date.now() + 24*3600*1000 - 8.64e7;
+                    }
                 }
             }
         }
@@ -428,18 +445,35 @@ export default {
     smsTime: {
         vuex: {
             state: {
-                dateTimeRangeValue: 'rulePackageForm.smsTime',
+                dateTimeStartValue: 'rulePackageForm.sms_start_time',
+                dateTimeEndValue: 'rulePackageForm.sms_end_time',
                 disabled: 'smsTimeDisabled'
             },
             getters: {
 
+            },
+            mutations: {
+                
             }
         },
         data: {
             props: {
-               dateTimeRangeValueChange(value) {
+                changeStartDateTimeValue(value) {
                     store.commit('setSmsTime',value)
-                } 
+                },
+                changeEndDateTimeValue(value) {
+                    store.commit('setSmsTime',value)
+                },
+                pickerStartOptions: {
+                    disabledDate(time) {
+                        return time.getTime() < Date.now() + 24*3600*1000 - 8.64e7;
+                    }
+                },
+                pickerEndOptions: {
+                    disabledDate(time) {
+                        return time.getTime() < Date.now() + 24*3600*1000 - 8.64e7;
+                    }
+                }
             }
         }
     },

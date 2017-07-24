@@ -267,11 +267,11 @@ export default {
 				}
 			}
 		}, {
-			"tag": "dateTimeRangePicker",
+			"tag": "dateTimeRangePickers",
 			"data": {
 				"props": {
-					"dateRangeFormat":"",
-					"placeholder":"选择日期",
+					"placeholderStart":"选择日期",
+					"placeholderEnd":"选择日期",
 					"detail":"时间间隔不能超过一天",
 					"ref":"pushTime"
 				}
@@ -303,13 +303,13 @@ export default {
 				}
 			}
 		}, {
-			"tag": "dateTimeRangePicker",
+			"tag": "dateTimeRangePickers",
 			"data": {
 				"props": {
-					"dateRangeFormat":"",
-					"placeholder":"选择日期",
+					"placeholderStart":"选择日期",
+					"placeholderEnd":"选择日期",
 					"detail":"时间间隔不能超过一天",
-					"ref":"smsTime"
+					"ref":"pushTime"
 				}
 			}
 		}, {

@@ -1,6 +1,7 @@
 <template>
     <div class="citySelect">
-        <el-autocomplete v-model="inputValue" class="inline-input" :icon="inputIcon" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
+        <el-autocomplete :value="inputValue" @input="changeInputValue" 
+         @select="handleSelect" class="inline-input" :icon="inputIcon" :fetch-suggestions="querySearch" placeholder="请输入内容"></el-autocomplete>
     </div>
 </template>
 
@@ -22,6 +23,12 @@
             inputValue: {
                 type: String,
                 default: ''
+            },
+            inputValueChange: {
+                type: Function
+            },
+            selectValueChange: {
+                type: Function
             }
         },
         watch: {
@@ -32,13 +39,18 @@
                 this.commitState()
             }
         },
+        computed:{
+            inputValue:function () {
+                
+            }
+        },
         methods: {
             commitState() {
                 let data = {
                     ref: this.inputRef,
                     value: this.inputValue
                 }
-                this.$store.commit('setFormData', data)
+                // this.$store.commit('setFormData', data)
             },
             querySearch(queryString, cb) {
                 var citys = this.citys;
@@ -55,10 +67,20 @@
                 list.map(item => {
                     listArray.push({
                         value: item.city_name,
-                        id: item.id
+                        id: item.city_id
                     })
                 })
                 return listArray;
+            },
+            changeInputValue(value) {
+                if(this.inputValueChange) {
+                    this.inputValueChange(value);
+                }
+            },
+            handleSelect(item) {
+                if(this.selectValueChange) {
+                    this.selectValueChange(item);
+                }
             }
         },
         mounted() {
