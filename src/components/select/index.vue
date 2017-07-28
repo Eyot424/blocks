@@ -1,6 +1,6 @@
 <template>
     <div class="selects">
-        <div v-if="$engine.globalObj.pageState !== 'detail'">
+        <div v-if="pageState !== 'detail'">
             <el-select :value="selectValue" placeholder="请选择" @input="optionChange" :disable="disabled">
                 <el-option
                         v-for="item in allData"
@@ -23,8 +23,10 @@
 </template>
 
 <script>
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'selects',
+        mixins:[pageStateMixin],
         props: {
             allData: {
                 type: Array,

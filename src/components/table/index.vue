@@ -1,6 +1,6 @@
 <template>
     <div class="tables">
-         <el-form :inline="true" class="button-list" v-if="$engine.globalObj.pageState !== 'detail'">
+         <el-form :inline="true" class="button-list" v-if="pageState !== 'detail'">
             <el-form-item v-for="item in otherButtons" key="item.label">
                 <template v-if="item.url">
                     <el-button :icon="item.icon" type="primary"
@@ -28,7 +28,7 @@
                     </el-table-column>
                 </template>
             </template>
-            <el-table-column label="操作" v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-table-column label="操作" v-if="pageState !== 'detail'">
                 <template scope="scope">
                     <template v-for="item in buttonList">
                         <template v-if="isShow(item, scope.row)">
@@ -54,8 +54,10 @@
 
 <script>
     import mockData from './data.js'
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'tables',
+        mixins:[pageStateMixin],
         props: {
             tableData: {
                 type: Array,

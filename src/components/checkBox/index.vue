@@ -1,7 +1,7 @@
 <template>
     <div class="checkBox">
         <div class="inputs"
-             v-if="$engine.globalObj.pageState !== 'detail'">
+             v-if="pageState !== 'detail'">
             <el-checkbox-group :value="checkList" @input="valueChange">
                 <el-checkbox v-for="item in allCheckData" :key="item.label" :label="item.value">{{item.label}}</el-checkbox>
             </el-checkbox-group>
@@ -17,8 +17,10 @@
 </template>
 
 <script>
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'checkBox',
+        mixins:[pageStateMixin],
         props: {
             allCheckData: {
                 type: Array,

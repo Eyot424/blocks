@@ -1,7 +1,7 @@
 <template>
     <div class="cityButtonBar filter">
         <div class="bar barWrap"
-             v-if="$engine.globalObj.pageState !== 'detail'">
+             v-if="pageState !== 'detail'">
             <el-button @click="reverseDialog"
                        type="primary">添加城市
             </el-button>
@@ -9,8 +9,7 @@
             <el-upload class="upload-demo"
                        action="/coupon/mis/importcsv"
                        :show-file-list="false"
-                       :on-success="handleUploadSuccess"
-                       :on-error="handleUploadError">
+                       :on-success="handleUploadSuccess">
                 <el-button type="primary">点击上传
                 </el-button>
             </el-upload>
@@ -21,7 +20,7 @@
         </div>
         <div class="">
             <show-items :items="selectedCityInfos"
-                        :disabled="$engine.globalObj.pageState === 'detail'"
+                        :disabled="pageState === 'detail'"
                         @change="onChangeSelfSelectedCityIds"></show-items>
         </div>
         <el-dialog :visible.sync="dialogVisible"
@@ -103,6 +102,13 @@
             showItems: showItems
         },
         computed: {
+            pageState: function () {
+                let $engine = this.$engine;
+                if ($engine && $engine.globalObj) {
+                    return $engine.globalObj.pageState
+                }
+                return ''
+            },
             selfShowSelectContent: function () {
                 if (this.disabled) {
                     return false;
@@ -244,15 +250,15 @@
                 } else {
                     return false;
                 }
-            }, 
-            refineDate: function(data) {
+            },
+            refineDate: function (data) {
                 var _self = this;
                 var DATA = {
                     useableArr: [],
                     disableArr: []
                 };
-                for(var j = 0; j < data.length; j++) {
-                    if(_self.getDataByCityId(data[j].id)){
+                for (var j = 0; j < data.length; j++) {
+                    if (_self.getDataByCityId(data[j].id)) {
                         DATA.useableArr.push(data[j]);
                     } else {
                         DATA.disableArr.push(data[j]);
@@ -261,34 +267,34 @@
 
                 return DATA;
             },
-            handleUploadSuccess: function(rs) {
+            handleUploadSuccess: function (rs) {
                 let _self = this;
-                if(rs.errno === 0) {
-                    if(rs.data.length > 0){
+                if (rs.errno === 0) {
+                    if (rs.data.length > 0) {
                         // 差异化有效无效城市
                         var newDate = _self.refineDate(rs.data);
                         // 有效城市加载
                         _self.selfSelectedCityIds.splice(0, _self.selfSelectedCityIds.length);
-                        for(var i = 0; i < newDate.useableArr.length; i++) {
+                        for (var i = 0; i < newDate.useableArr.length; i++) {
                             _self.selfSelectedCityIds.push(newDate.useableArr[i].id);
                         }
 
                         // 展示无效城市提示
                         var disableArr = [];
-                        for(var i = 0; i < newDate.disableArr.length; i++) {
-                           disableArr.push(newDate.disableArr[i].name);
+                        for (var i = 0; i < newDate.disableArr.length; i++) {
+                            disableArr.push(newDate.disableArr[i].name);
                         }
 
                         disableArr.length && (
-                            this.$message.info(disableArr.join(',')+'为无效城市'));
+                                this.$message.info(disableArr.join(',') + '为无效城市'));
 
                         if (_self.changeSelectedCityIds) {
                             _self.changeSelectedCityIds(_self.selfSelectedCityIds);
                         }
                     } else {
-                        this.$message.info('上传了'+ rs.data.city_ids.length +'个城市');
+                        this.$message.info('上传了' + rs.data.city_ids.length + '个城市');
                     }
-                }else {
+                } else {
                     this.$message.error(rs.errmsg);
                 }
             }
