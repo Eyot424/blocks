@@ -20,10 +20,6 @@
                 type: String,
                 default: ''
             },
-            inputValue: {
-                type: String,
-                default: ''
-            },
             inputValueChange: {
                 type: Function
             },
@@ -41,7 +37,7 @@
         },
         computed:{
             inputValue:function () {
-                
+                return ''
             }
         },
         methods: {

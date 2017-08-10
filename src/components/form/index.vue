@@ -2,7 +2,7 @@
     <div class="wrap">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :label-width="labelWidth">
             <slot></slot>
-            <el-row v-if="$engine.globalObj.pageState !== 'detail'">
+            <el-row v-if="pageState !== 'detail'">
                 <el-col :span="12" :offset="10">
                     <el-button type="primary" icon="edit" @click="submit">提交</el-button>
                 </el-col>
@@ -23,8 +23,10 @@
 </style>
 <script>
     import nestRender from './nestRender'
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'forms',
+        mixins:[pageStateMixin],
         props: {
             ruleForm: {
                 type: Object,

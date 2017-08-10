@@ -12,9 +12,11 @@
         props: {
             allData: {
                 type: Array,
-                default: [{
-                    label: '默认'
-                }]
+                default: function () {
+                    return [{
+                        label: '默认'
+                    }]
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="dateTimePicker">
-        <div v-if="$engine.globalObj.pageState !== 'detail'">
+        <div v-if="pageState !== 'detail'">
             <el-date-picker
                     :value="dateTimeStartValue" @input="changeStartDateTimeValue"
                     type="datetime"
@@ -27,8 +27,10 @@
 </template>
 
 <script>
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'dateTimeRangePickers',
+        mixins:[pageStateMixin],
         props: {
             placeholderStart: {
                 type: String,

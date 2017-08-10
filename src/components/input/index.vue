@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="inputs" v-if="$engine.globalObj.pageState !== 'detail'">
+        <div class="inputs" v-if="pageState !== 'detail'">
             <el-input :value="inputValue" @input="changeInputValue" :icon="inputIcon" :placeholder="placeholder" :disabled="disabled" :type="inputType" 
             :maxlength="maxLength"></el-input>
             <div v-bind:style="{color: detailColor}">{{detail}}</div>
@@ -12,8 +12,10 @@
 </template>
 
 <script>
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'inputs',
+        mixins:[pageStateMixin],
         props: {
             inputIcon: {
                 type: String,

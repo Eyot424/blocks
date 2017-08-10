@@ -1,6 +1,6 @@
 <template>
     <div class="radios">
-        <div v-if="$engine.globalObj.pageState !== 'detail'">
+        <div v-if="pageState !== 'detail'">
             <el-radio-group :value="radioValue" @input="radioValueChange">
                 <el-radio v-for="item in allRadioData" :key="item.label" :label="item.value">{{item.label}}</el-radio>
             </el-radio-group>
@@ -16,8 +16,10 @@
 </template>
 
 <script>
+    import pageStateMixin from '@/mixin/pageState'
     export default {
         name: 'radio',
+        mixins:[pageStateMixin],
         props: {
             allRadioData: {
                 type: Array,
