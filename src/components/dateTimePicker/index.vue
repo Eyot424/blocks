@@ -10,8 +10,8 @@
             <span>{{detail}}</span>
         </div>
         <div v-else>
-            <template v-if="dateTimeValue && ('toLocaleString' in Date)">
-                {{dateTimeValue.toLocaleString()}}
+            <template v-if="dateTimeValue">
+                {{dataTimeValueFormat}}
             </template>
         </div>
     </div>
@@ -57,6 +57,12 @@
         computed:{
             dateTimeValue:function () {
 
+            },
+            dataTimeValueFormat: function() {
+                if(this.gmtDateTimeFormat) {
+                    return this.gmtDateTimeFormat(this.dateTimeValue)
+                }
+                return ''
             }
         },
         watch: {
@@ -79,7 +85,11 @@
                 if(this.$store.state.getFormData) {
                     this.$store.commit('setFormData', data)
                 }
+            },
+            gmtDateTimeFormat(val) {
+
             }
+
         }
     }
 </script>
