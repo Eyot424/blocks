@@ -199,7 +199,37 @@ export default {
         vuex: {
             state: {
                 dateTimeValue: 'ruleForm.couponDate'
+            },
+            mutations: {
+                
             }
+        },
+        extend:{
+            methods:{
+                gmtDateTimeFormat:function(val){
+                    function gmtFormat(day) { 
+                      var fmt = "yyyy-MM-dd HH:mm:ss";
+                      var o = {   
+                        "M+" : day.getMonth()+1,                 //月份   
+                        "d+" : day.getDate(),                    //日   
+                        "H+" : day.getHours(),                   //小时   
+                        "m+" : day.getMinutes(),                 //分   
+                        "s+" : day.getSeconds(),                 //秒   
+                        "q+" : Math.floor((day.getMonth()+3)/3), //季度   
+                        "S"  : day.getMilliseconds()             //毫秒   
+                      };   
+                      if(/(y+)/.test(fmt))   
+                        fmt=fmt.replace(RegExp.$1, (day.getFullYear()+"").substr(4 - RegExp.$1.length));   
+                      for(var k in o)   
+                        if(new RegExp("("+ k +")").test(fmt))   
+                            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+                      return fmt;   
+                    } 
+                    val = gmtFormat(val);
+                    return val
+                }
+            }
+
         },
         data: {
             props: {

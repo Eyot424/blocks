@@ -29,3 +29,5 @@ export const GET_DIALOG_SUBMIT_DATA = 'getDialogSubmitData'
 export const DELETE_PACKAGE= 'deletePackage'
 //table
 export const GET_PUSH_PACKAGES = 'getPushPackages'
+
+export const COUPON_DATE_FORMAT = 'couponDateFormat'

@@ -24,7 +24,7 @@ const state = {
         "department": "9",
         "totalNumber": "",
         "totalNum": "10",
-        "couponDate": "2017-07-21 20:45:56",
+        "couponDate": new Date("2017-07-21 20:45:56"),
         "dispatchType": '1',
         "cityIds": [
             "85",
