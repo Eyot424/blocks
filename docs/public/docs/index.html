@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>Blocks</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Blocks</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/examples/" class="main-nav-link">使用案例</a>
+      <a href="https://github.com/wmfe/blocks" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">概述</h1>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="Blocks是什么？" class="article-heading"><a href="#Blocks是什么？" class="headerlink" title="Blocks是什么？"></a>Blocks是什么？<a class="article-anchor" href="#Blocks是什么？" aria-hidden="true"></a></h2><p>Blocks是基于Vue2.0开发的，通过拖拽+配置的形式，生成页面的工具。</p>
+<h2 id="安装" class="article-heading"><a href="#安装" class="headerlink" title="安装"></a>安装<a class="article-anchor" href="#安装" aria-hidden="true"></a></h2><h3 id="安装前提" class="article-heading"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提<a class="article-anchor" href="#安装前提" aria-hidden="true"></a></h3><p>安装 Blocks 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="http://git-scm.com/" target="_blank" rel="external">Git</a></li>
+</ul>
+<p>如果您的电脑中尚未安装所需要的程序，请根据以下安装指示完成安装。</p>
+<blockquote class="note warn"><strong class="note-title">Mac 用户</strong><p>您在编译时可能会遇到问题，请先到 App Store 安装 Xcode，Xcode 完成后，启动并进入 <strong>Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install</strong> 安装命令行工具。</p>
+</blockquote>
+<h3 id="安装-Git" class="article-heading"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git<a class="article-anchor" href="#安装-Git" aria-hidden="true"></a></h3><ul>
+<li>Windows：下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="external">git</a>.</li>
+<li>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="external">Homebrew</a>, <a href="http://www.macports.org/" target="_blank" rel="external">MacPorts</a> ：<code>brew install git</code>;或下载 <a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="external">安装程序</a> 安装。</li>
+<li>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code></li>
+</ul>
+<blockquote class="note warn"><strong class="note-title">Windows 用户</strong><p>由于众所周知的原因，从上面的链接下载git for windows最好挂上一个代理，否则下载速度十分缓慢。</p>
+</blockquote>
+<h3 id="安装-Node-js" class="article-heading"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js<a class="article-anchor" href="#安装-Node-js" aria-hidden="true"></a></h3><p>安装 Node.js 的最佳方式是使用 <a href="https://github.com/creationix/nvm">nvm</a>。</p>
+<p>cURL:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<p>Wget:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nvm install stable</div></pre></td></tr></table></figure>
+<p>或者您也可以下载 <a href="http://nodejs.org/" target="_blank" rel="external">安装程序</a> 来安装。<br><blockquote class="note info"><strong class="note-title">Windows 用户</strong><p>对于windows用户来说，建议使用安装程序进行安装。安装时，请勾选<strong>Add to PATH</strong>选项。<br>另外，您也可以使用<strong>Git Bash</strong>，这是git for windows自带的一组程序，提供了Linux风格的shell，在该环境下，您可以直接用上面提到的命令来安装Node.js。打开它的方法很简单，在任意位置单击右键，选择“Git Bash Here”即可。由于Hexo的很多操作都涉及到命令行，您可以考虑始终使用<strong>Git Bash</strong>来进行操作。</p>
+</blockquote></p>
+<h3 id="安装-Blocks" class="article-heading"><a href="#安装-Blocks" class="headerlink" title="安装 Blocks"></a>安装 Blocks<a class="article-anchor" href="#安装-Blocks" aria-hidden="true"></a></h3><p>所有必备的应用程序安装完成后，即可安装 Blocks</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/wmfe/Blocks.git</div><div class="line">$ <span class="built_in">cd</span> Blocks</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2017-10-19T06:36:32.000Z" itemprop="dateModified">上次更新：2017-10-19</time>
+                <a href="breadCrumb.html" class="article-footer-next" title="面包屑"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'blocks';
+  var disqus_url = 'https://github.com/wmfe/blocks/docs/index.html';
+  var disqus_title = "概述";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+</script>
+
+
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="index.html" class="sidebar-link current">概述</a><strong class="sidebar-title">组件列表</strong><a href="breadCrumb.html" class="sidebar-link">面包屑</a><a href="button.html" class="sidebar-link">按钮</a><a href="checkBox.html" class="sidebar-link">多选框</a><a href="cityButtonBar.html" class="sidebar-link">城市选择器</a><a href="citySelect.html" class="sidebar-link">城市select</a><a href="datePicker.html" class="sidebar-link">日期选择器</a><a href="dateRangePicker.html" class="sidebar-link">日期范围选择器</a><a href="dateTimePicker.html" class="sidebar-link">时间日期选择器</a><a href="dateTimeRangePicker.html" class="sidebar-link">时间日期范围选择器</a><a href="dialogList.html" class="sidebar-link">弹框</a><a href="input.html" class="sidebar-link">输入框</a><a href="radio.html" class="sidebar-link">单选框</a><a href="select.html" class="sidebar-link">选择标签</a><a href="table.html" class="sidebar-link">表格</a><a href="upload.html" class="sidebar-link">上传</a><strong class="sidebar-title">组合件列表</strong><a href="molectron.html" class="sidebar-link">列表页</a><a href="form.html" class="sidebar-link">表单页</a><a href="log.html" class="sidebar-link">日志页</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2017 <b>百度外卖用户端前端团队</b>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/examples/" class="mobile-nav-link">使用案例</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/wmfe/blocks" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="index.html" class="mobile-nav-link current">概述</a><strong class="mobile-nav-title">组件列表</strong><a href="breadCrumb.html" class="mobile-nav-link">面包屑</a><a href="button.html" class="mobile-nav-link">按钮</a><a href="checkBox.html" class="mobile-nav-link">多选框</a><a href="cityButtonBar.html" class="mobile-nav-link">城市选择器</a><a href="citySelect.html" class="mobile-nav-link">城市select</a><a href="datePicker.html" class="mobile-nav-link">日期选择器</a><a href="dateRangePicker.html" class="mobile-nav-link">日期范围选择器</a><a href="dateTimePicker.html" class="mobile-nav-link">时间日期选择器</a><a href="dateTimeRangePicker.html" class="mobile-nav-link">时间日期范围选择器</a><a href="dialogList.html" class="mobile-nav-link">弹框</a><a href="input.html" class="mobile-nav-link">输入框</a><a href="radio.html" class="mobile-nav-link">单选框</a><a href="select.html" class="mobile-nav-link">选择标签</a><a href="table.html" class="mobile-nav-link">表格</a><a href="upload.html" class="mobile-nav-link">上传</a><strong class="mobile-nav-title">组合件列表</strong><a href="molectron.html" class="mobile-nav-link">列表页</a><a href="form.html" class="mobile-nav-link">表单页</a><a href="log.html" class="mobile-nav-link">日志页</a>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

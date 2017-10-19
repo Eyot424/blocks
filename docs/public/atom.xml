@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blocks</title>
+  
+  <subtitle>配置化页面解决方案</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/wmfe/blocks/"/>
+  <updated>2017-10-19T08:36:33.000Z</updated>
+  <id>https://github.com/wmfe/blocks/</id>
+  
+  <author>
+    <name>wmfe</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/wmfe/blocks/news/2017/09/20/blocks/"/>
+    <id>https://github.com/wmfe/blocks/news/2017/09/20/blocks/</id>
+    <published>2017-09-20T04:09:06.000Z</published>
+    <updated>2017-10-19T08:36:33.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
