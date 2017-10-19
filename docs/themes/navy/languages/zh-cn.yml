@@ -1,0 +1,41 @@
+menu:
+  docs: 文档
+  examples: 使用案例
+
+index:
+  get_started: 开始使用
+
+page:
+  contents: 目录
+  back_to_top: 回到顶部
+  improve: 改进本文
+  prev: 上一页
+  next: 下一页
+  last_updated: 上次更新：%s
+
+sidebar:
+  docs:
+    getting_started: 开始使用
+    overview: 概述
+    components: 组件列表
+    breadCrumb: 面包屑
+    button: 按钮
+    checkBox: 多选框
+    cityButtonBar: 城市选择器
+    citySelect: 城市select
+    datePicker: 日期选择器
+    dateRangePick: 日期范围选择器
+    dateTimePick: 时间日期选择器
+    dateTimeRangePick: 时间日期范围选择器
+    dialogList: 弹框
+    input: 输入框
+    radio: 单选框
+    select: 选择标签
+    table: 表格
+    upload: 上传
+    molectron: 组合件列表
+    filterModule: 列表页
+    form: 表单页
+    log: 日志页
+  examples:
+    core: 核心

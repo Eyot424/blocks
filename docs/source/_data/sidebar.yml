@@ -1,0 +1,27 @@
+docs:
+  getting_started:
+    overview: index.html
+  components:
+    breadCrumb: breadCrumb.html
+    button: button.html
+    checkBox: checkBox.html
+    cityButtonBar: cityButtonBar.html
+    citySelect: citySelect.html
+    datePicker: datePicker.html
+    dateRangePick: dateRangePicker.html
+    dateTimePick: dateTimePicker.html
+    dateTimeRangePick: dateTimeRangePicker.html
+    dialogList: dialogList.html
+    input: input.html
+    radio: radio.html
+    select: select.html
+    table: table.html
+    upload: upload.html
+  molectron:
+    filterModule: molectron.html
+    form: form.html
+    log: log.html
+
+examples:
+  core:
+    overview: index.html
