@@ -1,3 +1,3 @@
 <!-- Scripts -->
-{{ js('js/mobile_nav') }}
+{{ js('blocks/js/mobile_nav') }}
 <!-- endbuild -->
