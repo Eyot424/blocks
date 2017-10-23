@@ -74,8 +74,8 @@ hexo.extend.helper.register('header_menu', function (className) {
 
   _.each(menu, function (path, title) {
     if (!isEnglish && ~localizedPath.indexOf(title)) path = lang + path
-
-    result += '<a href="' + self.url_for(path) + '" class="' + className + '-link">' + self.__('menu.' + title) + '</a>'
+    var menuUrl = self.url_for(path)
+    result += '<a href="' + menuUrl.substring(1, menuUrl.length) + '" class="' + className + '-link">' + self.__('menu.' + title) + '</a>'
   })
 
   return result
