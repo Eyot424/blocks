@@ -35,6 +35,22 @@ index.props['settingDefinition'] = {
                 value: '',
                 template: '%i'
             },
+        },
+        detail: {
+            type: 'el-input',
+            label: '补充信息',
+            require: true,
+            componentData: {
+                value:''
+            },
+        },
+        accept: {
+            type: 'el-input',
+            label: '文件类型',
+            require: true,
+            componentData: {
+                value:''
+            },
         }
     },
     computed: {
@@ -43,7 +59,9 @@ index.props['settingDefinition'] = {
                 url: this.url.value,
                 name: this.name.value,
                 multiple: this.multiple.value,
-                listType: this.listType.value
+                listType: this.listType.value,
+                detail: this.detail.value,
+                accept: this.accept.value
             }
         }
     },
@@ -53,6 +71,8 @@ index.props['settingDefinition'] = {
             this.name.value = submitData.name;
             this.multiple.value = submitData.multiple;
             this.listType.value = submitData.listType;
+            this.detail.value = submitData.detail;
+            this.accept.value = submitData.accept;
         }
     }
 }

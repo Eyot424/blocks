@@ -2,7 +2,7 @@
     <div class="wrap">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" :label-width="labelWidth">
             <slot></slot>
-            <el-row v-if="pageState !== 'detail'">
+            <el-row v-if="pageState !== 'detail' && showBtn">
                 <el-col :span="12" :offset="10">
                     <el-button type="primary" icon="edit" @click="submit">提交</el-button>
                 </el-col>
@@ -44,6 +44,12 @@
                 type: String,
                 default() {
                     return '100px'
+                }
+            },
+            showBtn: {
+                type: Boolean,
+                default() {
+                    return true;
                 }
             }
         },
